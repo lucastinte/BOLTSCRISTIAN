@@ -712,8 +712,19 @@ function App() {
             </div>
           </div>
 
-          <div className="pt-8 border-t border-yellow-500/20 text-center text-gray-400">
+          <div className="pt-8 border-t border-yellow-500/20 text-center text-gray-400 space-y-2">
             <p>&copy; 2024 CW Life. Todos los derechos reservados.</p>
+            <p className="text-sm">
+              Diseño:{" "}
+              <a
+                href="http://instagram.com/lucastinte"
+                target="_blank"
+                rel="noreferrer"
+                className="text-yellow-500 hover:text-yellow-400 transition-colors"
+              >
+                @lucastinte
+              </a>
+            </p>
           </div>
         </div>
       </footer>
