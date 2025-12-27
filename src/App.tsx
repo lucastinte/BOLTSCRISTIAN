@@ -164,7 +164,7 @@ function App() {
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-yellow-500">
-                      500+
+                      4000+
                     </div>
                     <div className="text-sm text-gray-400">
                       Clientes Transformados
@@ -275,9 +275,9 @@ function App() {
               </h2>
               <p className="text-lg text-gray-300 leading-relaxed">
                 Hace años, yo también estuve en tu lugar. Perdido, sin
-                dirección, sin saber cómo alcanzar mis metas. Hoy soy entrenador
-                personal certificado y he ayudado a más de 500 personas a
-                transformar sus vidas.
+                dirección, sin saber cómo alcanzar mis metas. Hoy soy Personal
+                Trainer y he ayudado a más de 4000 personas a transformar sus
+                vidas.
               </p>
               <p className="text-lg text-gray-300 leading-relaxed">
                 Mi misión es simple: guiarte paso a paso en tu transformación,
