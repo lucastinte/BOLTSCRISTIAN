@@ -18,6 +18,7 @@ import aboutImage from "./assets/wosniak-about.png";
 import transformacion1 from "./assets/transformacion-1.png";
 import transformacion2 from "./assets/transformacion-2.png";
 import transformacion3 from "./assets/transformacion-3.png";
+import cwLogo from "./assets/xxx.svg";
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -57,10 +58,7 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-2">
-              <Dumbbell className="w-8 h-8 text-yellow-500" />
-              <span className="text-2xl font-bold text-yellow-500">
-                CW Life
-              </span>
+              <img src={cwLogo} alt="CW Life" className="w-28 h-auto" />
             </div>
 
             <div className="hidden md:flex gap-8">
@@ -122,7 +120,7 @@ function App() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 animate-fade-in">
               <div className="inline-block px-4 py-2 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-yellow-500 text-sm">
-                Entrenador Personal Certificado
+                Personal Trainer
               </div>
               <h1 className="text-5xl md:text-7xl font-bold leading-tight">
                 Transforma tu
@@ -146,6 +144,9 @@ function App() {
                 >
                   Ver Programas
                 </button>
+              </div>
+              <div className="text-sm text-gray-400 italic border-l-2 border-yellow-500/60 pl-3">
+                “Disciplina sin filtros. Resultados sin excusas.”
               </div>
             </div>
 
@@ -199,6 +200,58 @@ function App() {
                 <p className="text-gray-400">{feature.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-4 py-16 bg-black">
+        <div className="max-w-5xl mx-auto rounded-2xl border border-yellow-500/20 bg-gradient-to-r from-yellow-500/5 via-black to-yellow-500/5 p-8 md:p-12 space-y-6">
+          <div className="space-y-3">
+            <div className="flex items-center gap-3">
+              <p className="text-sm uppercase tracking-[0.25em] text-yellow-500">
+                Estándar CW Life
+              </p>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold">
+              La vara con la que medimos la excelencia
+            </h2>
+            <p className="text-gray-300">
+              No es solo un programa: es un código de conducta que separa a
+              quienes asisten del que domina su realidad.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6 text-gray-200">
+            <div className="space-y-2">
+              <div className="text-yellow-500 font-semibold">
+                1. Estética de Poder
+              </div>
+              <p className="text-sm text-gray-300">
+                Presencia y autoridad con un físico construido con densidad y
+                propósito.
+              </p>
+            </div>
+            <div className="space-y-2">
+              <div className="text-yellow-500 font-semibold">
+                2. Disciplina Innegociable
+              </div>
+              <p className="text-sm text-gray-300">
+                El trabajo se hace, sin excusas. Si no dominás tu cuerpo, no
+                dominás tu vida.
+              </p>
+            </div>
+            <div className="space-y-2">
+              <div className="text-yellow-500 font-semibold">
+                3. Verdad Brutal
+              </div>
+              <p className="text-sm text-gray-300">
+                Nada falso: estrategia respaldada por resultados reales, en vivo
+                y en video.
+              </p>
+            </div>
+          </div>
+          <div className="border-l-2 border-yellow-500/60 pl-4 text-gray-200 italic">
+            “Lo que el mundo llama sacrificio, nosotros lo llamamos el
+            Estándar.”
           </div>
         </div>
       </section>
@@ -276,10 +329,10 @@ function App() {
               },
               {
                 title: "Presencial",
-                desc: "Sesiones individuales en Buenos Aires para maximizar tu rendimiento con atención 100% dedicada.",
+                desc: "Sesiones individuales en San Salvador de Jujuy para maximizar tu rendimiento con atención 100% dedicada.",
                 features: [
                   "Atención personalizada",
-                  "Buenos Aires",
+                  "San Salvador de Jujuy",
                   "Equipamiento completo",
                   "Resultados más rápidos",
                 ],
@@ -290,7 +343,7 @@ function App() {
                 features: [
                   "Post-lesión",
                   "Plan adaptado",
-                  "Fisioterapia integrada",
+                  "Acompañamiento técnico",
                   "Vuelta segura",
                 ],
               },
@@ -354,10 +407,10 @@ function App() {
                 image: transformacion2,
               },
               {
-                name: "Lucas R.",
-                result: "Recuperación total",
+                name: "Lucía G.",
+                result: "Ganó músculo",
                 review:
-                  "Después de mi lesión pensé que no volvería a entrenar. El programa Reconstruirte me devolvió la confianza.",
+                  "Después de mi lesión pensé que no volvería a entrenar. El programa Reconstruirte me devolvió la confianza y la fuerza.",
                 image: transformacion3,
               },
             ].map((testimonial, i) => (
@@ -401,7 +454,7 @@ function App() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Transfórmate:{" "}
+              Retransfórmate{" "}
               <span className="text-yellow-500">Planes Inteligentes</span>
             </h2>
             <p className="text-xl text-gray-400">
@@ -579,13 +632,13 @@ function App() {
             </a>
 
             <a
-              href="mailto:lucartinte19@gmail.com"
+              href="mailto:jujuyentrena@gmail.com"
               className="p-6 bg-gradient-to-br from-yellow-500/10 to-transparent border-2 border-yellow-500/20 rounded-xl hover:border-yellow-500 transition-all group"
             >
               <Mail className="w-12 h-12 text-yellow-500 mx-auto mb-4 group-hover:scale-110 transition-transform" />
               <div className="font-bold mb-2">Email</div>
               <div className="text-sm text-gray-400">
-                lucartinte19@gmail.com
+                jujuyentrena@gmail.com
               </div>
             </a>
 
@@ -615,10 +668,7 @@ function App() {
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <Dumbbell className="w-8 h-8 text-yellow-500" />
-                <span className="text-2xl font-bold text-yellow-500">
-                  CW Life
-                </span>
+                <img src={cwLogo} alt="CW Life" className="h-8 w-auto" />
               </div>
               <p className="text-gray-400">
                 Transformando vidas a través del fitness y el coaching
