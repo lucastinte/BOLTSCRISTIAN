@@ -42,6 +42,14 @@ type Plan = {
   message: string;
 };
 
+type Program = {
+  id: string;
+  title: string;
+  desc: string;
+  features: string[];
+  ctaMessage: string;
+};
+
 type SocialLink = {
   key: "tiktok" | "facebook" | "x" | "instagram";
   name: string;
@@ -186,6 +194,44 @@ function App() {
     hero: heroImage,
     about: aboutImage,
   });
+  const [programs, setPrograms] = useState<Program[]>([
+    {
+      id: "prog1",
+      title: "Coaching Online",
+      desc: "Entrena desde cualquier lugar del mundo con seguimiento personalizado y feedback por video.",
+      features: [
+        "Plan personalizado",
+        "Videos demostrativos",
+        "Seguimiento semanal",
+        "Chat directo",
+      ],
+      ctaMessage: "Hola, quiero más info sobre el programa de Coaching Online.",
+    },
+    {
+      id: "prog2",
+      title: "Presencial",
+      desc: "Sesiones individuales en San Salvador de Jujuy para maximizar tu rendimiento con atención 100% dedicada.",
+      features: [
+        "Atención personalizada",
+        "San Salvador de Jujuy",
+        "Equipamiento completo",
+        "Resultados más rápidos",
+      ],
+      ctaMessage: "Hola, quiero más info sobre el programa Presencial.",
+    },
+    {
+      id: "prog3",
+      title: "Reconstruirte",
+      desc: "Programa especializado de recuperación post-lesión para volver más fuerte que antes.",
+      features: [
+        "Post-lesión",
+        "Plan adaptado",
+        "Acompañamiento técnico",
+        "Vuelta segura",
+      ],
+      ctaMessage: "Hola, quiero más info sobre el programa Reconstruirte.",
+    },
+  ]);
 
   const ADMIN_PIN = import.meta.env.VITE_ADMIN_PIN || "panel123";
   const API_BASE = import.meta.env.VITE_API_BASE || "";
@@ -211,6 +257,23 @@ function App() {
           typeof item.objectPositionY === "number"
             ? item.objectPositionY
             : 50,
+      }));
+  };
+
+  const normalizePrograms = (items: any[]): Program[] => {
+    return items
+      .filter((item) => typeof item === "object" && item !== null)
+      .map((item, idx) => ({
+        id: item.id || `prog-${idx}`,
+        title: item.title || "Programa",
+        desc: item.desc || "",
+        features: Array.isArray(item.features)
+          ? item.features.filter(Boolean)
+          : [],
+        ctaMessage:
+          typeof item.ctaMessage === "string"
+            ? item.ctaMessage
+            : "Hola, quiero más info sobre tus programas.",
       }));
   };
 
@@ -286,6 +349,17 @@ function App() {
         // ignore parsing errors
       }
     }
+    const savedPrograms = localStorage.getItem("cw-programs");
+    if (savedPrograms) {
+      try {
+        const parsed = JSON.parse(savedPrograms);
+        if (Array.isArray(parsed)) {
+          setPrograms(normalizePrograms(parsed));
+        }
+      } catch {
+        // ignore parsing errors
+      }
+    }
 
     const loadFromApi = async () => {
       try {
@@ -306,6 +380,9 @@ function App() {
         }
         if (data.mainImages?.hero && data.mainImages?.about) {
           setMainImages(data.mainImages);
+        }
+        if (Array.isArray(data.programs) && data.programs.length) {
+          setPrograms(normalizePrograms(data.programs));
         }
       } catch {
         // ignore fetch errors, stay with local/localStorage/defaults
@@ -337,6 +414,10 @@ function App() {
   useEffect(() => {
     localStorage.setItem("cw-main-images", JSON.stringify(mainImages));
   }, [mainImages]);
+
+  useEffect(() => {
+    localStorage.setItem("cw-programs", JSON.stringify(programs));
+  }, [programs]);
 
   const handleAdminLogin = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -404,6 +485,36 @@ function App() {
     );
   };
 
+  const handlePlanFeaturesChange = (id: string, value: string) => {
+    const features = value
+      .split("\n")
+      .map((line) => line.trim())
+      .filter(Boolean);
+    setPlans((prev) =>
+      prev.map((p) => (p.id === id ? { ...p, features } : p))
+    );
+  };
+
+  const handleProgramFieldChange = (
+    id: string,
+    field: keyof Program,
+    value: string
+  ) => {
+    setPrograms((prev) =>
+      prev.map((p) => (p.id === id ? { ...p, [field]: value } : p))
+    );
+  };
+
+  const handleProgramFeaturesChange = (id: string, value: string) => {
+    const features = value
+      .split("\n")
+      .map((line) => line.trim())
+      .filter(Boolean);
+    setPrograms((prev) =>
+      prev.map((p) => (p.id === id ? { ...p, features } : p))
+    );
+  };
+
   const handleSocialChange = (key: SocialLink["key"], href: string) => {
     setSocialLinks((prev) =>
       prev.map((s) => (s.key === key ? { ...s, href } : s))
@@ -440,13 +551,14 @@ function App() {
   const saveAllChanges = async () => {
     setSaving(true);
     setSaveError("");
-    const payload = {
-      transformations: normalizeTransformations(transformations),
-      plans,
-      socialLinks,
-      whatsAppNumber,
-      mainImages,
-    };
+  const payload = {
+    transformations: normalizeTransformations(transformations),
+    plans,
+    socialLinks,
+    whatsAppNumber,
+    mainImages,
+    programs,
+  };
     try {
       // Simulación de persistencia local; cuando conectes Render,
       // reemplaza esta parte con un fetch al backend.
@@ -750,40 +862,9 @@ function App() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Coaching Online",
-                desc: "Entrena desde cualquier lugar del mundo con seguimiento personalizado y feedback por video.",
-                features: [
-                  "Plan personalizado",
-                  "Videos demostrativos",
-                  "Seguimiento semanal",
-                  "Chat directo",
-                ],
-              },
-              {
-                title: "Presencial",
-                desc: "Sesiones individuales en San Salvador de Jujuy para maximizar tu rendimiento con atención 100% dedicada.",
-                features: [
-                  "Atención personalizada",
-                  "San Salvador de Jujuy",
-                  "Equipamiento completo",
-                  "Resultados más rápidos",
-                ],
-              },
-              {
-                title: "Reconstruirte",
-                desc: "Programa especializado de recuperación post-lesión para volver más fuerte que antes.",
-                features: [
-                  "Post-lesión",
-                  "Plan adaptado",
-                  "Acompañamiento técnico",
-                  "Vuelta segura",
-                ],
-              },
-            ].map((program, i) => (
+            {programs.map((program) => (
               <div
-                key={i}
+                key={program.id}
                 className="group p-8 bg-gradient-to-br from-yellow-500/5 to-transparent border-2 border-yellow-500/20 rounded-2xl hover:border-yellow-500 transition-all transform hover:-translate-y-2"
               >
                 <h3 className="text-2xl font-bold text-yellow-500 mb-4">
@@ -802,7 +883,7 @@ function App() {
                   ))}
                 </ul>
                 <a
-                  href={buildWhatsAppLink("Hola, quiero más info sobre tus programas.")}
+                  href={buildWhatsAppLink(program.ctaMessage || "Hola, quiero más info sobre tus programas.")}
                   className="block w-full py-3 bg-yellow-500/10 hover:bg-yellow-500 text-yellow-500 hover:text-black border border-yellow-500 rounded-lg text-center font-bold transition-all"
                 >
                   Más Información
@@ -1040,10 +1121,12 @@ function App() {
           <div className="relative w-full max-w-5xl bg-zinc-900 border border-yellow-500/30 rounded-2xl p-6 shadow-2xl max-h-[90vh] overflow-y-auto">
             <button
               onClick={() => {
+                handleAdminLogout();
                 setAdminOpen(false);
                 setAdminError("");
               }}
               className="absolute top-3 right-3 text-gray-400 hover:text-yellow-500 transition-colors"
+              title="Cerrar sesión"
             >
               <X className="w-5 h-5" />
             </button>
@@ -1113,12 +1196,6 @@ function App() {
                       activas, ordenadas por el campo "Orden" (1 = primero).
                     </p>
                   </div>
-                  <button
-                    onClick={handleAdminLogout}
-                    className="px-3 py-2 rounded-lg border border-yellow-500/30 text-gray-300 hover:border-yellow-500 hover:text-yellow-500 transition-colors text-sm"
-                  >
-                    Cerrar sesión
-                  </button>
                 </div>
 
                 <div className="flex flex-wrap items-center justify-between gap-3 border border-yellow-500/20 rounded-xl p-3 bg-black/40">
@@ -1424,6 +1501,100 @@ function App() {
                             value={plan.price}
                             onChange={(e) =>
                               handlePlanFieldChange(plan.id, "price", e.target.value)
+                            }
+                            className="w-full rounded-lg bg-black border border-yellow-500/30 px-3 py-2 text-white focus:outline-none focus:border-yellow-500"
+                          />
+                        </div>
+                        <div className="space-y-1">
+                          <label className="block text-gray-300">
+                            Ítems (un por línea)
+                          </label>
+                          <textarea
+                            value={plan.features.join("\n")}
+                            onChange={(e) =>
+                              handlePlanFeaturesChange(plan.id, e.target.value)
+                            }
+                            className="w-full rounded-lg bg-black border border-yellow-500/30 px-3 py-2 text-white focus:outline-none focus:border-yellow-500 min-h-[120px]"
+                            placeholder="Ítem 1&#10;Ítem 2&#10;Ítem 3"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="border-t border-yellow-500/20 pt-4 space-y-3">
+                  <h4 className="text-xl font-bold text-yellow-500">
+                    Programas de Entrenamiento
+                  </h4>
+                  <p className="text-sm text-gray-400">
+                    Edita título, descripción, ítems y mensaje de contacto para
+                    cada programa.
+                  </p>
+                  <div className="grid md:grid-cols-3 gap-4">
+                    {programs.map((program) => (
+                      <div
+                        key={program.id}
+                        className="p-4 rounded-xl border border-yellow-500/20 bg-black/40 space-y-3 text-sm"
+                      >
+                        <div className="space-y-1">
+                          <label className="block text-gray-300">Título</label>
+                          <input
+                            value={program.title}
+                            onChange={(e) =>
+                              handleProgramFieldChange(
+                                program.id,
+                                "title",
+                                e.target.value
+                              )
+                            }
+                            className="w-full rounded-lg bg-black border border-yellow-500/30 px-3 py-2 text-white focus:outline-none focus:border-yellow-500"
+                          />
+                        </div>
+                        <div className="space-y-1">
+                          <label className="block text-gray-300">
+                            Descripción
+                          </label>
+                          <textarea
+                            value={program.desc}
+                            onChange={(e) =>
+                              handleProgramFieldChange(
+                                program.id,
+                                "desc",
+                                e.target.value
+                              )
+                            }
+                            className="w-full rounded-lg bg-black border border-yellow-500/30 px-3 py-2 text-white focus:outline-none focus:border-yellow-500 min-h-[100px]"
+                          />
+                        </div>
+                        <div className="space-y-1">
+                          <label className="block text-gray-300">
+                            Ítems (uno por línea)
+                          </label>
+                          <textarea
+                            value={program.features.join("\n")}
+                            onChange={(e) =>
+                              handleProgramFeaturesChange(
+                                program.id,
+                                e.target.value
+                              )
+                            }
+                            className="w-full rounded-lg bg-black border border-yellow-500/30 px-3 py-2 text-white focus:outline-none focus:border-yellow-500 min-h-[120px]"
+                            placeholder="Ítem 1&#10;Ítem 2&#10;Ítem 3"
+                          />
+                        </div>
+                        <div className="space-y-1">
+                          <label className="block text-gray-300">
+                            Mensaje de WhatsApp
+                          </label>
+                          <input
+                            value={program.ctaMessage}
+                            onChange={(e) =>
+                              handleProgramFieldChange(
+                                program.id,
+                                "ctaMessage",
+                                e.target.value
+                              )
                             }
                             className="w-full rounded-lg bg-black border border-yellow-500/30 px-3 py-2 text-white focus:outline-none focus:border-yellow-500"
                           />
