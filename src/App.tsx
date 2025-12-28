@@ -12,6 +12,7 @@ import {
   Facebook,
   Twitter,
   Music2,
+  Users,
 } from "lucide-react";
 import heroImage from "./assets/wosniak-hero.jpeg";
 import aboutImage from "./assets/wosniak-about.png";
@@ -621,7 +622,7 @@ function App() {
             Contáctame ahora y comencemos tu transformación hoy mismo
           </p>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             <a
               href="https://wa.me/5493884384713"
               className="p-6 bg-gradient-to-br from-yellow-500/10 to-transparent border-2 border-yellow-500/20 rounded-xl hover:border-yellow-500 transition-all group"
@@ -649,6 +650,19 @@ function App() {
               <Phone className="w-12 h-12 text-yellow-500 mx-auto mb-4 group-hover:scale-110 transition-transform" />
               <div className="font-bold mb-2">Teléfono</div>
               <div className="text-sm text-gray-400">+54 9 3884 38-4713</div>
+            </a>
+
+            <a
+              href="https://chat.whatsapp.com/ByALBirqxwD7Kd2HJl3ii6"
+              target="_blank"
+              rel="noreferrer"
+              className="p-6 bg-gradient-to-br from-yellow-500/10 to-transparent border-2 border-yellow-500/20 rounded-xl hover:border-yellow-500 transition-all group"
+            >
+              <Users className="w-12 h-12 text-yellow-500 mx-auto mb-4 group-hover:scale-110 transition-transform" />
+              <div className="font-bold mb-2">Comunidad WhatsApp</div>
+              <div className="text-sm text-gray-400">
+                Únete al grupo y recibe novedades y soporte.
+              </div>
             </a>
           </div>
 
