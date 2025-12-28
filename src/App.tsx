@@ -28,6 +28,8 @@ type Transformation = {
   image: string;
   enabled: boolean;
   order: number;
+  objectPositionX: number;
+  objectPositionY: number;
 };
 
 type Plan = {
@@ -55,7 +57,7 @@ const socialIconMap: Record<SocialLink["key"], IconType> = {
   instagram: Instagram,
 };
 
-const MAX_VISIBLE_TRANSFORMATIONS = 5;
+const MAX_VISIBLE_TRANSFORMATIONS = 6;
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -77,6 +79,8 @@ function App() {
       image: transformacion1,
       enabled: true,
       order: 1,
+      objectPositionX: 50,
+      objectPositionY: 50,
     },
     {
       id: "t2",
@@ -87,6 +91,8 @@ function App() {
       image: transformacion2,
       enabled: true,
       order: 2,
+      objectPositionX: 50,
+      objectPositionY: 50,
     },
     {
       id: "t3",
@@ -97,6 +103,8 @@ function App() {
       image: transformacion3,
       enabled: true,
       order: 3,
+      objectPositionX: 50,
+      objectPositionY: 50,
     },
   ]);
   const [plans, setPlans] = useState<Plan[]>([
@@ -180,6 +188,31 @@ function App() {
   });
 
   const ADMIN_PIN = import.meta.env.VITE_ADMIN_PIN || "panel123";
+  const API_BASE = import.meta.env.VITE_API_BASE || "";
+
+  const normalizeTransformations = (items: any[]): Transformation[] => {
+    return items
+      .filter((item) => typeof item === "object" && item !== null)
+      .map((item, idx) => ({
+        id: item.id || `t-${idx}`,
+        name: item.name || "Nombre",
+        result: item.result || "",
+        review: item.review || "",
+        image: item.image || "",
+        enabled:
+          typeof item.enabled === "boolean" ? item.enabled : true,
+        order:
+          typeof item.order === "number" ? item.order : idx + 1,
+        objectPositionX:
+          typeof item.objectPositionX === "number"
+            ? item.objectPositionX
+            : 50,
+        objectPositionY:
+          typeof item.objectPositionY === "number"
+            ? item.objectPositionY
+            : 50,
+      }));
+  };
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -206,7 +239,7 @@ function App() {
       try {
         const parsed = JSON.parse(savedTransformations);
         if (Array.isArray(parsed)) {
-          setTransformations(parsed);
+          setTransformations(normalizeTransformations(parsed));
         }
       } catch {
         // ignore parsing errors and keep defaults
@@ -253,10 +286,40 @@ function App() {
         // ignore parsing errors
       }
     }
+
+    const loadFromApi = async () => {
+      try {
+        const res = await fetch(`${API_BASE}/api/content`);
+        if (!res.ok) return;
+        const data = await res.json();
+        if (Array.isArray(data.transformations) && data.transformations.length) {
+          setTransformations(normalizeTransformations(data.transformations));
+        }
+        if (Array.isArray(data.plans) && data.plans.length) {
+          setPlans(data.plans);
+        }
+        if (Array.isArray(data.socialLinks) && data.socialLinks.length) {
+          setSocialLinks(data.socialLinks);
+        }
+        if (typeof data.whatsAppNumber === "string" && data.whatsAppNumber) {
+          setWhatsAppNumber(data.whatsAppNumber);
+        }
+        if (data.mainImages?.hero && data.mainImages?.about) {
+          setMainImages(data.mainImages);
+        }
+      } catch {
+        // ignore fetch errors, stay with local/localStorage/defaults
+      }
+    };
+
+    loadFromApi();
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("cw-transformations", JSON.stringify(transformations));
+    localStorage.setItem(
+      "cw-transformations",
+      JSON.stringify(normalizeTransformations(transformations))
+    );
   }, [transformations]);
 
   useEffect(() => {
@@ -288,7 +351,15 @@ function App() {
 
   const handleTransformationChange = (
     id: string,
-    field: "name" | "result" | "review" | "image" | "order" | "enabled",
+    field:
+      | "name"
+      | "result"
+      | "review"
+      | "image"
+      | "order"
+      | "enabled"
+      | "objectPositionX"
+      | "objectPositionY",
     value: string | number | boolean
   ) => {
     setTransformations((prev) =>
@@ -369,24 +440,35 @@ function App() {
   const saveAllChanges = async () => {
     setSaving(true);
     setSaveError("");
+    const payload = {
+      transformations: normalizeTransformations(transformations),
+      plans,
+      socialLinks,
+      whatsAppNumber,
+      mainImages,
+    };
     try {
       // Simulación de persistencia local; cuando conectes Render,
       // reemplaza esta parte con un fetch al backend.
-      localStorage.setItem(
-        "cw-transformations",
-        JSON.stringify(transformations)
-      );
+      localStorage.setItem("cw-transformations", JSON.stringify(payload.transformations));
       localStorage.setItem("cw-plans", JSON.stringify(plans));
       localStorage.setItem("cw-socials", JSON.stringify(socialLinks));
       localStorage.setItem("cw-whatsapp", whatsAppNumber);
       localStorage.setItem("cw-main-images", JSON.stringify(mainImages));
 
-      // Ejemplo para futuro:
-      // await fetch(`${import.meta.env.VITE_API_BASE}/admin/save`, {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
-      //   body: JSON.stringify({ transformations, plans, socialLinks, whatsAppNumber, mainImages }),
-      // });
+      const endpoint = `${API_BASE}/api/content`;
+      try {
+        const res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) {
+          throw new Error("No se pudo guardar en el backend local");
+        }
+      } catch (err) {
+        setSaveError("Guardado local OK, pero no se pudo guardar en el backend local.");
+      }
 
       setLastSavedAt(new Date().toLocaleTimeString());
     } catch (err) {
@@ -746,15 +828,18 @@ function App() {
             {visibleTransformations.map((testimonial) => (
               <div
                 key={testimonial.id}
-                className="p-6 bg-black border-2 border-yellow-500/20 rounded-xl hover:border-yellow-500/50 transition-all"
+                className="p-6 bg-black border-2 border-yellow-500/20 rounded-xl hover:border-yellow-500/50 transition-all shadow-lg"
               >
-                <div className="mb-4 overflow-hidden rounded-lg border border-yellow-500/20">
-                  <img
-                    src={testimonial.image}
-                    alt={`Transformación de ${testimonial.name}`}
-                    className="w-full h-56 object-cover"
-                  />
-                </div>
+              <div className="mb-4 overflow-hidden rounded-lg border border-yellow-500/20">
+                <img
+                  src={testimonial.image}
+                  alt={`Transformación de ${testimonial.name}`}
+                  className="w-full h-56 object-cover"
+                  style={{
+                    objectPosition: `${testimonial.objectPositionX}% ${testimonial.objectPositionY}%`,
+                  }}
+                />
+              </div>
                 <div className="flex gap-1 mb-4">
                   {[...Array(5)].map((_, j) => (
                     <Star
@@ -1020,9 +1105,8 @@ function App() {
                       Panel de Transformaciones
                     </h3>
                     <p className="text-sm text-gray-400">
-                      Edita los datos y URLs de las imágenes. Hoy se guardan en
-                      localStorage; luego apuntaremos al backend de Render para
-                      subir y commitear a GitHub.
+                      Edita los datos y imágenes. Todo se guarda en tu navegador
+                      (localStorage).
                     </p>
                     <p className="text-xs text-gray-500">
                       Se muestran hasta {MAX_VISIBLE_TRANSFORMATIONS} tarjetas
@@ -1039,7 +1123,7 @@ function App() {
 
                 <div className="flex flex-wrap items-center justify-between gap-3 border border-yellow-500/20 rounded-xl p-3 bg-black/40">
                   <div className="text-sm text-gray-400">
-                    <p>Guarda los cambios y luego conéctalo al backend en Render.</p>
+                    <p>Guarda los cambios para mantenerlos en este dispositivo.</p>
                     {lastSavedAt && (
                       <p className="text-green-400">
                         Último guardado: {lastSavedAt}
@@ -1076,6 +1160,9 @@ function App() {
                           src={item.image}
                           alt={`Transformación ${item.name}`}
                           className="w-full h-full object-cover"
+                          style={{
+                            objectPosition: `${item.objectPositionX}% ${item.objectPositionY}%`,
+                          }}
                         />
                       </div>
                       <div className="space-y-2 text-sm">
@@ -1151,10 +1238,50 @@ function App() {
                                   e.target.checked
                                 )
                               }
-                              className="h-4 w-4 accent-yellow-500"
+                            className="h-4 w-4 accent-yellow-500"
+                          />
+                          Mostrar
+                        </label>
+                      </div>
+                        <div className="grid grid-cols-2 gap-3">
+                          <div className="space-y-1">
+                            <label className="block text-gray-300 text-xs">
+                              Posición X (%)
+                            </label>
+                            <input
+                              type="range"
+                              min={0}
+                              max={100}
+                              value={item.objectPositionX}
+                              onChange={(e) =>
+                                handleTransformationChange(
+                                  item.id,
+                                  "objectPositionX",
+                                  Number(e.target.value)
+                                )
+                              }
+                              className="w-full"
                             />
-                            Mostrar
-                          </label>
+                          </div>
+                          <div className="space-y-1">
+                            <label className="block text-gray-300 text-xs">
+                              Posición Y (%)
+                            </label>
+                            <input
+                              type="range"
+                              min={0}
+                              max={100}
+                              value={item.objectPositionY}
+                              onChange={(e) =>
+                                handleTransformationChange(
+                                  item.id,
+                                  "objectPositionY",
+                                  Number(e.target.value)
+                                )
+                              }
+                              className="w-full"
+                            />
+                          </div>
                         </div>
                         <div className="space-y-1">
                           <label className="block text-gray-300">
