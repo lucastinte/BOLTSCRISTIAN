@@ -20,6 +20,7 @@ import transformacion1 from "./assets/transformacion-1.png";
 import transformacion2 from "./assets/transformacion-2.png";
 import transformacion3 from "./assets/transformacion-3.png";
 import cwLogo from "./assets/xxx.svg";
+import black90Dias from "./assets/black-90-dias.jpeg";
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -463,7 +464,7 @@ function App() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
                 title: "Método CW Life",
@@ -517,43 +518,120 @@ function App() {
                 message:
                   "Hola, me interesa el plan Método CW Life Plus (25 sesiones).",
               },
-            ].map((plan, i) => (
-              <div
-                key={i}
-                className="relative p-8 rounded-2xl transition-all transform hover:-translate-y-2 bg-gradient-to-br from-yellow-500/5 to-transparent border-2 border-yellow-500/20 hover:border-yellow-500/50"
-              >
-                <div className="text-center mb-4">
-                  <div className="text-yellow-500 font-bold text-lg mb-1">
-                    {plan.title}
-                  </div>
-                  <div className="text-sm text-gray-400">{plan.subtitle}</div>
-                </div>
-                <div className="text-center mb-4">
-                  <div className="text-4xl font-bold mb-1">{plan.price}</div>
-                  <div className="text-gray-400 text-sm">{plan.valid}</div>
-                </div>
-                <p className="text-gray-300 mb-6 text-sm leading-relaxed">
-                  {plan.description}
-                </p>
-                <ul className="space-y-3 mb-8">
-                  {plan.features.map((feature, j) => (
-                    <li
-                      key={j}
-                      className="flex items-start gap-2 text-gray-300 text-sm"
-                    >
-                      <div className="w-2 h-2 mt-1 bg-yellow-500 rounded-full"></div>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href={buildWhatsAppLink(plan.message)}
-                  className="block w-full py-4 rounded-lg text-center font-bold transition-all bg-yellow-500 text-black hover:bg-yellow-600"
+              {
+                highlight: true,
+                title: "90 DÍAS BLACK",
+                subtitle: "Edición élite · Muy pronto",
+                price: "⚡️ Exclusivo",
+                description:
+                  "El estándar BLACK está llegando. 90 días sin excusas para reconstruirte física y mentalmente.",
+                features: [
+                  "Programación de entrenamiento (online o presencial)",
+                  "Plan de alimentación personalizado",
+                  "Seguimiento diario y mindset de acero",
+                  "Solo para quienes están listos para reconstruirse",
+                ],
+                message:
+                  "Hola, quiero ser de los primeros en 90 DÍAS BLACK. Avísame cuando abra.",
+                image: black90Dias,
+                tag: "MUY PRONTO",
+              },
+            ].map((plan, i) =>
+              plan.highlight ? (
+                <div
+                  key={i}
+                  className="relative p-1 rounded-2xl overflow-hidden border-2 border-yellow-500/50 shadow-[0_15px_50px_rgba(234,179,8,0.25)] lg:col-start-2 lg:row-start-2 lg:max-w-md lg:mx-auto"
                 >
-                  Ingresá ahora
-                </a>
-              </div>
-            ))}
+                  <div className="absolute inset-0">
+                    <img
+                      src={plan.image}
+                      alt={plan.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/75 to-black/85"></div>
+                  </div>
+                  <div className="relative p-6 flex flex-col h-full backdrop-blur-[2px]">
+                    <div className="flex items-center justify-between mb-5">
+                      <span className="px-3 py-1 bg-yellow-400 text-black text-[11px] font-extrabold rounded-full shadow-lg shadow-yellow-500/50">
+                        {plan.tag}
+                      </span>
+                      {plan.valid ? (
+                        <span className="text-[11px] text-yellow-300 uppercase tracking-[0.25em] bg-white/5 px-3 py-1 rounded-full border border-white/10">
+                          {plan.valid}
+                        </span>
+                      ) : null}
+                    </div>
+                    <div className="mb-4 space-y-1">
+                      <p className="text-xs text-gray-300 uppercase tracking-[0.15em]">
+                        {plan.subtitle}
+                      </p>
+                      <h3 className="text-3xl font-black text-white leading-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.4)]">
+                        {plan.title}
+                      </h3>
+                      <p className="text-lg text-yellow-300 mt-1">
+                        {plan.price}
+                      </p>
+                    </div>
+                    <p className="text-gray-100 text-sm leading-relaxed mb-4">
+                      {plan.description}
+                    </p>
+                    <div className="grid gap-2 text-sm text-gray-100 mb-6">
+                      {plan.features.map((feature, j) => (
+                        <div
+                          key={j}
+                          className="flex items-center gap-2 bg-black/40 border border-white/10 rounded-lg px-3 py-2 backdrop-blur-sm shadow-[0_8px_20px_rgba(0,0,0,0.35)]"
+                        >
+                          <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                          <span>{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <a
+                      href={buildWhatsAppLink(plan.message)}
+                      className="mt-auto block w-full py-3 rounded-lg text-center font-bold transition-all bg-yellow-400 text-black hover:bg-yellow-300 shadow-lg shadow-yellow-500/40"
+                    >
+                      Consultar
+                    </a>
+                  </div>
+                </div>
+              ) : (
+                <div
+                  key={i}
+                  className="relative p-8 rounded-2xl transition-all transform hover:-translate-y-2 bg-gradient-to-br from-yellow-500/5 to-transparent border-2 border-yellow-500/20 hover:border-yellow-500/50"
+                >
+                  <div className="text-center mb-4">
+                    <div className="text-yellow-500 font-bold text-lg mb-1">
+                      {plan.title}
+                    </div>
+                    <div className="text-sm text-gray-400">{plan.subtitle}</div>
+                  </div>
+                  <div className="text-center mb-4">
+                    <div className="text-4xl font-bold mb-1">{plan.price}</div>
+                    <div className="text-gray-400 text-sm">{plan.valid}</div>
+                  </div>
+                  <p className="text-gray-300 mb-6 text-sm leading-relaxed">
+                    {plan.description}
+                  </p>
+                  <ul className="space-y-3 mb-8">
+                    {plan.features.map((feature, j) => (
+                      <li
+                        key={j}
+                        className="flex items-start gap-2 text-gray-300 text-sm"
+                      >
+                        <div className="w-2 h-2 mt-1 bg-yellow-500 rounded-full"></div>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <a
+                    href={buildWhatsAppLink(plan.message)}
+                    className="block w-full py-4 rounded-lg text-center font-bold transition-all bg-yellow-500 text-black hover:bg-yellow-600"
+                  >
+                    Ingresá ahora
+                  </a>
+                </div>
+              )
+            )}
           </div>
         </div>
       </section>
