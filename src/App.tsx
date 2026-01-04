@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Menu,
   X,
@@ -12,8 +12,10 @@ import {
   Facebook,
   Twitter,
   Music2,
+  MapPin,
   Users,
 } from "lucide-react";
+import type { CSSProperties } from "react";
 import heroImage from "./assets/wosniak-hero.jpeg";
 import aboutImage from "./assets/wosniak-about.png";
 import transformacion1 from "./assets/transformacion-1.png";
@@ -25,6 +27,29 @@ import black90Dias from "./assets/black-90-dias.jpeg";
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const gymImages = Object.values(
+    import.meta.glob<string>("./assets/gym/*.{jpeg,jpg,png,webp}", {
+      eager: true,
+      import: "default",
+      query: "?url",
+    })
+  );
+  const gymTrack = [...gymImages, ...gymImages];
+
+  useEffect(() => {
+    const id = "gym-scroll-keyframes";
+    if (!document.getElementById(id)) {
+      const style = document.createElement("style");
+      style.id = id;
+      style.innerHTML = `
+        @keyframes gym-scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+  }, []);
 
   const socialLinks = [
     {
@@ -467,30 +492,27 @@ function App() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "Método CW Life",
-                subtitle: "12 sesiones presenciales",
-                price: "$70.000",
-                description:
-                  "Plan de entrenamiento personalizado, online o presencial. Rutinas adaptadas a tu objetivo, seguimiento constante y asesoría nutricional para maximizar resultados.",
-                valid: "Válido por un mes",
+                title: "BLACK | Training",
+                subtitle: "SEMIPRESENCIAL",
+                badge: "PREVENTA",
+                description: "SEMIPERSONALIZADO (10 cupos)",
                 features: [
-                  "Evaluación inicial",
-                  "Plan de entrenamiento adaptado",
-                  "Plan de alimentación personalizado",
-                  "Seguimiento y soporte constante 24/7",
-                  "Flexibilidad de horarios (avisando y sujeto a disponibilidad)",
-                  "12 sesiones de entrenamiento personalizado presencial",
+                  "Planes de alimentación",
+                  "Acceso IA personalizada 24/7",
+                  "Rutinas exclusivas de Cristian Wosniak",
+                  "Método BLACK",
+                  "Ingresás el 15 de Enero",
                 ],
-                message:
-                  "Hola, me interesa el plan Método CW Life (12 sesiones).",
+                location:
+                  "Sajama 471 – Barrio Malvinas, San Salvador de Jujuy",
+                message: "Hola, quiero reservar la preventa semipresencial.",
               },
               {
                 title: "Método CW Life Online",
                 subtitle: "Online personalizado",
-                price: "$30.000",
+                badge: null,
                 description:
                   "Plan de entrenamiento personalizado 100% online. Rutinas adaptadas a tu objetivo, seguimiento constante y asesoría nutricional. Entrená donde quieras, como quieras.",
-                valid: "Válido por un mes",
                 features: [
                   "Evaluación inicial",
                   "Plan de entrenamiento adaptado",
@@ -498,25 +520,25 @@ function App() {
                   "Seguimiento y soporte constante",
                   "Flexibilidad de horarios (avisando y sujeto a disponibilidad)",
                 ],
+                location: null,
                 message: "Hola, me interesa el plan Método CW Life Online.",
               },
               {
-                title: "Método CW Life Plus",
-                subtitle: "25 sesiones presenciales",
-                price: "$90.000",
-                description:
-                  "Plan de entrenamiento personalizado, online o presencial, con más sesiones para acelerar tus resultados. Seguimiento constante y asesoría nutricional incluida.",
-                valid: "Válido por un mes",
+                title: "BLACK | Training",
+                subtitle: "PRESENCIAL",
+                badge: "PREVENTA",
+                description: "PERSONALIZADO (5 cupos)",
                 features: [
-                  "Evaluación inicial",
-                  "Plan de entrenamiento adaptado",
-                  "Plan de alimentación personalizado",
-                  "Seguimiento y soporte constante",
-                  "Flexibilidad de horarios (avisando y sujeto a disponibilidad)",
-                  "25 sesiones de entrenamiento personalizado presencial",
+                  "Entrenás directo con Cristian Wosniak",
+                  "Planes de alimentación 100% personalizados",
+                  "Acceso a grupo premium exclusivo",
+                  "Seguimiento real y constante",
+                  "Método BLACK",
+                  "Ingresás el 15 de Enero",
                 ],
-                message:
-                  "Hola, me interesa el plan Método CW Life Plus (25 sesiones).",
+                location:
+                  "Sajama 471 – Barrio Malvinas, San Salvador de Jujuy",
+                message: "Hola, quiero la preventa presencial BLACK.",
               },
               {
                 highlight: true,
@@ -536,7 +558,7 @@ function App() {
                 image: black90Dias,
                 tag: "MUY PRONTO",
               },
-            ].map((plan, i) =>
+            ].map((plan, i) => (
               plan.highlight ? (
                 <div
                   key={i}
@@ -555,11 +577,6 @@ function App() {
                       <span className="px-3 py-1 bg-yellow-400 text-black text-[11px] font-extrabold rounded-full shadow-lg shadow-yellow-500/50">
                         {plan.tag}
                       </span>
-                      {plan.valid ? (
-                        <span className="text-[11px] text-yellow-300 uppercase tracking-[0.25em] bg-white/5 px-3 py-1 rounded-full border border-white/10">
-                          {plan.valid}
-                        </span>
-                      ) : null}
                     </div>
                     <div className="mb-4 space-y-1">
                       <p className="text-xs text-gray-300 uppercase tracking-[0.15em]">
@@ -568,9 +585,11 @@ function App() {
                       <h3 className="text-3xl font-black text-white leading-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.4)]">
                         {plan.title}
                       </h3>
-                      <p className="text-lg text-yellow-300 mt-1">
-                        {plan.price}
-                      </p>
+                      {plan.price && (
+                        <p className="text-lg text-yellow-300 mt-1">
+                          {plan.price}
+                        </p>
+                      )}
                     </div>
                     <p className="text-gray-100 text-sm leading-relaxed mb-4">
                       {plan.description}
@@ -599,17 +618,20 @@ function App() {
                   key={i}
                   className="relative p-8 rounded-2xl transition-all transform hover:-translate-y-2 bg-gradient-to-br from-yellow-500/5 to-transparent border-2 border-yellow-500/20 hover:border-yellow-500/50"
                 >
-                  <div className="text-center mb-4">
-                    <div className="text-yellow-500 font-bold text-lg mb-1">
+                  <div className="flex flex-col items-center text-center mb-4 gap-2">
+                    {plan.badge && (
+                      <span className="px-3 py-1 rounded-full bg-yellow-500 text-black text-xs font-extrabold tracking-wide shadow-lg shadow-yellow-500/30">
+                        {plan.badge}
+                      </span>
+                    )}
+                    <div className="text-yellow-500 font-bold text-lg mb-0">
                       {plan.title}
                     </div>
-                    <div className="text-sm text-gray-400">{plan.subtitle}</div>
+                    <div className="text-sm text-gray-400 uppercase tracking-[0.15em]">
+                      {plan.subtitle}
+                    </div>
                   </div>
-                  <div className="text-center mb-4">
-                    <div className="text-4xl font-bold mb-1">{plan.price}</div>
-                    <div className="text-gray-400 text-sm">{plan.valid}</div>
-                  </div>
-                  <p className="text-gray-300 mb-6 text-sm leading-relaxed">
+                  <p className="text-gray-300 mb-6 text-sm leading-relaxed text-center">
                     {plan.description}
                   </p>
                   <ul className="space-y-3 mb-8">
@@ -623,6 +645,12 @@ function App() {
                       </li>
                     ))}
                   </ul>
+                  {plan.location && (
+                    <div className="text-xs text-gray-400 mb-6 text-center border-t border-yellow-500/15 pt-3 leading-relaxed">
+                      <div className="font-semibold text-yellow-500">Ubicación</div>
+                      <div>{plan.location}</div>
+                    </div>
+                  )}
                   <a
                     href={buildWhatsAppLink(plan.message)}
                     className="block w-full py-4 rounded-lg text-center font-bold transition-all bg-yellow-500 text-black hover:bg-yellow-600"
@@ -631,10 +659,52 @@ function App() {
                   </a>
                 </div>
               )
-            )}
+            ))}
           </div>
         </div>
       </section>
+
+      {gymImages.length > 0 && (
+        <section className="py-16 px-4 bg-black">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold">
+                Nuestro <span className="text-yellow-500">Gimnasio</span>
+              </h2>
+            </div>
+
+            <div className="relative overflow-hidden rounded-3xl border border-yellow-500/10 bg-gradient-to-r from-black via-black to-black">
+              <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-black via-black/70 to-transparent pointer-events-none" />
+              <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-black via-black/70 to-transparent pointer-events-none" />
+
+              <div
+                className="flex gap-4"
+                style={
+                  {
+                    width: "200%",
+                    animation: "gym-scroll 38s linear infinite",
+                  } as CSSProperties
+                }
+              >
+                {gymTrack.map((src, idx) => (
+                  <div
+                    key={idx}
+                    className="w-60 h-72 flex-shrink-0 overflow-hidden rounded-2xl border border-yellow-500/15 bg-black/40 shadow-[0_10px_40px_rgba(0,0,0,0.45)]"
+                  >
+                    <img
+                      src={src}
+                      alt={`Gimnasio ${idx + 1}`}
+                      className="w-full h-full object-cover"
+                      draggable={false}
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="py-20 px-4 bg-gradient-to-b from-black to-yellow-500/5">
         <div className="max-w-5xl mx-auto">
@@ -757,8 +827,8 @@ function App() {
 
       <footer className="py-12 px-4 bg-black border-t border-yellow-500/20">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
-            <div>
+          <div className="grid gap-8 mb-8 md:grid-cols-12">
+            <div className="md:col-span-4">
               <div className="flex items-center gap-2 mb-4">
                 <img src={cwLogo} alt="CW Life" className="h-8 w-auto" />
               </div>
@@ -768,7 +838,7 @@ function App() {
               </p>
             </div>
 
-            <div>
+            <div className="md:col-span-2">
               <h3 className="font-bold text-yellow-500 mb-4">
                 Enlaces Rápidos
               </h3>
@@ -785,7 +855,43 @@ function App() {
               </div>
             </div>
 
-            <div>
+            <div className="md:col-span-3">
+              <h3 className="font-bold text-yellow-500 mb-4">Ubicación</h3>
+              <a
+                href="https://maps.app.goo.gl/nczjQheYD2WPRQxc9"
+                target="_blank"
+                rel="noreferrer"
+                className="group block w-full overflow-hidden rounded-2xl border border-yellow-500/20 bg-black shadow-[0_18px_60px_rgba(234,179,8,0.10)] transition-all hover:-translate-y-0.5 hover:border-yellow-500/45 hover:shadow-[0_18px_70px_rgba(234,179,8,0.18)]"
+                aria-label="Ver ubicación en Google Maps"
+              >
+                <div className="relative h-36">
+                  <img
+                    src="https://lh3.googleusercontent.com/p/AF1QipNtAN1I0htl1m5wEDe0xHBkzKiNG7DvrPGZRbGz=w1200-h600-p-k-no"
+                    alt="Vista previa de ubicación"
+                    className="absolute inset-0 w-full h-full object-cover opacity-70 scale-[1.05] transition-transform duration-500 group-hover:scale-[1.12] group-hover:opacity-85"
+                    loading="lazy"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/15"></div>
+                  <div className="absolute inset-0 ring-1 ring-inset ring-yellow-500/10"></div>
+
+                  <div className="absolute top-3 left-3 h-10 w-10 flex items-center justify-center rounded-2xl bg-black/60 border border-yellow-500/40 text-yellow-500 shadow-lg shadow-black/40">
+                    <MapPin className="w-5 h-5" />
+                  </div>
+
+                  <div className="absolute bottom-3 left-3 right-3">
+                    <p className="text-sm font-extrabold text-white leading-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)]">
+                      Cristian Wosniak Entrenador
+                    </p>
+                    <p className="text-xs text-gray-200/90">
+                      San Salvador de Jujuy · Abrir en Google Maps
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div className="md:col-span-3">
               <h3 className="font-bold text-yellow-500 mb-4">Sígueme</h3>
               <div className="grid grid-cols-2 gap-3">
                 {socialLinks.map(({ name, href, icon: Icon }) => (
