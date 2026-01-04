@@ -175,6 +175,37 @@ function App() {
               <div className="text-sm text-gray-400 italic border-l-2 border-yellow-500/60 pl-3">
                 “Disciplina sin filtros. Resultados sin excusas.”
               </div>
+
+              <div className="flex flex-wrap gap-3 pt-3 items-center">
+                {socialLinks.map(({ name, href, icon: Icon }) => (
+                  <a
+                    key={name}
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-yellow-500/40 bg-white/5 text-yellow-500 hover:bg-yellow-500/10 transition-colors"
+                  >
+                    <Icon className="w-5 h-5" />
+                    <span className="text-sm font-semibold">{name}</span>
+                  </a>
+                ))}
+              </div>
+
+              <div className="mt-3 w-full sm:w-auto">
+                <div className="inline-flex w-full sm:w-auto items-center gap-3 px-4 py-3 rounded-2xl border border-yellow-500/35 bg-black/60 shadow-[0_12px_40px_rgba(234,179,8,0.12)] backdrop-blur-sm">
+                  <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-yellow-500/15 border border-yellow-500/50 text-yellow-500">
+                    <MapPin className="w-5 h-5" />
+                  </div>
+                  <div className="text-left leading-tight">
+                    <div className="text-sm font-semibold text-white">
+                      Sajama 471 – Barrio Malvinas
+                    </div>
+                    <div className="text-xs text-gray-300">
+                      San Salvador de Jujuy
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="relative">
@@ -311,20 +342,6 @@ function App() {
                 con un plan personalizado, seguimiento constante y el apoyo que
                 necesitas para lograr resultados reales y duraderos.
               </p>
-              <div className="flex flex-wrap gap-3">
-                {socialLinks.map(({ name, href, icon: Icon }) => (
-                  <a
-                    key={name}
-                    href={href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex items-center gap-2 px-3 py-2 border border-yellow-500/40 rounded-full text-yellow-500 hover:bg-yellow-500/10 transition-colors"
-                  >
-                    <Icon className="w-5 h-5" />
-                    <span className="text-sm font-semibold">{name}</span>
-                  </a>
-                ))}
-              </div>
             </div>
           </div>
         </div>
@@ -825,23 +842,26 @@ function App() {
         </div>
       </section>
 
-      <footer className="py-12 px-4 bg-black border-t border-yellow-500/20">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid gap-8 mb-8 md:grid-cols-12">
-            <div className="md:col-span-4">
-              <div className="flex items-center gap-2 mb-4">
-                <img src={cwLogo} alt="CW Life" className="h-8 w-auto" />
+      <footer className="relative overflow-hidden py-14 px-4 bg-gradient-to-b from-black via-[#090909] to-black border-t border-yellow-500/20">
+        <div className="absolute -top-24 left-10 h-64 w-64 bg-yellow-500/10 blur-3xl rounded-full pointer-events-none" />
+        <div className="absolute -bottom-28 right-0 h-72 w-72 bg-yellow-500/5 blur-3xl rounded-full pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto relative">
+          <div className="grid gap-10 mb-10 md:grid-cols-12 items-start">
+            <div className="md:col-span-5 space-y-3">
+              <div className="flex items-center gap-2">
+                <img src={cwLogo} alt="CW Life" className="h-9 w-auto" />
               </div>
-              <p className="text-gray-400">
-                Transformando vidas a través del fitness y el coaching
-                personalizado.
+              <p className="text-gray-400 leading-relaxed">
+                Transformando vidas a través del fitness y el coaching personalizado.
+              </p>
+              <p className="text-sm text-yellow-500 font-semibold">
+                Disciplina sin filtros. Resultados sin excusas.
               </p>
             </div>
 
-            <div className="md:col-span-2">
-              <h3 className="font-bold text-yellow-500 mb-4">
-                Enlaces Rápidos
-              </h3>
+            <div className="md:col-span-3">
+              <h3 className="font-bold text-yellow-500 mb-4">Enlaces Rápidos</h3>
               <div className="space-y-2">
                 {["Inicio", "Programas", "Precios", "Contacto"].map((link) => (
                   <button
@@ -855,52 +875,16 @@ function App() {
               </div>
             </div>
 
-            <div className="md:col-span-3">
-              <h3 className="font-bold text-yellow-500 mb-4">Ubicación</h3>
-              <a
-                href="https://maps.app.goo.gl/nczjQheYD2WPRQxc9"
-                target="_blank"
-                rel="noreferrer"
-                className="group block w-full overflow-hidden rounded-2xl border border-yellow-500/20 bg-black shadow-[0_18px_60px_rgba(234,179,8,0.10)] transition-all hover:-translate-y-0.5 hover:border-yellow-500/45 hover:shadow-[0_18px_70px_rgba(234,179,8,0.18)]"
-                aria-label="Ver ubicación en Google Maps"
-              >
-                <div className="relative h-36">
-                  <img
-                    src="https://lh3.googleusercontent.com/p/AF1QipNtAN1I0htl1m5wEDe0xHBkzKiNG7DvrPGZRbGz=w1200-h600-p-k-no"
-                    alt="Vista previa de ubicación"
-                    className="absolute inset-0 w-full h-full object-cover opacity-70 scale-[1.05] transition-transform duration-500 group-hover:scale-[1.12] group-hover:opacity-85"
-                    loading="lazy"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/15"></div>
-                  <div className="absolute inset-0 ring-1 ring-inset ring-yellow-500/10"></div>
-
-                  <div className="absolute top-3 left-3 h-10 w-10 flex items-center justify-center rounded-2xl bg-black/60 border border-yellow-500/40 text-yellow-500 shadow-lg shadow-black/40">
-                    <MapPin className="w-5 h-5" />
-                  </div>
-
-                  <div className="absolute bottom-3 left-3 right-3">
-                    <p className="text-sm font-extrabold text-white leading-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)]">
-                      Cristian Wosniak Entrenador
-                    </p>
-                    <p className="text-xs text-gray-200/90">
-                      San Salvador de Jujuy · Abrir en Google Maps
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div className="md:col-span-3">
+            <div className="md:col-span-4">
               <h3 className="font-bold text-yellow-500 mb-4">Sígueme</h3>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="flex flex-wrap gap-3">
                 {socialLinks.map(({ name, href, icon: Icon }) => (
                   <a
                     key={name}
                     href={href}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-2 px-3 py-2 border border-yellow-500/20 rounded-lg text-gray-300 hover:text-yellow-500 hover:border-yellow-500/60 transition-colors"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-yellow-500/30 bg-white/5 text-gray-200 hover:text-yellow-500 hover:border-yellow-500/70 transition-colors"
                   >
                     <Icon className="w-4 h-4" />
                     <span className="text-sm font-semibold">{name}</span>
