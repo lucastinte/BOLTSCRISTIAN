@@ -493,7 +493,7 @@ function App() {
             {[
               {
                 title: "BLACK | Training",
-                subtitle: "SEMIPERSONALIZADO",
+                subtitle: "SEMI-PERSONALIZADO",
                 badge: "PREVENTA",
                 description: "SEMIPERSONALIZADO (10 cupos)",
                 features: [
@@ -504,7 +504,7 @@ function App() {
                   "Ingresás el 15 de Enero",
                 ],
                 location: "Sajama 471 – Barrio Malvinas, San Salvador de Jujuy",
-                message: "Hola, quiero reservar la preventa semipresencial.",
+                message: "Hola, quiero reservar la preventa semipersonalizado.",
               },
               {
                 title: "Método CW Life Online",
