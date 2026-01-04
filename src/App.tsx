@@ -493,7 +493,7 @@ function App() {
             {[
               {
                 title: "BLACK | Training",
-                subtitle: "SEMIPRESENCIAL",
+                subtitle: "SEMIPERSONALIZADO",
                 badge: "PREVENTA",
                 description: "SEMIPERSONALIZADO (10 cupos)",
                 features: [
@@ -503,8 +503,7 @@ function App() {
                   "Método BLACK",
                   "Ingresás el 15 de Enero",
                 ],
-                location:
-                  "Sajama 471 – Barrio Malvinas, San Salvador de Jujuy",
+                location: "Sajama 471 – Barrio Malvinas, San Salvador de Jujuy",
                 message: "Hola, quiero reservar la preventa semipresencial.",
               },
               {
@@ -536,8 +535,7 @@ function App() {
                   "Método BLACK",
                   "Ingresás el 15 de Enero",
                 ],
-                location:
-                  "Sajama 471 – Barrio Malvinas, San Salvador de Jujuy",
+                location: "Sajama 471 – Barrio Malvinas, San Salvador de Jujuy",
                 message: "Hola, quiero la preventa presencial BLACK.",
               },
               {
@@ -558,7 +556,7 @@ function App() {
                 image: black90Dias,
                 tag: "MUY PRONTO",
               },
-            ].map((plan, i) => (
+            ].map((plan, i) =>
               plan.highlight ? (
                 <div
                   key={i}
@@ -647,7 +645,9 @@ function App() {
                   </ul>
                   {plan.location && (
                     <div className="text-xs text-gray-400 mb-6 text-center border-t border-yellow-500/15 pt-3 leading-relaxed">
-                      <div className="font-semibold text-yellow-500">Ubicación</div>
+                      <div className="font-semibold text-yellow-500">
+                        Ubicación
+                      </div>
                       <div>{plan.location}</div>
                     </div>
                   )}
@@ -659,7 +659,7 @@ function App() {
                   </a>
                 </div>
               )
-            ))}
+            )}
           </div>
         </div>
       </section>
