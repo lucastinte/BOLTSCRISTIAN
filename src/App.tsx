@@ -146,10 +146,11 @@ function App() {
         <div className="max-w-7xl mx-auto relative">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 animate-fade-in">
-              <div className="inline-flex flex-wrap items-center gap-2 px-4 py-2 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-yellow-500 text-sm">
-                <span className="font-semibold">Personal Trainer</span>
-                <span className="text-gray-300/80">•</span>
-                <span className="font-semibold text-yellow-400">
+              <div className="flex flex-col gap-1 text-yellow-100">
+                <span className="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-yellow-300/90 font-semibold">
+                  Personal Trainer
+                </span>
+                <span className="text-[11px] sm:text-xs uppercase tracking-[0.14em] text-yellow-100 font-semibold">
                   Sede Central: Black Training Gym (Jujuy)
                 </span>
               </div>
