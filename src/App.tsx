@@ -89,12 +89,12 @@ function App() {
             </div>
 
             <div className="hidden md:flex gap-8">
-              {["Inicio", "Sobre Mí", "Programas", "Precios", "Contacto"].map(
+              {["Inicio", "Sobre Mí", "Programas", "Sedes", "Precios", "Contacto"].map(
                 (item) => (
                   <button
                     key={item}
                     onClick={() =>
-                      scrollToSection(item.toLowerCase().replace(" ", "-"))
+                      scrollToSection(item.toLowerCase().replace(/\s+/g, "-"))
                     }
                     className="text-gray-300 hover:text-yellow-500 transition-colors"
                   >
@@ -120,12 +120,12 @@ function App() {
         {mobileMenuOpen && (
           <div className="md:hidden bg-black border-t border-yellow-500/20">
             <div className="px-4 py-4 space-y-3">
-              {["Inicio", "Sobre Mí", "Programas", "Precios", "Contacto"].map(
+              {["Inicio", "Sobre Mí", "Programas", "Sedes", "Precios", "Contacto"].map(
                 (item) => (
                   <button
                     key={item}
                     onClick={() =>
-                      scrollToSection(item.toLowerCase().replace(" ", "-"))
+                      scrollToSection(item.toLowerCase().replace(/\s+/g, "-"))
                     }
                     className="block w-full text-left text-gray-300 hover:text-yellow-500 transition-colors py-2"
                   >
@@ -420,6 +420,92 @@ function App() {
                   className="block w-full py-3 bg-yellow-500/10 hover:bg-yellow-500 text-yellow-500 hover:text-black border border-yellow-500 rounded-lg text-center font-bold transition-all"
                 >
                   Más Información
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="sedes" className="py-20 px-4 bg-black">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Nuestras <span className="text-yellow-500">Sedes</span>
+            </h2>
+            <p className="text-xl text-gray-400">
+              Encuéntranos en San Salvador de Jujuy
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {[
+              {
+                title: "Sede Central",
+                subtitle: "Black Training GYM",
+                address: "Antenor Sajama 471",
+                city: "San Salvador de Jujuy",
+                highlight: true,
+              },
+              {
+                title: "Sede Entrenamiento Funcional",
+                subtitle: "Entrenamiento Funcional",
+                address: "Mejías 412",
+                city: "San Salvador de Jujuy",
+                highlight: false,
+              },
+            ].map((sede, i) => (
+              <div
+                key={i}
+                className={`relative p-8 rounded-2xl transition-all transform hover:-translate-y-2 ${
+                  sede.highlight
+                    ? "bg-gradient-to-br from-yellow-500/10 via-yellow-500/5 to-transparent border-2 border-yellow-500/40 shadow-[0_15px_50px_rgba(234,179,8,0.15)]"
+                    : "bg-gradient-to-br from-yellow-500/5 to-transparent border-2 border-yellow-500/20"
+                } hover:border-yellow-500/60`}
+              >
+                {sede.highlight && (
+                  <span className="absolute top-4 right-4 px-3 py-1 bg-yellow-500 text-black text-xs font-extrabold rounded-full shadow-lg shadow-yellow-500/30">
+                    PRINCIPAL
+                  </span>
+                )}
+                <div className="flex items-start gap-4 mb-6">
+                  <div className={`h-14 w-14 flex items-center justify-center rounded-xl ${
+                    sede.highlight
+                      ? "bg-yellow-500/20 border-2 border-yellow-500/50"
+                      : "bg-yellow-500/10 border border-yellow-500/30"
+                  }`}>
+                    <MapPin className={`w-7 h-7 ${
+                      sede.highlight ? "text-yellow-500" : "text-yellow-500/80"
+                    }`} />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className={`text-2xl font-bold mb-1 ${
+                      sede.highlight ? "text-yellow-500" : "text-yellow-400"
+                    }`}>
+                      {sede.title}
+                    </h3>
+                    <p className="text-gray-300 font-semibold mb-4">
+                      {sede.subtitle}
+                    </p>
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2 text-gray-300">
+                        <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div>
+                        <span className="text-lg">{sede.address}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-gray-400">
+                        <div className="w-1.5 h-1.5 bg-yellow-500/60 rounded-full"></div>
+                        <span>{sede.city}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${sede.address}, ${sede.city}`)}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="block w-full py-3 bg-yellow-500/10 hover:bg-yellow-500 text-yellow-500 hover:text-black border border-yellow-500 rounded-lg text-center font-bold transition-all mt-6"
+                >
+                  Ver en Google Maps
                 </a>
               </div>
             ))}
@@ -867,7 +953,7 @@ function App() {
             <div className="md:col-span-3">
               <h3 className="font-bold text-yellow-500 mb-4">Enlaces Rápidos</h3>
               <div className="space-y-2">
-                {["Inicio", "Programas", "Precios", "Contacto"].map((link) => (
+                {["Inicio", "Programas", "Sedes", "Precios", "Contacto"].map((link) => (
                   <button
                     key={link}
                     onClick={() => scrollToSection(link.toLowerCase())}
