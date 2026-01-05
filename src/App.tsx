@@ -449,7 +449,7 @@ function App() {
               },
               {
                 title: "Sede Entrenamiento Funcional",
-                subtitle: "Entrenamiento Funcional",
+                subtitle: "Black Training Funcional",
                 address: "Mejías 412",
                 city: "San Salvador de Jujuy",
                 highlight: false,
