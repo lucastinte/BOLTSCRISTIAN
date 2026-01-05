@@ -146,8 +146,12 @@ function App() {
         <div className="max-w-7xl mx-auto relative">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 animate-fade-in">
-              <div className="inline-block px-4 py-2 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-yellow-500 text-sm">
-                Personal Trainer
+              <div className="inline-flex flex-wrap items-center gap-2 px-4 py-2 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-yellow-500 text-sm">
+                <span className="font-semibold">Personal Trainer</span>
+                <span className="text-gray-300/80">•</span>
+                <span className="font-semibold text-yellow-400">
+                  Sede Central: Black Training Gym (Jujuy)
+                </span>
               </div>
               <h1 className="text-5xl md:text-7xl font-bold leading-tight">
                 Transforma tu
@@ -174,21 +178,6 @@ function App() {
               </div>
               <div className="text-sm text-gray-400 italic border-l-2 border-yellow-500/60 pl-3">
                 “Disciplina sin filtros. Resultados sin excusas.”
-              </div>
-
-              <div className="flex flex-wrap gap-3 pt-3 items-center">
-                {socialLinks.map(({ name, href, icon: Icon }) => (
-                  <a
-                    key={name}
-                    href={href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-yellow-500/40 bg-white/5 text-yellow-500 hover:bg-yellow-500/10 transition-colors"
-                  >
-                    <Icon className="w-5 h-5" />
-                    <span className="text-sm font-semibold">{name}</span>
-                  </a>
-                ))}
               </div>
 
               <div className="mt-3 w-full sm:w-auto">
@@ -342,6 +331,20 @@ function App() {
                 con un plan personalizado, seguimiento constante y el apoyo que
                 necesitas para lograr resultados reales y duraderos.
               </p>
+              <div className="flex flex-wrap gap-3">
+                {socialLinks.map(({ name, href, icon: Icon }) => (
+                  <a
+                    key={name}
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-yellow-500/40 bg-white/5 text-yellow-500 hover:bg-yellow-500/10 transition-colors"
+                  >
+                    <Icon className="w-5 h-5" />
+                    <span className="text-sm font-semibold">{name}</span>
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
