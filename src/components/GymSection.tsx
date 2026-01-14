@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import { Link } from "react-router-dom";
 
 export function GymSection() {
   const gymImages = Object.values(
@@ -16,9 +17,11 @@ export function GymSection() {
     <section className="py-16 px-4 bg-black">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-white">
-            Nuestro <span className="text-yellow-500">Gimnasio</span>
-          </h2>
+          <Link to="/black-training" className="inline-block cursor-pointer hover:opacity-80 transition-opacity">
+            <h2 className="text-3xl md:text-4xl font-bold text-white">
+              Nuestro <span className="text-yellow-500">Gimnasio</span>
+            </h2>
+          </Link>
         </div>
 
         <div className="relative overflow-hidden rounded-3xl border border-yellow-500/10 bg-gradient-to-r from-black via-black to-black">
