@@ -11,7 +11,7 @@ function App() {
           path="/black-training"
           element={
             <div className="min-h-screen bg-black text-white flex flex-col justify-center">
-              <GymSection />
+              <GymSection showLogo={true} />
             </div>
           }
         />

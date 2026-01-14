@@ -1,7 +1,13 @@
 import type { CSSProperties } from "react";
 import { Link } from "react-router-dom";
 
-export function GymSection() {
+import btLogo from "../assets/bt-logo.png";
+
+interface GymSectionProps {
+  showLogo?: boolean;
+}
+
+export function GymSection({ showLogo = false }: GymSectionProps) {
   const gymImages = Object.values(
     import.meta.glob<string>("../assets/gym/*.{jpeg,jpg,png,webp}", {
       eager: true,
@@ -16,6 +22,15 @@ export function GymSection() {
   return (
     <section className="py-16 px-4 bg-black">
       <div className="max-w-6xl mx-auto">
+        {showLogo && (
+          <div className="flex justify-center mb-8 animate-fade-in">
+            <img
+              src={btLogo}
+              alt="Black Training Logo"
+              className="w-40 md:w-56 h-auto drop-shadow-[0_0_15px_rgba(234,179,8,0.3)]"
+            />
+          </div>
+        )}
         <div className="text-center mb-6">
           <Link to="/black-training" className="inline-block cursor-pointer hover:opacity-80 transition-opacity">
             <h2 className="text-3xl md:text-4xl font-bold text-white">
