@@ -58,7 +58,18 @@ export default function LoginPage() {
             }
         } catch (err: any) {
             console.error("Auth error:", err);
-            setError(err.message || "Ocurrió un error.");
+            let errorMessage = "Ocurrió un error al intentar ingresar.";
+
+            // Error mapping
+            if (err.message.includes("rate limit")) {
+                errorMessage = "Demasiados intentos. Por favor espera unos minutos.";
+            } else if (err.message.includes("Invalid login credentials")) {
+                errorMessage = "Email o contraseña incorrectos.";
+            } else if (err.message.includes("User already registered")) {
+                errorMessage = "Este email ya está registrado. Intenta iniciar sesión.";
+            }
+
+            setError(errorMessage);
         } finally {
             setLoading(false);
         }
