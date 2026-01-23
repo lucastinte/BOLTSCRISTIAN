@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
     Menu,
@@ -14,7 +14,9 @@ import {
     Music2,
     MapPin,
     Users,
+    LayoutDashboard,
 } from "lucide-react";
+import { supabase } from "../lib/supabase";
 import heroImage from "../assets/wosniak-hero.jpeg";
 import aboutImage from "../assets/wosniak-about.png";
 import transformacion1 from "../assets/transformacion-1.png";
@@ -27,7 +29,22 @@ import { GymSection } from "../components/GymSection";
 export default function LandingPage() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [openFaq, setOpenFaq] = useState<number | null>(null);
+    const [session, setSession] = useState<any>(null);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        supabase.auth.getSession().then(({ data: { session } }) => {
+            setSession(session);
+        });
+
+        const {
+            data: { subscription },
+        } = supabase.auth.onAuthStateChange((_event, session) => {
+            setSession(session);
+        });
+
+        return () => subscription.unsubscribe();
+    }, []);
 
     const socialLinks = [
         {
@@ -81,10 +98,17 @@ export default function LandingPage() {
                                 )
                             )}
                             <button
-                                onClick={() => navigate("/login")}
-                                className="px-5 py-2 bg-yellow-500 hover:bg-yellow-400 text-black font-bold rounded-full transition-all transform hover:scale-105 text-sm"
+                                onClick={() => navigate(session ? "/dashboard" : "/login")}
+                                className="px-5 py-2 bg-yellow-500 hover:bg-yellow-400 text-black font-bold rounded-full transition-all transform hover:scale-105 text-sm flex items-center gap-2"
                             >
-                                Ingresar
+                                {session ? (
+                                    <>
+                                        <LayoutDashboard className="w-4 h-4" />
+                                        Mi Panel
+                                    </>
+                                ) : (
+                                    "Ingresar"
+                                )}
                             </button>
                         </div>
 
@@ -118,10 +142,17 @@ export default function LandingPage() {
                                 )
                             )}
                             <button
-                                onClick={() => navigate("/login")}
-                                className="block w-full text-center mt-4 px-5 py-3 bg-yellow-500 hover:bg-yellow-400 text-black font-bold rounded-lg transition-all"
+                                onClick={() => navigate(session ? "/dashboard" : "/login")}
+                                className="block w-full text-center mt-4 px-5 py-3 bg-yellow-500 hover:bg-yellow-400 text-black font-bold rounded-lg transition-all flex items-center justify-center gap-2"
                             >
-                                Ingresar
+                                {session ? (
+                                    <>
+                                        <LayoutDashboard className="w-4 h-4" />
+                                        Mi Panel
+                                    </>
+                                ) : (
+                                    "Ingresar"
+                                )}
                             </button>
                         </div>
                     </div>
