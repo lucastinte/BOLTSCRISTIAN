@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
     Menu,
     X,
@@ -26,6 +27,7 @@ import { GymSection } from "../components/GymSection";
 export default function LandingPage() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [openFaq, setOpenFaq] = useState<number | null>(null);
+    const navigate = useNavigate();
 
     const socialLinks = [
         {
@@ -64,7 +66,7 @@ export default function LandingPage() {
                             <img src={cwLogo} alt="CW Life" className="w-28 h-auto" />
                         </div>
 
-                        <div className="hidden md:flex gap-8">
+                        <div className="hidden md:flex gap-8 items-center">
                             {["Inicio", "Sobre Mí", "Programas", "Sedes", "Precios", "Contacto"].map(
                                 (item) => (
                                     <button
@@ -78,6 +80,12 @@ export default function LandingPage() {
                                     </button>
                                 )
                             )}
+                            <button
+                                onClick={() => navigate("/login")}
+                                className="px-5 py-2 bg-yellow-500 hover:bg-yellow-400 text-black font-bold rounded-full transition-all transform hover:scale-105 text-sm"
+                            >
+                                Ingresar
+                            </button>
                         </div>
 
                         <button
@@ -109,6 +117,12 @@ export default function LandingPage() {
                                     </button>
                                 )
                             )}
+                            <button
+                                onClick={() => navigate("/login")}
+                                className="block w-full text-center mt-4 px-5 py-3 bg-yellow-500 hover:bg-yellow-400 text-black font-bold rounded-lg transition-all"
+                            >
+                                Ingresar
+                            </button>
                         </div>
                     </div>
                 )}
@@ -434,8 +448,8 @@ export default function LandingPage() {
                             <div
                                 key={i}
                                 className={`relative p-8 rounded-2xl transition-all transform hover:-translate-y-2 ${sede.highlight
-                                        ? "bg-gradient-to-br from-yellow-500/10 via-yellow-500/5 to-transparent border-2 border-yellow-500/40 shadow-[0_15px_50px_rgba(234,179,8,0.15)]"
-                                        : "bg-gradient-to-br from-yellow-500/5 to-transparent border-2 border-yellow-500/20"
+                                    ? "bg-gradient-to-br from-yellow-500/10 via-yellow-500/5 to-transparent border-2 border-yellow-500/40 shadow-[0_15px_50px_rgba(234,179,8,0.15)]"
+                                    : "bg-gradient-to-br from-yellow-500/5 to-transparent border-2 border-yellow-500/20"
                                     } hover:border-yellow-500/60`}
                             >
                                 {sede.highlight && (
@@ -445,8 +459,8 @@ export default function LandingPage() {
                                 )}
                                 <div className="flex items-start gap-4 mb-6">
                                     <div className={`h-14 w-14 flex items-center justify-center rounded-xl ${sede.highlight
-                                            ? "bg-yellow-500/20 border-2 border-yellow-500/50"
-                                            : "bg-yellow-500/10 border border-yellow-500/30"
+                                        ? "bg-yellow-500/20 border-2 border-yellow-500/50"
+                                        : "bg-yellow-500/10 border border-yellow-500/30"
                                         }`}>
                                         <MapPin className={`w-7 h-7 ${sede.highlight ? "text-yellow-500" : "text-yellow-500/80"
                                             }`} />
