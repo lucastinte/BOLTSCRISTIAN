@@ -1,27 +1,81 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { LogOut, PlayCircle, FileText, Dumbbell, User } from "lucide-react";
+import { LogOut, PlayCircle, FileText, Link as LinkIcon, User, Layers } from "lucide-react";
 import { supabase } from "../lib/supabase";
+
+interface ContentItem {
+    id: string;
+    title: string;
+    description: string;
+    type: "pdf" | "video_link" | "link";
+    url: string;
+}
 
 export default function Dashboard() {
     const navigate = useNavigate();
     const [userEmail, setUserEmail] = useState<string | null>(null);
+    const [content, setContent] = useState<ContentItem[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [isAdmin, setIsAdmin] = useState(false);
 
     useEffect(() => {
         // Check for active session on mount
         supabase.auth.getUser().then(({ data: { user } }) => {
             if (user) {
                 setUserEmail(user.email || null);
+                checkAdmin(user.id);
             } else {
                 // Optional: Redirect to login if not authenticated
                 // navigate("/login");
             }
         });
+
+        fetchContent();
     }, [navigate]);
+
+    const checkAdmin = async (userId: string) => {
+        const { data } = await supabase
+            .from("profiles")
+            .select("role")
+            .eq("id", userId)
+            .single();
+
+        if (data?.role === "admin") {
+            setIsAdmin(true);
+        }
+    };
+
+    const fetchContent = async () => {
+        try {
+            const { data, error } = await supabase
+                .from('content')
+                .select('*')
+                .order('created_at', { ascending: false });
+
+            if (error) throw error;
+            setContent(data || []);
+        } catch (error) {
+            console.error("Error fetching content:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     const handleLogout = async () => {
         await supabase.auth.signOut();
         navigate("/");
+    };
+
+    const openContent = (item: ContentItem) => {
+        window.open(item.url, '_blank');
+    };
+
+    const getIcon = (type: string) => {
+        switch (type) {
+            case 'video_link': return <PlayCircle className="w-6 h-6" />;
+            case 'pdf': return <FileText className="w-6 h-6" />;
+            default: return <LinkIcon className="w-6 h-6" />;
+        }
     };
 
     return (
@@ -38,6 +92,15 @@ export default function Dashboard() {
                             <span className="font-bold text-xl tracking-wider sm:hidden">BLACK</span>
                         </div>
                         <div className="flex items-center gap-4">
+                            {isAdmin && (
+                                <button
+                                    onClick={() => navigate('/admin')}
+                                    className="flex items-center gap-2 text-yellow-500 hover:text-yellow-400 transition-colors text-sm font-medium"
+                                >
+                                    <Layers className="w-4 h-4" />
+                                    <span className="hidden sm:inline">Panel Admin</span>
+                                </button>
+                            )}
                             <div className="flex items-center gap-2 text-yellow-500 text-sm font-medium px-3 py-1 bg-yellow-500/10 rounded-full border border-yellow-500/20">
                                 <User className="w-4 h-4" />
                                 <span className="hidden sm:inline">
@@ -65,65 +128,45 @@ export default function Dashboard() {
                         Bienvenido al área de <span className="text-yellow-500">Miembros</span>
                     </h1>
                     <p className="text-xl text-gray-400 max-w-2xl">
-                        Este es tu espacio exclusivo. Aquí encontrarás recursos diseñados para potenciar tus resultados, totalmente gratis por ser parte de la comunidad.
+                        Este es tu espacio exclusivo. Aquí encontrarás recursos diseñados para potenciar tus resultados.
                     </p>
                 </div>
 
-                {/* Coming Soon Grid */}
-                <div className="grid md:grid-cols-3 gap-6">
-                    {/* Card 1 */}
-                    <div className="bg-stone-900/30 border border-yellow-500/10 rounded-2xl p-6 hover:border-yellow-500/30 transition-all group">
-                        <div className="w-12 h-12 bg-yellow-500/10 rounded-lg flex items-center justify-center text-yellow-500 mb-4 group-hover:scale-110 transition-transform">
-                            <PlayCircle className="w-6 h-6" />
-                        </div>
-                        <h3 className="text-xl font-bold text-white mb-2">Masterclass Exclusivas</h3>
-                        <p className="text-gray-400 text-sm mb-4">
-                            Videos profundizando en técnica, mindset y estrategias de entrenamiento.
-                        </p>
-                        <div className="inline-block px-3 py-1 rounded bg-stone-800 text-xs text-gray-400 font-medium border border-stone-700">
-                            Próximamente
-                        </div>
+                {loading ? (
+                    <div className="text-center py-12">
+                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-500 mx-auto mb-4"></div>
+                        <p className="text-gray-400">Cargando contenido...</p>
                     </div>
-
-                    {/* Card 2 */}
-                    <div className="bg-stone-900/30 border border-yellow-500/10 rounded-2xl p-6 hover:border-yellow-500/30 transition-all group">
-                        <div className="w-12 h-12 bg-yellow-500/10 rounded-lg flex items-center justify-center text-yellow-500 mb-4 group-hover:scale-110 transition-transform">
-                            <FileText className="w-6 h-6" />
-                        </div>
-                        <h3 className="text-xl font-bold text-white mb-2">Guías y E-books</h3>
-                        <p className="text-gray-400 text-sm mb-4">
-                            Material descargable sobre nutrición, suplementación y hábitos.
-                        </p>
-                        <div className="inline-block px-3 py-1 rounded bg-stone-800 text-xs text-gray-400 font-medium border border-stone-700">
-                            Próximamente
-                        </div>
+                ) : content.length === 0 ? (
+                    <div className="text-center py-12 bg-stone-900/30 rounded-2xl border border-yellow-500/10">
+                        <p className="text-gray-400">Aún no hay contenido disponible. ¡Vuelve pronto!</p>
                     </div>
-
-                    {/* Card 3 */}
-                    <div className="bg-stone-900/30 border border-yellow-500/10 rounded-2xl p-6 hover:border-yellow-500/30 transition-all group">
-                        <div className="w-12 h-12 bg-yellow-500/10 rounded-lg flex items-center justify-center text-yellow-500 mb-4 group-hover:scale-110 transition-transform">
-                            <Dumbbell className="w-6 h-6" />
-                        </div>
-                        <h3 className="text-xl font-bold text-white mb-2">Rutinas Express</h3>
-                        <p className="text-gray-400 text-sm mb-4">
-                            Entrenamientos rápidos y efectivos para días sin tiempo.
-                        </p>
-                        <div className="inline-block px-3 py-1 rounded bg-stone-800 text-xs text-gray-400 font-medium border border-stone-700">
-                            Próximamente
-                        </div>
+                ) : (
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {content.map((item) => (
+                            <div
+                                key={item.id}
+                                onClick={() => openContent(item)}
+                                className="bg-stone-900/30 border border-yellow-500/10 rounded-2xl p-6 hover:border-yellow-500/30 transition-all group cursor-pointer hover:bg-stone-900/50"
+                            >
+                                <div className="w-12 h-12 bg-yellow-500/10 rounded-lg flex items-center justify-center text-yellow-500 mb-4 group-hover:scale-110 transition-transform">
+                                    {getIcon(item.type)}
+                                </div>
+                                <h3 className="text-xl font-bold text-white mb-2 line-clamp-1">{item.title}</h3>
+                                {item.description && (
+                                    <p className="text-gray-400 text-sm mb-4 line-clamp-3">
+                                        {item.description}
+                                    </p>
+                                )}
+                                <div className="flex items-center text-yellow-500 text-sm font-medium mt-auto">
+                                    {item.type === 'pdf' ? 'Ver Documento' : 'Ver Video/Link'}
+                                </div>
+                            </div>
+                        ))}
                     </div>
-                </div>
-
-                {/* Banner */}
-                <div className="mt-12 p-8 rounded-2xl bg-gradient-to-r from-yellow-500/10 via-stone-900 to-stone-900 border border-yellow-500/20 relative overflow-hidden">
-                    <div className="relative z-10">
-                        <h3 className="text-2xl font-bold mb-2">Estamos preparando todo</h3>
-                        <p className="text-gray-300 max-w-xl">
-                            Gracias por registrarte. Muy pronto comenzaremos a subir contenido de alto valor a esta plataforma. Mantente atento a tu correo.
-                        </p>
-                    </div>
-                </div>
+                )}
             </main>
         </div>
     );
 }
+

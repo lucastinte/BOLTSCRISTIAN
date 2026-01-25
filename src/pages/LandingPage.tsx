@@ -15,6 +15,9 @@ import {
     MapPin,
     Users,
     LayoutDashboard,
+    PlayCircle,
+    FileText,
+    Dumbbell,
 } from "lucide-react";
 import { supabase } from "../lib/supabase";
 import heroImage from "../assets/wosniak-hero.jpeg";
@@ -168,38 +171,37 @@ export default function LandingPage() {
                     <div className="grid md:grid-cols-2 gap-12 items-center">
                         <div className="space-y-6 animate-fade-in">
                             <div className="flex flex-col gap-1 text-yellow-100">
-                                <span className="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-yellow-300/90 font-semibold">
-                                    Personal Trainer
+                                <span className="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-yellow-300/90 font-semibold text-center md:text-left">
+                                    Estratega de Reconstrucción Física
                                 </span>
-                                <span className="text-[11px] sm:text-xs uppercase tracking-[0.14em] text-yellow-100 font-semibold">
-                                    Sede Central: Black Training Gym (Jujuy)
+                                <span className="text-[11px] sm:text-xs uppercase tracking-[0.14em] text-yellow-100 font-semibold text-center md:text-left">
+                                    Cuartel General: Black Training Gym (Jujuy)
                                 </span>
                             </div>
-                            <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-                                Transforma tu
-                                <span className="block text-yellow-500">Vida Ahora</span>
+                            <h1 className="text-5xl md:text-8xl font-black leading-tight text-center md:text-left">
+                                DOMINÁ TU <br />
+                                <span className="text-yellow-500 underline decoration-yellow-500/30 underline-offset-8">REALIDAD</span>
                             </h1>
-                            <p className="text-xl text-gray-400">
-                                Coaching personalizado que te lleva desde donde estás hasta
-                                donde quieres estar. Sin excusas, con resultados reales.
+                            <p className="text-xl text-gray-400 text-center md:text-left max-w-xl mx-auto md:mx-0">
+                                No cuento repeticiones. Destruyo tus limitaciones. Coaching de Élite para hombres y mujeres que no aceptan la mediocridad como estándar.
                             </p>
-                            <div className="flex flex-wrap gap-4">
+                            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
                                 <a
                                     href="https://wa.me/5493884384713"
-                                    className="px-8 py-4 bg-yellow-500 hover:bg-yellow-600 text-black font-bold rounded-lg transition-all transform hover:scale-105 flex items-center gap-2"
+                                    className="px-8 py-4 bg-yellow-500 hover:bg-yellow-600 text-black font-black rounded-lg transition-all transform hover:scale-105 flex items-center gap-2 shadow-[0_0_30px_rgba(234,179,8,0.3)]"
                                 >
-                                    <MessageCircle className="w-5 h-5" />
-                                    Empieza Hoy
+                                    <MessageCircle className="w-5 h-5 font-black" />
+                                    TOMAR MI LUGAR
                                 </a>
                                 <button
                                     onClick={() => scrollToSection("programas")}
-                                    className="px-8 py-4 border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500/10 font-bold rounded-lg transition-all"
+                                    className="px-8 py-4 border-2 border-yellow-500/50 text-white hover:bg-yellow-500/10 font-black rounded-lg transition-all"
                                 >
-                                    Ver Programas
+                                    DEFINIR CAMPO DE BATALLA
                                 </button>
                             </div>
-                            <div className="text-sm text-gray-400 italic border-l-2 border-yellow-500/60 pl-3">
-                                “Disciplina sin filtros. Resultados sin excusas.”
+                            <div className="text-sm text-yellow-500 font-black tracking-widest uppercase border-l-4 border-yellow-500 pl-4 py-1 mx-auto md:mx-0">
+                                “DISCIPLINA SIN FILTROS. RESULTADOS SIN EXCUSAS.”
                             </div>
 
                             <div className="mt-3 w-full sm:w-auto">
@@ -247,16 +249,16 @@ export default function LandingPage() {
                     <div className="grid md:grid-cols-3 gap-6 mt-20">
                         {[
                             {
-                                title: "Plan a Medida",
-                                desc: "Entrenamiento personalizado según tus objetivos",
+                                title: "CÓDIGO CW LIFE",
+                                desc: "Entrenamiento de Élite diseñado para destruir debilidades.",
                             },
                             {
-                                title: "Seguimiento 24/7",
-                                desc: "Acompañamiento constante en tu proceso",
+                                title: "VIGILANCIA 24/7",
+                                desc: "No te dejo caer. Mi sistema de reporte es tu seguro de éxito.",
                             },
                             {
-                                title: "Resultados Garantizados",
-                                desc: "Compromiso total con tu transformación",
+                                title: "VERDAD BRUTAL",
+                                desc: "Sin filtros. Solo resultados irrefutables verificables.",
                             },
                         ].map((feature, i) => (
                             <div
@@ -319,8 +321,7 @@ export default function LandingPage() {
                         </div>
                     </div>
                     <div className="border-l-2 border-yellow-500/60 pl-4 text-gray-200 italic">
-                        “Lo que el mundo llama sacrificio, nosotros lo llamamos el
-                        Estándar.”
+                        “La mediocridad no es una opción en mi trinchera.”
                     </div>
                 </div>
             </section>
@@ -339,19 +340,14 @@ export default function LandingPage() {
                             />
                         </div>
                         <div className="space-y-6">
-                            <h2 className="text-4xl md:text-5xl font-bold">
-                                Soy <span className="text-yellow-500">Cristian Wosniak</span>
+                            <h2 className="text-4xl md:text-5xl font-black italic">
+                                <span className="text-yellow-500">CRISTIAN WOSNIAK</span>
                             </h2>
-                            <p className="text-lg text-gray-300 leading-relaxed">
-                                Hace años, yo también estuve en tu lugar. Perdido, sin
-                                dirección, sin saber cómo alcanzar mis metas. Hoy soy Personal
-                                Trainer y he ayudado a más de 4000 personas a transformar sus
-                                vidas.
+                            <p className="text-lg text-gray-300 leading-relaxed font-medium">
+                                No busco ser tu amigo. Busco ser el motor de tu transformación. Mi carrera se basa en la conquista de obstáculos y en la construcción de fortalezas donde antes había dudas.
                             </p>
                             <p className="text-lg text-gray-300 leading-relaxed">
-                                Mi misión es simple: guiarte paso a paso en tu transformación,
-                                con un plan personalizado, seguimiento constante y el apoyo que
-                                necesitas para lograr resultados reales y duraderos.
+                                He liderado a más de 4000 personas hacia su mejor versión. Mi enfoque no es la "motivación" pasajera, es la disciplina inquebrantable que te permite dominar tu cuerpo y tu mente para siempre.
                             </p>
                             <div className="flex flex-wrap gap-3">
                                 {socialLinks.map(({ name, href, icon: Icon }) => (
@@ -372,15 +368,97 @@ export default function LandingPage() {
                 </div>
             </section>
 
+            {/* New Community Section */}
+            <section className="py-20 px-4 bg-yellow-500 relative overflow-hidden">
+                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+                <div className="max-w-7xl mx-auto relative z-10">
+                    <div className="grid md:grid-cols-2 gap-12 items-center">
+                        <div className="text-black space-y-6">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/10 border border-black/20 font-bold text-sm">
+                                <Users className="w-4 h-4" />
+                                <span>Comunidad Exclusiva</span>
+                            </div>
+                            <h2 className="text-4xl md:text-6xl font-black leading-tight">
+                                Únete al Área de <br />
+                                Miembros <span className="text-white drop-shadow-lg">Gratis</span>
+                            </h2>
+                            <p className="text-xl font-medium opacity-90">
+                                Accede a contenido de valor que no publico en redes. Masterclasses, guías en PDF y rutinas express para llevar tu entrenamiento al siguiente nivel.
+                            </p>
+
+                            <div className="grid sm:grid-cols-2 gap-4 pt-4">
+                                <div className="flex items-center gap-3 p-4 bg-black/5 rounded-xl border border-black/10">
+                                    <div className="w-10 h-10 bg-black text-yellow-500 rounded-lg flex items-center justify-center">
+                                        <PlayCircle className="w-6 h-6" />
+                                    </div>
+                                    <span className="font-bold">Masterclasses</span>
+                                </div>
+                                <div className="flex items-center gap-3 p-4 bg-black/5 rounded-xl border border-black/10">
+                                    <div className="w-10 h-10 bg-black text-yellow-500 rounded-lg flex items-center justify-center">
+                                        <FileText className="w-6 h-6" />
+                                    </div>
+                                    <span className="font-bold">Guías PDF</span>
+                                </div>
+                            </div>
+
+                            <button
+                                onClick={() => navigate(session ? "/dashboard" : "/login")}
+                                className="w-full sm:w-auto px-8 py-4 bg-black text-white hover:bg-stone-900 font-bold rounded-xl transition-all transform hover:scale-105 shadow-xl flex items-center justify-center gap-2 text-lg"
+                            >
+                                <LayoutDashboard className="w-5 h-5" />
+                                {session ? "IR A MI CUARTEL" : "UNIRSE AL ESCUADRÓN (GRATIS)"}
+                            </button>
+                            <p className="text-sm font-black text-black tracking-tighter italic">
+                                * ACCESO INMEDIATO. ACCIÓN INMEDIATA.
+                            </p>
+                        </div>
+
+                        <div className="relative hidden md:block">
+                            <div className="absolute inset-0 bg-black/20 blur-3xl rounded-full transform rotate-12"></div>
+                            <div className="relative bg-black rounded-2xl p-8 border-2 border-black/10 shadow-2xl transform rotate-3 hover:rotate-0 transition-all duration-500">
+                                <div className="flex items-center justify-between mb-8 border-b border-gray-800 pb-4">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-10 h-10 bg-yellow-500 rounded flex items-center justify-center font-bold text-black">B</div>
+                                        <span className="font-bold text-white">BLACK COMMUNITY</span>
+                                    </div>
+                                    <div className="px-3 py-1 bg-yellow-500/20 text-yellow-500 text-xs rounded-full border border-yellow-500/20">
+                                        MIEMBRO
+                                    </div>
+                                </div>
+                                <div className="space-y-4">
+                                    {[
+                                        { title: "Guía de Hipertrofia.pdf", icon: FileText, type: "PDF" },
+                                        { title: "Técnica de Sentadilla", icon: PlayCircle, type: "VIDEO" },
+                                        { title: "Rutina Express Pecho", icon: Dumbbell, type: "RUTINA" }
+                                    ].map((item, i) => (
+                                        <div key={i} className="flex items-center gap-4 p-4 bg-stone-900 rounded-xl border border-gray-800">
+                                            <div className="w-10 h-10 bg-yellow-500/10 rounded-lg flex items-center justify-center text-yellow-500">
+                                                <item.icon className="w-5 h-5" />
+                                            </div>
+                                            <div className="flex-1">
+                                                <div className="text-white font-bold text-sm">{item.title}</div>
+                                                <div className="text-gray-500 text-xs">{item.type}</div>
+                                            </div>
+                                            <div className="w-8 h-8 rounded-full border border-gray-700 flex items-center justify-center">
+                                                <ChevronDown className="w-4 h-4 text-gray-500 -rotate-90" />
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section id="programas" className="py-20 px-4 bg-black">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
-                        <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                            Programas de{" "}
-                            <span className="text-yellow-500">Entrenamiento</span>
+                        <h2 className="text-4xl md:text-6xl font-black mb-4 uppercase tracking-tighter">
+                            DEFINÍ TU <span className="text-yellow-500">CAMPO DE BATALLA</span>
                         </h2>
-                        <p className="text-xl text-gray-400">
-                            Elige la modalidad que mejor se adapte a ti
+                        <p className="text-xl text-gray-400 font-bold">
+                            Elegí la modalidad para tu reconstrucción total
                         </p>
                     </div>
 
@@ -438,9 +516,9 @@ export default function LandingPage() {
                                 </ul>
                                 <a
                                     href="https://wa.me/5493884384713"
-                                    className="block w-full py-3 bg-yellow-500/10 hover:bg-yellow-500 text-yellow-500 hover:text-black border border-yellow-500 rounded-lg text-center font-bold transition-all"
+                                    className="block w-full py-4 bg-yellow-500 text-black border border-yellow-500 rounded-lg text-center font-black uppercase text-sm tracking-widest transition-all hover:bg-yellow-400 shadow-[0_5px_15px_rgba(234,179,8,0.2)]"
                                 >
-                                    Más Información
+                                    INGRESAR AL FRENTE
                                 </a>
                             </div>
                         ))}
@@ -604,12 +682,11 @@ export default function LandingPage() {
             <section id="precios" className="py-20 px-4 bg-black">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
-                        <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                            Retransfórmate{" "}
-                            <span className="text-yellow-500">Planes Inteligentes</span>
+                        <h2 className="text-4xl md:text-7xl font-black mb-4 uppercase tracking-tighter">
+                            ARMAMENTO <span className="text-yellow-500">ESTRATÉGICO</span>
                         </h2>
-                        <p className="text-xl text-gray-400">
-                            Planes personalizados. Elegí el que más te convenga.
+                        <p className="text-xl text-gray-400 font-bold">
+                            Seleccioná el nivel de compromiso que vas a sostener
                         </p>
                     </div>
 
@@ -777,9 +854,9 @@ export default function LandingPage() {
                                     )}
                                     <a
                                         href={buildWhatsAppLink(plan.message)}
-                                        className="block w-full py-4 rounded-lg text-center font-bold transition-all bg-yellow-500 text-black hover:bg-yellow-600"
+                                        className="block w-full py-5 rounded-lg text-center font-black uppercase tracking-widest text-sm transition-all bg-yellow-500 text-black hover:bg-yellow-600 shadow-[0_8px_20px_rgba(234,179,8,0.3)]"
                                     >
-                                        Ingresá ahora
+                                        EJECUTAR AHORA
                                     </a>
                                 </div>
                             )
@@ -846,11 +923,11 @@ export default function LandingPage() {
 
             <section id="contacto" className="py-20 px-4 bg-black">
                 <div className="max-w-4xl mx-auto text-center">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                        ¿Listo para <span className="text-yellow-500">Empezar?</span>
+                    <h2 className="text-4xl md:text-7xl font-black mb-6 uppercase italic">
+                        ¿LISTO PARA <span className="text-yellow-500">RESURGIR?</span>
                     </h2>
-                    <p className="text-xl text-gray-400 mb-12">
-                        Contáctame ahora y comencemos tu transformación hoy mismo
+                    <p className="text-xl text-gray-300 mb-12 font-medium">
+                        Dejá de negociar con tu mediocridad. El cambio empieza con una orden.
                     </p>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
@@ -976,6 +1053,6 @@ export default function LandingPage() {
                     </div>
                 </div>
             </footer>
-        </div>
+        </div >
     );
 }
