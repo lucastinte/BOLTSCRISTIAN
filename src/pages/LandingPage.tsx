@@ -221,24 +221,24 @@ export default function LandingPage() {
                             </div>
                         </div>
 
-                        <div className="relative">
-                            <div className="absolute inset-0 bg-yellow-500/20 blur-3xl rounded-full"></div>
+                        <div className="relative group">
+                            <div className="absolute inset-0 bg-yellow-500/30 blur-3xl rounded-full group-hover:bg-yellow-500/40 transition-all duration-700"></div>
                             <img
                                 src={heroImage}
-                                alt="Cristian Wosniak entrenando"
-                                className="relative rounded-2xl shadow-2xl w-full h-[500px] object-cover border-2 border-yellow-500/30"
+                                alt="Cristian Wosniak | Estratega"
+                                className="relative rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] w-full h-[600px] object-cover border-b-4 border-yellow-500 grayscale-[20%] hover:grayscale-0 transition-all duration-500"
                             />
-                            <div className="absolute -bottom-6 -left-6 bg-black border-2 border-yellow-500 rounded-xl p-4 shadow-xl">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center">
-                                        <Star className="w-6 h-6 text-black fill-current" />
+                            <div className="absolute -bottom-6 -left-6 bg-black/90 backdrop-blur-xl border-2 border-yellow-500/50 rounded-2xl p-6 shadow-2xl transform -rotate-2 hover:rotate-0 transition-all">
+                                <div className="flex items-center gap-4">
+                                    <div className="w-14 h-14 bg-yellow-500 rounded-xl flex items-center justify-center shadow-lg shadow-yellow-500/20">
+                                        <Star className="w-8 h-8 text-black fill-current" />
                                     </div>
                                     <div>
-                                        <div className="text-2xl font-bold text-yellow-500">
+                                        <div className="text-3xl font-black text-yellow-500 tracking-tighter">
                                             4000+
                                         </div>
-                                        <div className="text-sm text-gray-400">
-                                            Clientes Transformados
+                                        <div className="text-xs uppercase tracking-[0.2em] font-bold text-gray-400">
+                                            Vidas Transformadas
                                         </div>
                                     </div>
                                 </div>
