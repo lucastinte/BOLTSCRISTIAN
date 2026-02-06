@@ -81,9 +81,9 @@ export default function LoginPage() {
 
             <button
                 onClick={() => navigate("/")}
-                className="absolute top-6 left-6 flex items-center gap-2 text-gray-400 hover:text-yellow-500 transition-colors"
+                className="absolute top-8 left-8 flex items-center gap-3 text-gray-400 hover:text-yellow-500 transition-all font-black uppercase tracking-widest text-[10px] group z-20"
             >
-                <ArrowLeft className="w-5 h-5" />
+                <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
                 <span>Volver al inicio</span>
             </button>
 
@@ -101,58 +101,59 @@ export default function LoginPage() {
                         Regístrate totalmente gratis para desbloquear recursos que elevarán tu entrenamiento al siguiente nivel.
                     </p>
 
-                    <ul className="space-y-4">
+                    <div className="space-y-4">
                         {[
                             "Tips avanzados de entrenamiento",
-                            "Guías de nutrición y suplementación",
+                            "Guías de nutrición personalizada",
                             "Videos exclusivos de técnica",
-                            "Acceso anticipado a novedades"
+                            "Acceso anticipado a eventos"
                         ].map((item, i) => (
-                            <li key={i} className="flex items-center gap-3">
-                                <div className="p-1 rounded-full bg-yellow-500/20 text-yellow-500">
-                                    <CheckCircle className="w-5 h-5" />
+                            <li key={i} className="flex items-center gap-4 group">
+                                <div className="p-1.5 rounded-full bg-yellow-500/10 text-yellow-500 border border-yellow-500/20 group-hover:bg-yellow-500 group-hover:text-black transition-all">
+                                    <CheckCircle className="w-4 h-4" />
                                 </div>
-                                <span className="text-gray-200">{item}</span>
+                                <span className="text-gray-300 font-medium group-hover:text-white transition-colors tracking-tight">{item}</span>
                             </li>
                         ))}
-                    </ul>
+                    </div>
 
-                    <div className="pt-4 border-t border-yellow-500/10">
-                        <div className="flex items-center gap-3 text-sm text-gray-400">
-                            <Zap className="w-4 h-4 text-yellow-500" />
-                            <span>Contenido 100% gratuito. Sin cobros ocultos.</span>
+                    <div className="pt-8 border-t border-white/5">
+                        <div className="flex items-center gap-4 text-xs text-gray-500 font-bold uppercase tracking-widest">
+                            <Zap className="w-5 h-5 text-yellow-500 animate-pulse" />
+                            <span>100% GRATUITO · MIEMBROS ÉLITE</span>
                         </div>
                     </div>
                 </div>
 
-                <div className="w-full bg-stone-900/50 backdrop-blur-sm border border-yellow-500/20 rounded-2xl p-8 shadow-[0_0_40px_rgba(234,179,8,0.1)]">
-                    <div className="text-center mb-8">
+                <div className="w-full glass-card border-white/5 rounded-3xl p-10 shadow-2xl relative overflow-hidden box-glow-yellow">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/5 blur-3xl rounded-full"></div>
+                    <div className="text-center mb-10 relative z-10">
                         {!isRecovering && (
-                            <div className="inline-flex bg-black/50 rounded-lg p-1 mb-6 border border-yellow-500/10">
+                            <div className="inline-flex bg-black/40 rounded-xl p-1.5 mb-8 border border-white/5">
                                 <button
                                     onClick={() => { setIsRegistering(false); setError(null); setMessage(null); }}
-                                    className={`px-6 py-2 rounded-md text-sm font-medium transition-all ${!isRegistering ? 'bg-yellow-500 text-black shadow-lg shadow-yellow-500/20' : 'text-gray-400 hover:text-white'}`}
+                                    className={`px-8 py-2.5 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all ${!isRegistering ? 'bg-yellow-500 text-black shadow-lg shadow-yellow-500/20 scale-[1.05]' : 'text-gray-500 hover:text-white'}`}
                                 >
-                                    Ingresar
+                                    INGRESAR
                                 </button>
                                 <button
                                     onClick={() => { setIsRegistering(true); setError(null); setMessage(null); }}
-                                    className={`px-6 py-2 rounded-md text-sm font-medium transition-all ${isRegistering ? 'bg-yellow-500 text-black shadow-lg shadow-yellow-500/20' : 'text-gray-400 hover:text-white'}`}
+                                    className={`px-8 py-2.5 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all ${isRegistering ? 'bg-yellow-500 text-black shadow-lg shadow-yellow-500/20 scale-[1.05]' : 'text-gray-500 hover:text-white'}`}
                                 >
-                                    Registrarse
+                                    REGISTRO
                                 </button>
                             </div>
                         )}
 
-                        <h2 className="text-2xl font-bold mb-2">
-                            {isRecovering ? "Recuperar Contraseña" : (isRegistering ? "Únete a la Comunidad" : "Bienvenido de nuevo")}
+                        <h2 className="text-3xl font-black mb-3 uppercase tracking-tighter italic">
+                            {isRecovering ? "RECUPERACIÓN" : (isRegistering ? "ÚNETE AL FRENTE" : "BIENVENIDO")}
                         </h2>
-                        <p className="text-gray-400 text-sm">
+                        <p className="text-gray-500 text-[11px] font-bold uppercase tracking-widest">
                             {isRecovering
-                                ? "Ingresa tu email para recibir el enlace de recuperación."
+                                ? "Enlace de seguridad para reconstruir tu acceso."
                                 : (isRegistering
-                                    ? "Crea tu cuenta gratis y empieza a aprender."
-                                    : "Ingresa tus datos para acceder al panel.")}
+                                    ? "CREA TU CUENTA Y EMPIEZA A APRENDER."
+                                    : "INGRESA TUS CREDENCIALES DE ACCESO.")}
                         </p>
                     </div>
 
@@ -173,35 +174,35 @@ export default function LoginPage() {
                     <form onSubmit={handleSubmit} className="space-y-4">
                         {isRegistering && !isRecovering && (
                             <div className="space-y-2">
-                                <label className="text-sm font-medium text-gray-300 ml-1">Nombre</label>
-                                <div className="relative">
-                                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                        <User className="h-5 w-5 text-yellow-500/50" />
+                                <label className="text-[10px] font-black text-yellow-500/80 uppercase tracking-widest ml-1">Nombre Completo</label>
+                                <div className="relative group">
+                                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none transition-colors group-focus-within:text-yellow-500">
+                                        <User className="h-5 w-5 text-gray-600 group-focus-within:text-glow-yellow" />
                                     </div>
                                     <input
                                         type="text"
                                         required={isRegistering}
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
-                                        className="block w-full pl-10 pr-3 py-3 border border-yellow-500/20 rounded-xl leading-5 bg-black/50 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-500/50 focus:border-yellow-500/50 sm:text-sm transition-all"
-                                        placeholder="Tu nombre"
+                                        className="block w-full pl-12 pr-4 py-4 border border-white/5 rounded-2xl bg-black/40 text-white placeholder-gray-700 focus:outline-none focus:ring-1 focus:ring-yellow-500/30 focus:border-yellow-500/50 font-medium transition-all"
+                                        placeholder="Tu nombre de guerra"
                                     />
                                 </div>
                             </div>
                         )}
 
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-gray-300 ml-1">Email</label>
-                            <div className="relative">
-                                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <Mail className="h-5 w-5 text-yellow-500/50" />
+                            <label className="text-[10px] font-black text-yellow-500/80 uppercase tracking-widest ml-1">Email Estratégico</label>
+                            <div className="relative group">
+                                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none transition-colors group-focus-within:text-yellow-500">
+                                    <Mail className="h-5 w-5 text-gray-600 group-focus-within:text-glow-yellow" />
                                 </div>
                                 <input
                                     type="email"
                                     required
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    className="block w-full pl-10 pr-3 py-3 border border-yellow-500/20 rounded-xl leading-5 bg-black/50 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-500/50 focus:border-yellow-500/50 sm:text-sm transition-all"
+                                    className="block w-full pl-12 pr-4 py-4 border border-white/5 rounded-2xl bg-black/40 text-white placeholder-gray-700 focus:outline-none focus:ring-1 focus:ring-yellow-500/30 focus:border-yellow-500/50 font-medium transition-all"
                                     placeholder="tu@email.com"
                                 />
                             </div>
@@ -209,17 +210,17 @@ export default function LoginPage() {
 
                         {!isRecovering && (
                             <div className="space-y-2">
-                                <label className="text-sm font-medium text-gray-300 ml-1">Contraseña</label>
-                                <div className="relative">
-                                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                        <Lock className="h-5 w-5 text-yellow-500/50" />
+                                <label className="text-[10px] font-black text-yellow-500/80 uppercase tracking-widest ml-1">Código de Acceso</label>
+                                <div className="relative group">
+                                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none transition-colors group-focus-within:text-yellow-500">
+                                        <Lock className="h-5 w-5 text-gray-600 group-focus-within:text-glow-yellow" />
                                     </div>
                                     <input
                                         type="password"
                                         required
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                        className="block w-full pl-10 pr-3 py-3 border border-yellow-500/20 rounded-xl leading-5 bg-black/50 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-500/50 focus:border-yellow-500/50 sm:text-sm transition-all"
+                                        className="block w-full pl-12 pr-4 py-4 border border-white/5 rounded-2xl bg-black/40 text-white placeholder-gray-700 focus:outline-none focus:ring-1 focus:ring-yellow-500/30 focus:border-yellow-500/50 font-medium transition-all"
                                         placeholder="••••••••"
                                     />
                                 </div>
@@ -229,12 +230,12 @@ export default function LoginPage() {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm font-bold text-black bg-yellow-500 hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform hover:scale-[1.02] mt-6"
+                            className="w-full flex justify-center items-center py-4 px-6 border border-transparent rounded-2xl shadow-lg shadow-yellow-500/20 text-xs font-black text-black bg-yellow-500 hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform hover:-translate-y-1 uppercase tracking-[0.2em] mt-8"
                         >
                             {loading ? (
                                 <Loader2 className="w-5 h-5 animate-spin" />
                             ) : (
-                                isRecovering ? "ENVIAR EMAIL DE RECUPERACIÓN" : (isRegistering ? "REGISTRARSE GRATIS" : "INGRESAR")
+                                isRecovering ? "RECUPERAR ACCESO" : (isRegistering ? "REGISTRARSE GRATIS" : "INGRESAR AL CUARTEL")
                             )}
                         </button>
                     </form>

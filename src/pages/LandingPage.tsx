@@ -164,24 +164,22 @@ export default function LandingPage() {
 
             <section
                 id="inicio"
-                className="relative pt-24 pb-20 px-4 overflow-hidden"
+                className="relative pt-24 pb-20 px-4 overflow-hidden scroll-smooth"
             >
-                <div className="absolute inset-0 bg-gradient-to-b from-yellow-500/10 via-black to-black"></div>
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-yellow-500/10 blur-[120px] rounded-full animate-pulse-glow"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-black"></div>
                 <div className="max-w-7xl mx-auto relative">
                     <div className="grid md:grid-cols-2 gap-12 items-center">
                         <div className="space-y-6 animate-fade-in">
-                            <div className="flex flex-col gap-1 text-yellow-100">
-                                <span className="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-yellow-300/90 font-semibold text-center md:text-left">
-                                    Estratega de Reconstrucción Física
-                                </span>
-                                <span className="text-[11px] sm:text-xs uppercase tracking-[0.14em] text-yellow-100 font-semibold text-center md:text-left">
-                                    Cuartel General: Black Training Gym (Jujuy)
-                                </span>
+                            <div className="space-y-2">
+                                <h2 className="text-yellow-500 font-black tracking-[0.3em] text-sm md:text-base animate-fade-in uppercase">
+                                    BOLTSCRISTIAN <span className="text-white/40 mx-2">|</span> CW LIFE STANDARD
+                                </h2>
+                                <h1 className="text-5xl md:text-8xl font-black leading-tight text-center md:text-left tracking-tighter italic">
+                                    DOMINÁ TU <br />
+                                    <span className="text-yellow-500 text-glow-yellow">REALIDAD</span>
+                                </h1>
                             </div>
-                            <h1 className="text-5xl md:text-8xl font-black leading-tight text-center md:text-left">
-                                DOMINÁ TU <br />
-                                <span className="text-yellow-500 underline decoration-yellow-500/30 underline-offset-8">REALIDAD</span>
-                            </h1>
                             <p className="text-xl text-gray-400 text-center md:text-left max-w-xl mx-auto md:mx-0">
                                 No cuento repeticiones. Destruyo tus limitaciones. Coaching de Élite para hombres y mujeres que no aceptan la mediocridad como estándar.
                             </p>
@@ -205,7 +203,7 @@ export default function LandingPage() {
                             </div>
 
                             <div className="mt-3 w-full sm:w-auto">
-                                <div className="inline-flex w-full sm:w-auto items-center gap-3 px-4 py-3 rounded-2xl border border-yellow-500/35 bg-black/60 shadow-[0_12px_40px_rgba(234,179,8,0.12)] backdrop-blur-sm">
+                                <div className="inline-flex w-full sm:w-auto items-center gap-3 px-4 py-3 rounded-2xl glass-card-yellow shadow-[0_12px_40px_rgba(234,179,8,0.12)]">
                                     <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-yellow-500/15 border border-yellow-500/50 text-yellow-500">
                                         <MapPin className="w-5 h-5" />
                                     </div>
@@ -221,12 +219,12 @@ export default function LandingPage() {
                             </div>
                         </div>
 
-                        <div className="relative group">
-                            <div className="absolute inset-0 bg-yellow-500/30 blur-3xl rounded-full group-hover:bg-yellow-500/40 transition-all duration-700"></div>
+                        <div className="relative group animate-float">
+                            <div className="absolute inset-0 bg-yellow-500/20 blur-[100px] rounded-full group-hover:bg-yellow-500/30 transition-all duration-700 animate-pulse-glow"></div>
                             <img
                                 src={heroImage}
                                 alt="Cristian Wosniak | Estratega"
-                                className="relative rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] w-full h-[600px] object-cover border-b-4 border-yellow-500 grayscale-[20%] hover:grayscale-0 transition-all duration-500"
+                                className="relative rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] w-full h-[600px] object-cover border-b-4 border-yellow-500 grayscale-[20%] hover:grayscale-0 transition-all duration-500 box-glow-yellow"
                             />
                             <div className="absolute -bottom-6 -left-6 bg-black/90 backdrop-blur-xl border-2 border-yellow-500/50 rounded-2xl p-6 shadow-2xl transform -rotate-2 hover:rotate-0 transition-all">
                                 <div className="flex items-center gap-4">
@@ -263,9 +261,9 @@ export default function LandingPage() {
                         ].map((feature, i) => (
                             <div
                                 key={i}
-                                className="p-6 bg-gradient-to-br from-yellow-500/10 to-transparent border border-yellow-500/20 rounded-xl hover:border-yellow-500/50 transition-all"
+                                className="p-6 glass-card-yellow border-yellow-500/20 rounded-xl hover:border-yellow-500/50 transition-all hover:translate-y-[-4px] hover-glow-yellow"
                             >
-                                <h3 className="text-xl font-bold text-yellow-500 mb-2">
+                                <h3 className="text-xl font-bold text-yellow-500 mb-2 text-glow-yellow">
                                     {feature.title}
                                 </h3>
                                 <p className="text-gray-400">{feature.desc}</p>
@@ -275,8 +273,9 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            <section className="px-4 py-16 bg-black">
-                <div className="max-w-5xl mx-auto rounded-2xl border border-yellow-500/20 bg-gradient-to-r from-yellow-500/5 via-black to-yellow-500/5 p-8 md:p-12 space-y-6">
+            <section className="px-4 py-16 bg-black relative">
+                <div className="absolute inset-0 bg-gradient-to-b from-black via-yellow-500/5 to-black opacity-50"></div>
+                <div className="max-w-5xl mx-auto rounded-2xl glass-card border-yellow-500/20 p-8 md:p-12 space-y-6 relative z-10 box-glow-yellow">
                     <div className="space-y-3">
                         <div className="flex items-center gap-3">
                             <p className="text-sm uppercase tracking-[0.25em] text-yellow-500">
@@ -332,11 +331,12 @@ export default function LandingPage() {
             >
                 <div className="max-w-6xl mx-auto">
                     <div className="grid md:grid-cols-2 gap-12 items-center">
-                        <div>
+                        <div className="relative group animate-float">
+                            <div className="absolute inset-0 bg-yellow-500/10 blur-[80px] rounded-full group-hover:bg-yellow-500/20 transition-all duration-700 animate-pulse-glow"></div>
                             <img
                                 src={aboutImage}
                                 alt="Cristian Wosniak"
-                                className="rounded-2xl shadow-2xl border-2 border-yellow-500/30"
+                                className="relative rounded-2xl shadow-2xl border-2 border-yellow-500/30 grayscale-[10%] hover:grayscale-0 transition-all duration-500 box-glow-yellow"
                             />
                         </div>
                         <div className="space-y-6">
@@ -356,7 +356,7 @@ export default function LandingPage() {
                                         href={href}
                                         target="_blank"
                                         rel="noreferrer"
-                                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-yellow-500/40 bg-white/5 text-yellow-500 hover:bg-yellow-500/10 transition-colors"
+                                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-yellow-500 hover:bg-yellow-500/10 transition-all hover:scale-105 hover-glow-yellow"
                                     >
                                         <Icon className="w-5 h-5" />
                                         <span className="text-sm font-semibold">{name}</span>
@@ -369,8 +369,9 @@ export default function LandingPage() {
             </section>
 
             {/* New Community Section */}
-            <section className="py-20 px-4 bg-yellow-500 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+            <section className="py-24 px-4 bg-yellow-500 relative overflow-hidden premium-gradient">
+                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 mix-blend-overlay"></div>
+                <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-yellow-500/20 blur-[100px] rounded-full animate-pulse-glow"></div>
                 <div className="max-w-7xl mx-auto relative z-10">
                     <div className="grid md:grid-cols-2 gap-12 items-center">
                         <div className="text-black space-y-6">
@@ -415,32 +416,32 @@ export default function LandingPage() {
 
                         <div className="relative hidden md:block">
                             <div className="absolute inset-0 bg-black/20 blur-3xl rounded-full transform rotate-12"></div>
-                            <div className="relative bg-black rounded-2xl p-8 border-2 border-black/10 shadow-2xl transform rotate-3 hover:rotate-0 transition-all duration-500">
-                                <div className="flex items-center justify-between mb-8 border-b border-gray-800 pb-4">
+                            <div className="relative bg-black/90 backdrop-blur-xl rounded-2xl p-8 border border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.8)] transform rotate-2 hover:rotate-0 transition-all duration-500 box-glow-yellow">
+                                <div className="flex items-center justify-between mb-8 border-b border-gray-800/50 pb-4">
                                     <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 bg-yellow-500 rounded flex items-center justify-center font-bold text-black">B</div>
-                                        <span className="font-bold text-white">BLACK COMMUNITY</span>
+                                        <div className="w-10 h-10 bg-yellow-500 rounded-xl flex items-center justify-center font-bold text-black shadow-lg shadow-yellow-500/20">B</div>
+                                        <span className="font-bold text-white tracking-tight">BLACK COMMUNITY</span>
                                     </div>
-                                    <div className="px-3 py-1 bg-yellow-500/20 text-yellow-500 text-xs rounded-full border border-yellow-500/20">
+                                    <div className="px-3 py-1 bg-yellow-500/20 text-yellow-500 text-[10px] font-black tracking-widest rounded-full border border-yellow-500/20 uppercase">
                                         MIEMBRO
                                     </div>
                                 </div>
                                 <div className="space-y-4">
                                     {[
-                                        { title: "Guía de Hipertrofia.pdf", icon: FileText, type: "PDF" },
-                                        { title: "Técnica de Sentadilla", icon: PlayCircle, type: "VIDEO" },
-                                        { title: "Rutina Express Pecho", icon: Dumbbell, type: "RUTINA" }
+                                        { title: "Guía de Hipertrofia.pdf", icon: FileText, type: "PDF", size: "2.4 MB" },
+                                        { title: "Técnica de Sentadilla", icon: PlayCircle, type: "VIDEO", duration: "12:05" },
+                                        { title: "Rutina Express Pecho", icon: Dumbbell, type: "RUTINA", intensity: "ALTA" }
                                     ].map((item, i) => (
-                                        <div key={i} className="flex items-center gap-4 p-4 bg-stone-900 rounded-xl border border-gray-800">
-                                            <div className="w-10 h-10 bg-yellow-500/10 rounded-lg flex items-center justify-center text-yellow-500">
+                                        <div key={i} className="flex items-center gap-4 p-4 glass-card rounded-xl border-white/5 hover:border-yellow-500/30 transition-all group/item">
+                                            <div className="w-10 h-10 bg-yellow-500/10 rounded-lg flex items-center justify-center text-yellow-500 group-hover/item:bg-yellow-500 group-hover/item:text-black transition-colors">
                                                 <item.icon className="w-5 h-5" />
                                             </div>
                                             <div className="flex-1">
                                                 <div className="text-white font-bold text-sm">{item.title}</div>
-                                                <div className="text-gray-500 text-xs">{item.type}</div>
+                                                <div className="text-gray-500 text-[10px] font-medium tracking-wide">{(item as any).size || (item as any).duration || (item as any).intensity} • {item.type}</div>
                                             </div>
-                                            <div className="w-8 h-8 rounded-full border border-gray-700 flex items-center justify-center">
-                                                <ChevronDown className="w-4 h-4 text-gray-500 -rotate-90" />
+                                            <div className="w-8 h-8 rounded-full border border-gray-800 flex items-center justify-center group-hover/item:border-yellow-500/50 transition-colors">
+                                                <ChevronDown className="w-4 h-4 text-gray-500 -rotate-90 group-hover/item:text-yellow-500" />
                                             </div>
                                         </div>
                                     ))}
@@ -497,9 +498,9 @@ export default function LandingPage() {
                         ].map((program, i) => (
                             <div
                                 key={i}
-                                className="group p-8 bg-gradient-to-br from-yellow-500/5 to-transparent border-2 border-yellow-500/20 rounded-2xl hover:border-yellow-500 transition-all transform hover:-translate-y-2"
+                                className="group p-8 glass-card-yellow border-yellow-500/10 rounded-2xl hover:border-yellow-500 transition-all transform hover:-translate-y-2 hover-glow-yellow"
                             >
-                                <h3 className="text-2xl font-bold text-yellow-500 mb-4">
+                                <h3 className="text-2xl font-bold text-yellow-500 mb-4 text-glow-yellow">
                                     {program.title}
                                 </h3>
                                 <p className="text-gray-300 mb-6">{program.desc}</p>
@@ -507,16 +508,16 @@ export default function LandingPage() {
                                     {program.features.map((feature, j) => (
                                         <li
                                             key={j}
-                                            className="flex items-center gap-2 text-gray-400"
+                                            className="flex items-center gap-3 text-gray-400"
                                         >
-                                            <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div>
+                                            <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full shadow-[0_0_8px_rgba(234,179,8,0.6)]"></div>
                                             {feature}
                                         </li>
                                     ))}
                                 </ul>
                                 <a
                                     href="https://wa.me/5493884384713"
-                                    className="block w-full py-4 bg-yellow-500 text-black border border-yellow-500 rounded-lg text-center font-black uppercase text-sm tracking-widest transition-all hover:bg-yellow-400 shadow-[0_5px_15px_rgba(234,179,8,0.2)]"
+                                    className="block w-full py-4 bg-yellow-500 text-black border border-yellow-500 rounded-lg text-center font-black uppercase text-xs tracking-[0.2em] transition-all hover:bg-yellow-400 shadow-[0_5px_15px_rgba(234,179,8,0.2)]"
                                 >
                                     INGRESAR AL FRENTE
                                 </a>
@@ -557,9 +558,9 @@ export default function LandingPage() {
                             <div
                                 key={i}
                                 className={`relative p-8 rounded-2xl transition-all transform hover:-translate-y-2 ${sede.highlight
-                                    ? "bg-gradient-to-br from-yellow-500/10 via-yellow-500/5 to-transparent border-2 border-yellow-500/40 shadow-[0_15px_50px_rgba(234,179,8,0.15)]"
-                                    : "bg-gradient-to-br from-yellow-500/5 to-transparent border-2 border-yellow-500/20"
-                                    } hover:border-yellow-500/60`}
+                                    ? "glass-card-yellow border-yellow-500/40 shadow-[0_15px_50px_rgba(234,179,8,0.15)]"
+                                    : "glass-card border-white/5"
+                                    } hover:border-yellow-500/60 hover-glow-yellow`}
                             >
                                 {sede.highlight && (
                                     <span className="absolute top-4 right-4 px-3 py-1 bg-yellow-500 text-black text-xs font-extrabold rounded-full shadow-lg shadow-yellow-500/30">
@@ -645,7 +646,7 @@ export default function LandingPage() {
                         ].map((testimonial, i) => (
                             <div
                                 key={i}
-                                className="p-6 bg-black border-2 border-yellow-500/20 rounded-xl hover:border-yellow-500/50 transition-all"
+                                className="p-6 glass-card border-white/5 rounded-xl hover:border-yellow-500/50 transition-all hover:translate-y-[-4px] hover-glow-yellow"
                             >
                                 <div className="mb-4 overflow-hidden rounded-lg border border-yellow-500/20">
                                     <img
@@ -771,90 +772,90 @@ export default function LandingPage() {
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/75 to-black/85"></div>
                                     </div>
-                                    <div className="relative p-6 flex flex-col h-full backdrop-blur-[2px]">
+                                    <div className="relative p-6 flex flex-col h-full backdrop-blur-[4px]">
                                         <div className="flex items-center justify-between mb-5">
-                                            <span className="px-3 py-1 bg-yellow-400 text-black text-[11px] font-extrabold rounded-full shadow-lg shadow-yellow-500/50">
+                                            <span className="px-3 py-1 bg-yellow-400 text-black text-[10px] font-black tracking-widest rounded-full shadow-lg shadow-yellow-500/50 uppercase">
                                                 {plan.tag}
                                             </span>
                                         </div>
                                         <div className="mb-4 space-y-1">
-                                            <p className="text-xs text-gray-300 uppercase tracking-[0.15em]">
+                                            <p className="text-[10px] text-yellow-500 uppercase tracking-[0.25em] font-black">
                                                 {plan.subtitle}
                                             </p>
-                                            <h3 className="text-3xl font-black text-white leading-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.4)]">
+                                            <h3 className="text-4xl font-black text-white leading-tight drop-shadow-[0_2px_15px_rgba(0,0,0,0.6)]">
                                                 {plan.title}
                                             </h3>
                                             {plan.price && (
-                                                <p className="text-lg text-yellow-300 mt-1">
+                                                <p className="text-xl text-yellow-400 mt-1 font-bold text-glow-yellow">
                                                     {plan.price}
                                                 </p>
                                             )}
                                         </div>
-                                        <p className="text-gray-100 text-sm leading-relaxed mb-4">
+                                        <p className="text-gray-200 text-sm leading-relaxed mb-6 font-medium">
                                             {plan.description}
                                         </p>
-                                        <div className="grid gap-2 text-sm text-gray-100 mb-6">
+                                        <div className="grid gap-2 text-xs text-gray-100 mb-8">
                                             {plan.features.map((feature, j) => (
                                                 <div
                                                     key={j}
-                                                    className="flex items-center gap-2 bg-black/40 border border-white/10 rounded-lg px-3 py-2 backdrop-blur-sm shadow-[0_8px_20px_rgba(0,0,0,0.35)]"
+                                                    className="flex items-center gap-3 bg-black/60 border border-white/10 rounded-xl px-4 py-3 backdrop-blur-md shadow-xl"
                                                 >
-                                                    <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                                                    <span>{feature}</span>
+                                                    <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full shadow-[0_0_8px_rgba(234,179,8,0.8)]"></div>
+                                                    <span className="font-bold tracking-tight">{feature}</span>
                                                 </div>
                                             ))}
                                         </div>
-                                        <a
-                                            href={buildWhatsAppLink(plan.message)}
-                                            className="mt-auto block w-full py-3 rounded-lg text-center font-bold transition-all bg-yellow-400 text-black hover:bg-yellow-300 shadow-lg shadow-yellow-500/40"
+                                        <button
+                                            onClick={() => navigate('/black-training')}
+                                            className="mt-auto block w-full py-4 rounded-xl text-center font-black uppercase text-xs tracking-[0.2em] transition-all bg-yellow-500 text-black hover:bg-yellow-400 shadow-[0_10px_30px_rgba(234,179,8,0.4)] transform hover:scale-[1.02]"
                                         >
-                                            Consultar
-                                        </a>
+                                            CONOCER MÁS
+                                        </button>
                                     </div>
                                 </div>
                             ) : (
                                 <div
                                     key={i}
-                                    className="relative p-8 rounded-2xl transition-all transform hover:-translate-y-2 bg-gradient-to-br from-yellow-500/5 to-transparent border-2 border-yellow-500/20 hover:border-yellow-500/50"
+                                    className="relative p-8 rounded-2xl transition-all transform hover:-translate-y-2 glass-card-yellow border-yellow-500/10 hover:border-yellow-500/40 hover-glow-yellow"
                                 >
-                                    <div className="flex flex-col items-center text-center mb-4 gap-2">
+                                    <div className="flex flex-col items-center text-center mb-6 gap-3">
                                         {plan.badge && (
-                                            <span className="px-3 py-1 rounded-full bg-yellow-500 text-black text-xs font-extrabold tracking-wide shadow-lg shadow-yellow-500/30">
+                                            <span className="px-3 py-1 rounded-full bg-yellow-500 text-black text-[10px] font-black tracking-widest shadow-lg shadow-yellow-500/30 uppercase">
                                                 {plan.badge}
                                             </span>
                                         )}
-                                        <div className="text-yellow-500 font-bold text-lg mb-0">
+                                        <div className="text-yellow-500 font-black text-2xl mb-0 text-glow-yellow tracking-tight">
                                             {plan.title}
                                         </div>
-                                        <div className="text-sm text-gray-400 uppercase tracking-[0.15em]">
+                                        <div className="text-[10px] text-gray-400 uppercase tracking-[0.25em] font-bold">
                                             {plan.subtitle}
                                         </div>
                                     </div>
-                                    <p className="text-gray-300 mb-6 text-sm leading-relaxed text-center">
+                                    <p className="text-gray-300 mb-8 text-sm leading-relaxed text-center font-medium">
                                         {plan.description}
                                     </p>
-                                    <ul className="space-y-3 mb-8">
+                                    <ul className="space-y-4 mb-10">
                                         {plan.features.map((feature, j) => (
                                             <li
                                                 key={j}
-                                                className="flex items-start gap-2 text-gray-300 text-sm"
+                                                className="flex items-start gap-3 text-gray-300 text-sm"
                                             >
-                                                <div className="w-2 h-2 mt-1 bg-yellow-500 rounded-full"></div>
-                                                <span>{feature}</span>
+                                                <div className="w-1.5 h-1.5 mt-1.5 bg-yellow-500 rounded-full shadow-[0_0_8px_rgba(234,179,8,0.6)]"></div>
+                                                <span className="font-medium tracking-tight">{feature}</span>
                                             </li>
                                         ))}
                                     </ul>
                                     {plan.location && (
-                                        <div className="text-xs text-gray-400 mb-6 text-center border-t border-yellow-500/15 pt-3 leading-relaxed">
-                                            <div className="font-semibold text-yellow-500">
+                                        <div className="text-[10px] text-gray-500 mb-8 text-center border-t border-white/5 pt-5 leading-relaxed tracking-wide">
+                                            <div className="font-black text-yellow-500/80 uppercase tracking-[0.15em] mb-1">
                                                 Ubicación
                                             </div>
-                                            <div>{plan.location}</div>
+                                            <div className="font-medium">{plan.location}</div>
                                         </div>
                                     )}
                                     <a
                                         href={buildWhatsAppLink(plan.message)}
-                                        className="block w-full py-5 rounded-lg text-center font-black uppercase tracking-widest text-sm transition-all bg-yellow-500 text-black hover:bg-yellow-600 shadow-[0_8px_20px_rgba(234,179,8,0.3)]"
+                                        className="block w-full py-5 rounded-xl text-center font-black uppercase tracking-[0.2em] text-xs transition-all bg-yellow-500 text-black hover:bg-yellow-400 shadow-[0_12px_25px_rgba(234,179,8,0.3)] transform hover:scale-[1.02]"
                                     >
                                         EJECUTAR AHORA
                                     </a>
@@ -900,7 +901,7 @@ export default function LandingPage() {
                         ].map((faq, i) => (
                             <div
                                 key={i}
-                                className="border-2 border-yellow-500/20 rounded-xl overflow-hidden hover:border-yellow-500/50 transition-all"
+                                className="glass-card border-white/5 rounded-2xl overflow-hidden hover:border-yellow-500/30 transition-all box-glow-yellow"
                             >
                                 <button
                                     onClick={() => setOpenFaq(openFaq === i ? null : i)}
@@ -921,86 +922,64 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            <section id="contacto" className="py-20 px-4 bg-black">
-                <div className="max-w-4xl mx-auto text-center">
-                    <h2 className="text-4xl md:text-7xl font-black mb-6 uppercase italic">
-                        ¿LISTO PARA <span className="text-yellow-500">RESURGIR?</span>
+            <section id="contacto" className="py-24 px-4 bg-black relative overflow-hidden">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-yellow-500/5 blur-[120px] rounded-full animate-pulse-glow"></div>
+                <div className="max-w-4xl mx-auto text-center relative z-10">
+                    <h2 className="text-5xl md:text-8xl font-black mb-8 uppercase italic leading-none tracking-tighter">
+                        ¿LISTO PARA <span className="text-yellow-500 text-glow-yellow">RESURGIR?</span>
                     </h2>
-                    <p className="text-xl text-gray-300 mb-12 font-medium">
+                    <p className="text-xl text-gray-400 mb-16 font-medium max-w-2xl mx-auto">
                         Dejá de negociar con tu mediocridad. El cambio empieza con una orden.
                     </p>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                        <a
-                            href="https://wa.me/5493884384713"
-                            className="p-6 bg-gradient-to-br from-yellow-500/10 to-transparent border-2 border-yellow-500/20 rounded-xl hover:border-yellow-500 transition-all group"
-                        >
-                            <MessageCircle className="w-12 h-12 text-yellow-500 mx-auto mb-4 group-hover:scale-110 transition-transform" />
-                            <div className="font-bold mb-2">WhatsApp</div>
-                            <div className="text-sm text-gray-400">Respuesta inmediata</div>
-                        </a>
-
-                        <a
-                            href="mailto:jujuyentrena@gmail.com"
-                            className="p-6 bg-gradient-to-br from-yellow-500/10 to-transparent border-2 border-yellow-500/20 rounded-xl hover:border-yellow-500 transition-all group"
-                        >
-                            <Mail className="w-12 h-12 text-yellow-500 mx-auto mb-4 group-hover:scale-110 transition-transform" />
-                            <div className="font-bold mb-2">Email</div>
-                            <div className="text-sm text-gray-400">
-                                jujuyentrena@gmail.com
-                            </div>
-                        </a>
-
-                        <a
-                            href="tel:+5493884384713"
-                            className="p-6 bg-gradient-to-br from-yellow-500/10 to-transparent border-2 border-yellow-500/20 rounded-xl hover:border-yellow-500 transition-all group"
-                        >
-                            <Phone className="w-12 h-12 text-yellow-500 mx-auto mb-4 group-hover:scale-110 transition-transform" />
-                            <div className="font-bold mb-2">Teléfono</div>
-                            <div className="text-sm text-gray-400">+54 9 3884 38-4713</div>
-                        </a>
-
-                        <a
-                            href="https://chat.whatsapp.com/ByALBirqxwD7Kd2HJl3ii6"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="p-6 bg-gradient-to-br from-yellow-500/10 to-transparent border-2 border-yellow-500/20 rounded-xl hover:border-yellow-500 transition-all group"
-                        >
-                            <Users className="w-12 h-12 text-yellow-500 mx-auto mb-4 group-hover:scale-110 transition-transform" />
-                            <div className="font-bold mb-2">Comunidad WhatsApp</div>
-                            <div className="text-sm text-gray-400">
-                                Únete al grupo y recibe novedades y soporte.
-                            </div>
-                        </a>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                        {[
+                            { icon: MessageCircle, label: "WhatsApp", sub: "Atención Inmediata", href: "https://wa.me/5493884384713" },
+                            { icon: Mail, label: "Email", sub: "jujuyentrena@gmail.com", href: "mailto:jujuyentrena@gmail.com" },
+                            { icon: Phone, label: "Teléfono", sub: "+54 9 3884 384713", href: "tel:+5493884384713" },
+                            { icon: Users, label: "Comunidad", sub: "Novedades y Soporte", href: "https://chat.whatsapp.com/ByALBirqxwD7Kd2HJl3ii6" }
+                        ].map((item, i) => (
+                            <a
+                                key={i}
+                                href={item.href}
+                                className="p-8 glass-card border-white/5 rounded-2xl hover:border-yellow-500/50 transition-all group hover:-translate-y-1"
+                            >
+                                <item.icon className="w-12 h-12 text-yellow-500 mx-auto mb-5 group-hover:scale-110 group-hover:text-glow-yellow transition-all duration-300" />
+                                <div className="font-bold text-white mb-2 tracking-tight">{item.label}</div>
+                                <div className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">{item.sub}</div>
+                            </a>
+                        ))}
                     </div>
 
-                    <div className="p-8 bg-gradient-to-r from-yellow-500/20 via-yellow-500/10 to-yellow-500/20 border-2 border-yellow-500/30 rounded-2xl">
-                        <p className="text-lg text-gray-300">
-                            <span className="text-yellow-500 font-bold">
-                                Respuesta en menos de 24 horas.
-                            </span>{" "}
-                            Estoy comprometido con tu éxito desde el primer contacto.
+                    <div className="p-10 glass-card-yellow border-yellow-500/20 rounded-3xl shadow-2xl">
+                        <p className="text-lg text-gray-300 font-medium">
+                            <span className="text-yellow-500 font-black uppercase tracking-widest mr-2">
+                                Compromiso 24/7.
+                            </span>
+                            Nuestro equipo responderá en menos de 24 horas.
                         </p>
                     </div>
                 </div>
             </section>
 
-            <footer className="relative overflow-hidden py-14 px-4 bg-gradient-to-b from-black via-[#090909] to-black border-t border-yellow-500/20">
-                <div className="absolute -top-24 left-10 h-64 w-64 bg-yellow-500/10 blur-3xl rounded-full pointer-events-none" />
-                <div className="absolute -bottom-28 right-0 h-72 w-72 bg-yellow-500/5 blur-3xl rounded-full pointer-events-none" />
+            <footer className="relative overflow-hidden py-20 px-4 bg-gradient-to-b from-black via-[#050505] to-black border-t border-white/5">
+                <div className="absolute -top-24 left-10 h-64 w-64 bg-yellow-500/5 blur-[100px] rounded-full pointer-events-none animate-pulse-glow" />
+                <div className="absolute -bottom-28 right-0 h-72 w-72 bg-yellow-500/5 blur-[120px] rounded-full pointer-events-none" />
 
-                <div className="max-w-7xl mx-auto relative">
-                    <div className="grid gap-10 mb-10 md:grid-cols-12 items-start">
-                        <div className="md:col-span-5 space-y-3">
+                <div className="max-w-7xl mx-auto relative z-10">
+                    <div className="grid gap-16 mb-16 md:grid-cols-12 items-start">
+                        <div className="md:col-span-5 space-y-6">
                             <div className="flex items-center gap-2">
-                                <img src={cwLogo} alt="CW Life" className="h-9 w-auto" />
+                                <img src={cwLogo} alt="CW Life" className="h-10 w-auto" />
                             </div>
-                            <p className="text-gray-400 leading-relaxed">
-                                Transformando vidas a través del fitness y el coaching personalizado.
+                            <p className="text-gray-400 leading-relaxed font-medium">
+                                Transformando vidas a través del fitness y el coaching de élite personalizado.
                             </p>
-                            <p className="text-sm text-yellow-500 font-semibold">
-                                Disciplina sin filtros. Resultados sin excusas.
-                            </p>
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-500/10 border border-yellow-500/20">
+                                <span className="text-[10px] text-yellow-500 font-black uppercase tracking-widest">
+                                    Disciplina sin filtros. Resultados sin excusas.
+                                </span>
+                            </div>
                         </div>
 
                         <div className="md:col-span-3">
@@ -1019,7 +998,7 @@ export default function LandingPage() {
                         </div>
 
                         <div className="md:col-span-4">
-                            <h3 className="font-bold text-yellow-500 mb-4">Sígueme</h3>
+                            <h3 className="font-bold text-white mb-6 uppercase tracking-widest text-xs">Sígueme</h3>
                             <div className="flex flex-wrap gap-3">
                                 {socialLinks.map(({ name, href, icon: Icon }) => (
                                     <a
@@ -1027,10 +1006,10 @@ export default function LandingPage() {
                                         href={href}
                                         target="_blank"
                                         rel="noreferrer"
-                                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-yellow-500/30 bg-white/5 text-gray-200 hover:text-yellow-500 hover:border-yellow-500/70 transition-colors"
+                                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-gray-300 hover:text-yellow-500 hover:border-yellow-500/50 transition-all hover:scale-105"
                                     >
                                         <Icon className="w-4 h-4" />
-                                        <span className="text-sm font-semibold">{name}</span>
+                                        <span className="text-xs font-bold tracking-tight">{name}</span>
                                     </a>
                                 ))}
                             </div>

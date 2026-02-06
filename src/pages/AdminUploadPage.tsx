@@ -67,102 +67,95 @@ export default function AdminUploadPage() {
     return (
         <div className="min-h-screen bg-black text-white p-6 md:p-12">
             <div className="max-w-2xl mx-auto">
-                <RouterLink to="/dashboard" className="flex items-center text-gray-400 hover:text-white mb-8 transition-colors">
-                    <ArrowLeft className="w-4 h-4 mr-2" />
-                    Volver al Dashboard
+                <RouterLink to="/dashboard" className="inline-flex items-center text-gray-400 hover:text-yellow-500 mb-10 transition-all font-black uppercase tracking-[0.2em] text-[10px] group">
+                    <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
+                    Volver al Cuartel
                 </RouterLink>
 
-                <h1 className="text-3xl font-bold mb-8">Subir Contenido (Admin)</h1>
+                <div className="relative mb-12">
+                    <div className="absolute -top-10 -left-10 w-48 h-48 bg-yellow-500/5 blur-[80px] rounded-full animate-pulse-glow"></div>
+                    <h1 className="text-4xl font-black tracking-tight uppercase italic relative z-10">
+                        DESPLEGAR <span className="text-yellow-500 text-glow-yellow">CONTENIDO</span>
+                    </h1>
+                    <p className="text-gray-400 mt-2 font-medium">Administración estratégica de recursos para miembros.</p>
+                </div>
 
-                <form onSubmit={handleSubmit} className="bg-stone-900/50 p-8 rounded-2xl border border-yellow-500/10 space-y-6">
-                    <div>
-                        <label className="block text-sm font-medium text-gray-400 mb-2">Título</label>
+                <form onSubmit={handleSubmit} className="glass-card border-white/5 p-10 rounded-3xl space-y-8 relative overflow-hidden box-glow-yellow">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/5 blur-3xl rounded-full"></div>
+
+                    <div className="space-y-2">
+                        <label className="block text-[10px] font-black text-yellow-500/80 uppercase tracking-[0.2em]">Título del Recurso</label>
                         <input
                             type="text"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
                             required
-                            className="w-full bg-stone-950 border border-stone-800 rounded-lg p-3 text-white focus:border-yellow-500 focus:outline-none focus:ring-1 focus:ring-yellow-500 transition-all"
-                            placeholder="ej. Guía Avanzada de Hipertrofia"
+                            className="w-full bg-black/40 border border-white/10 rounded-xl p-4 text-white focus:border-yellow-500/50 focus:outline-none focus:ring-1 focus:ring-yellow-500/20 transition-all font-medium placeholder:text-gray-600"
+                            placeholder="ej. GUÍA DE MOVILIDAD AVANZADA"
                         />
                     </div>
 
-                    <div>
-                        <label className="block text-sm font-medium text-gray-400 mb-2">Descripción</label>
+                    <div className="space-y-2">
+                        <label className="block text-[10px] font-black text-yellow-500/80 uppercase tracking-[0.2em]">Descripción Estratégica</label>
                         <textarea
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
-                            className="w-full bg-stone-950 border border-stone-800 rounded-lg p-3 text-white focus:border-yellow-500 focus:outline-none focus:ring-1 focus:ring-yellow-500 transition-all h-24"
-                            placeholder="Breve descripción del contenido..."
+                            className="w-full bg-black/40 border border-white/10 rounded-xl p-4 text-white focus:border-yellow-500/50 focus:outline-none focus:ring-1 focus:ring-yellow-500/20 transition-all h-32 font-medium placeholder:text-gray-600 resize-none"
+                            placeholder="Describe el valor de este recurso para el miembro..."
                         />
                     </div>
 
-                    <div>
-                        <label className="block text-sm font-medium text-gray-400 mb-2">Tipo</label>
+                    <div className="space-y-4">
+                        <label className="block text-[10px] font-black text-yellow-500/80 uppercase tracking-[0.2em]">Tipo de Armamento</label>
                         <div className="grid grid-cols-3 gap-4">
-                            <button
-                                type="button"
-                                onClick={() => setType("video_link")}
-                                className={`flex flex-col items-center justify-center p-4 rounded-xl border transition-all ${type === "video_link"
-                                        ? "bg-yellow-500/10 border-yellow-500 text-yellow-500"
-                                        : "bg-stone-950 border-stone-800 text-gray-400 hover:border-gray-600"
-                                    }`}
-                            >
-                                <Video className="w-6 h-6 mb-2" />
-                                <span className="text-sm">Link de Video</span>
-                            </button>
-                            <button
-                                type="button"
-                                onClick={() => setType("pdf")}
-                                className={`flex flex-col items-center justify-center p-4 rounded-xl border transition-all ${type === "pdf"
-                                        ? "bg-yellow-500/10 border-yellow-500 text-yellow-500"
-                                        : "bg-stone-950 border-stone-800 text-gray-400 hover:border-gray-600"
-                                    }`}
-                            >
-                                <Upload className="w-6 h-6 mb-2" />
-                                <span className="text-sm">Subir PDF</span>
-                            </button>
-                            <button
-                                type="button"
-                                onClick={() => setType("link")}
-                                className={`flex flex-col items-center justify-center p-4 rounded-xl border transition-all ${type === "link"
-                                        ? "bg-yellow-500/10 border-yellow-500 text-yellow-500"
-                                        : "bg-stone-950 border-stone-800 text-gray-400 hover:border-gray-600"
-                                    }`}
-                            >
-                                <Link className="w-6 h-6 mb-2" />
-                                <span className="text-sm">Link Externo</span>
-                            </button>
+                            {[
+                                { id: "video_link", icon: Video, label: "VIDEO" },
+                                { id: "pdf", icon: Upload, label: "PDF" },
+                                { id: "link", icon: Link, label: "LINK" }
+                            ].map((item) => (
+                                <button
+                                    key={item.id}
+                                    type="button"
+                                    onClick={() => setType(item.id as any)}
+                                    className={`flex flex-col items-center justify-center p-6 rounded-2xl border-2 transition-all ${type === item.id
+                                        ? "glass-card-yellow border-yellow-500/50 text-yellow-500 shadow-lg shadow-yellow-500/10 scale-[1.02]"
+                                        : "bg-black/40 border-white/5 text-gray-500 hover:border-white/10 hover:text-gray-300"
+                                        }`}
+                                >
+                                    <item.icon className="w-8 h-8 mb-3 transition-transform group-hover:scale-110" />
+                                    <span className="text-[10px] font-black tracking-widest uppercase">{item.label}</span>
+                                </button>
+                            ))}
                         </div>
                     </div>
 
-                    {type === "pdf" ? (
-                        <div>
-                            <label className="block text-sm font-medium text-gray-400 mb-2">Archivo PDF</label>
+                    <div className="space-y-2">
+                        <label className="block text-[10px] font-black text-yellow-500/80 uppercase tracking-[0.2em]">
+                            {type === "pdf" ? "Archivo Fuente" : "Enlace Destino"}
+                        </label>
+                        {type === "pdf" ? (
                             <input
                                 type="file"
                                 accept=".pdf"
                                 onChange={(e) => setFile(e.target.files?.[0] || null)}
                                 required
-                                className="w-full bg-stone-950 border border-stone-800 rounded-lg p-3 text-white focus:border-yellow-500 focus:outline-none transition-all file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-yellow-500 file:text-black hover:file:bg-yellow-400"
+                                className="w-full bg-black/40 border border-white/10 rounded-xl p-4 text-white focus:border-yellow-500/50 focus:outline-none transition-all file:mr-6 file:py-2 file:px-6 file:rounded-full file:border-0 file:text-[10px] file:font-black file:uppercase file:tracking-widest file:bg-yellow-500 file:text-black hover:file:bg-yellow-400 cursor-pointer"
                             />
-                        </div>
-                    ) : (
-                        <div>
-                            <label className="block text-sm font-medium text-gray-400 mb-2">URL</label>
+                        ) : (
                             <input
                                 type="url"
                                 value={url}
                                 onChange={(e) => setUrl(e.target.value)}
                                 required
-                                className="w-full bg-stone-950 border border-stone-800 rounded-lg p-3 text-white focus:border-yellow-500 focus:outline-none focus:ring-1 focus:ring-yellow-500 transition-all"
+                                className="w-full bg-black/40 border border-white/10 rounded-xl p-4 text-white focus:border-yellow-500/50 focus:outline-none focus:ring-1 focus:ring-yellow-500/20 transition-all font-medium placeholder:text-gray-600"
                                 placeholder="https://..."
                             />
-                        </div>
-                    )}
+                        )}
+                    </div>
 
                     {message && (
-                        <div className={`p-4 rounded-lg flex items-center ${message.type === 'success' ? 'bg-green-500/10 text-green-500' : 'bg-red-500/10 text-red-500'}`}>
+                        <div className={`p-5 rounded-2xl flex items-center gap-3 font-bold text-xs uppercase tracking-widest border-2 ${message.type === 'success' ? 'bg-green-500/5 border-green-500/20 text-green-500' : 'bg-red-500/5 border-red-500/20 text-red-500'}`}>
+                            <div className={`w-2 h-2 rounded-full ${message.type === 'success' ? 'bg-green-500 animate-pulse' : 'bg-red-500 animate-pulse'}`}></div>
                             {message.text}
                         </div>
                     )}
@@ -170,15 +163,15 @@ export default function AdminUploadPage() {
                     <button
                         type="submit"
                         disabled={uploading}
-                        className="w-full bg-yellow-500 text-black font-bold py-4 rounded-xl hover:bg-yellow-400 transition-colors flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="w-full bg-yellow-500 text-black font-black uppercase tracking-[0.2em] text-xs py-5 rounded-2xl hover:bg-yellow-400 transition-all flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_15px_30px_rgba(234,179,8,0.2)] hover:shadow-yellow-500/40 transform hover:-translate-y-1"
                     >
                         {uploading ? (
                             <>
-                                <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                                Subiendo...
+                                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                                PROCESANDO...
                             </>
                         ) : (
-                            "Subir Contenido"
+                            "EJECUTAR DESPLIEGUE"
                         )}
                     </button>
                 </form>

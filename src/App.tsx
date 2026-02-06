@@ -7,6 +7,7 @@ import AdminUploadPage from "./pages/AdminUploadPage";
 import AdminSignupPage from "./pages/AdminSignupPage";
 import AdminRoute from "./components/AdminRoute";
 import { GymSection } from "./components/GymSection";
+import { CircuitoReductor } from "./components/CircuitoReductor";
 
 function App() {
   return (
@@ -28,8 +29,9 @@ function App() {
         <Route
           path="/black-training"
           element={
-            <div className="min-h-screen bg-black text-white flex flex-col justify-center">
-              <GymSection showLogo={true} />
+            <div className="min-h-screen bg-black text-white flex flex-col">
+              <CircuitoReductor showLogo={true} />
+              <GymSection />
             </div>
           }
         />
