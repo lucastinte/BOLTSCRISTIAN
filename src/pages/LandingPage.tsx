@@ -28,6 +28,10 @@ import transformacion3 from "../assets/transformacion-3.png";
 import cvLogo from "../assets/cv-logo.svg";
 import black90Dias from "../assets/black-90-dias.jpeg";
 import { GymSection } from "../components/GymSection";
+import evolution1 from "../assets/evolution-1.mp4";
+import evolution2 from "../assets/evolution-2.mp4";
+import evolution3 from "../assets/evolution-3.mp4";
+import evolution4 from "../assets/evolution-4.mp4";
 
 export default function LandingPage() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -680,6 +684,140 @@ export default function LandingPage() {
                 </div>
             </section>
 
+            {/* --- SECCIÓN ANTES Y DESPUÉS (VIDEOS) --- */}
+            <section id="resultados" className="py-24 px-4 bg-black relative overflow-hidden">
+                {/* Decoración de fondo */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-yellow-500/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+                <div className="max-w-7xl mx-auto relative z-10">
+                    <div className="text-center mb-16">
+                        <h2 className="text-4xl md:text-6xl font-black italic tracking-tighter mb-4">
+                            RESULTADOS <span className="text-yellow-500">IRREFUTABLES</span>
+                        </h2>
+                        <div className="w-24 h-1 bg-yellow-500 mx-auto rounded-full"></div>
+                        <p className="text-gray-400 mt-6 text-lg max-w-2xl mx-auto">
+                            No son solo cambios físicos, son reconstrucciones totales de mentalidad y disciplina.
+                        </p>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+                        {/* Bloque 1 - Evolución Entrenador */}
+                        <div className="group relative">
+                            <div className="absolute -top-4 left-4 z-20 bg-black/80 backdrop-blur-md border border-white/10 px-4 py-1 rounded-full">
+                                <span className="text-xs font-bold tracking-widest text-gray-400 uppercase">Proceso I | Cristian Wosniak</span>
+                            </div>
+                            <div className="relative overflow-hidden rounded-3xl border border-white/5 bg-white/5 aspect-[9/16] md:aspect-video flex items-center justify-center group-hover:border-yellow-500/30 transition-all duration-500">
+                                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
+                                    <PlayCircle className="w-16 h-16 text-white/20 mb-4 group-hover:text-yellow-500/50 transition-colors" />
+                                </div>
+                                <video
+                                    className="w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                                    muted
+                                    loop
+                                    playsInline
+                                    onMouseEnter={(e) => e.currentTarget.play()}
+                                    onMouseLeave={(e) => {
+                                        e.currentTarget.pause();
+                                        e.currentTarget.currentTime = 0;
+                                    }}
+                                >
+                                    <source src={evolution1} type="video/mp4" />
+                                </video>
+                            </div>
+                        </div>
+
+                        <div className="group relative">
+                            <div className="absolute -top-4 left-4 z-20 bg-yellow-500 px-4 py-1 rounded-full shadow-[0_0_20px_rgba(234,179,8,0.4)]">
+                                <span className="text-xs font-bold tracking-widest text-black uppercase">Proceso II | Cristian Wosniak</span>
+                            </div>
+                            <div className="relative overflow-hidden rounded-3xl border border-yellow-500/20 bg-yellow-500/5 aspect-[9/16] md:aspect-video flex items-center justify-center group-hover:border-yellow-500/50 transition-all duration-500 box-glow-yellow">
+                                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
+                                    <Star className="w-16 h-16 text-yellow-500 mb-4" />
+                                </div>
+                                <video
+                                    className="w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                                    muted
+                                    loop
+                                    playsInline
+                                    onMouseEnter={(e) => e.currentTarget.play()}
+                                    onMouseLeave={(e) => {
+                                        e.currentTarget.pause();
+                                        e.currentTarget.currentTime = 0;
+                                    }}
+                                >
+                                    <source src={evolution2} type="video/mp4" />
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="mt-20 grid md:grid-cols-2 gap-8 md:gap-12 border-t border-white/5 pt-20">
+                        {/* Bloque 2 - Evolución Entrenador */}
+                        <div className="group relative">
+                            <div className="absolute -top-4 left-4 z-20 bg-black/80 backdrop-blur-md border border-white/10 px-4 py-1 rounded-full">
+                                <span className="text-xs font-bold tracking-widest text-gray-400 uppercase">Proceso III | Cristian Wosniak</span>
+                            </div>
+                            <div className="relative overflow-hidden rounded-3xl border border-white/5 bg-white/5 aspect-[9/16] md:aspect-video flex items-center justify-center group-hover:border-yellow-500/30 transition-all duration-500">
+                                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
+                                    <PlayCircle className="w-16 h-16 text-white/20 mb-4 group-hover:text-yellow-500/50 transition-colors" />
+                                </div>
+                                <video
+                                    className="w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                                    muted
+                                    loop
+                                    playsInline
+                                    onMouseEnter={(e) => e.currentTarget.play()}
+                                    onMouseLeave={(e) => {
+                                        e.currentTarget.pause();
+                                        e.currentTarget.currentTime = 0;
+                                    }}
+                                >
+                                    <source src={evolution3} type="video/mp4" />
+                                </video>
+                            </div>
+                        </div>
+
+                        <div className="group relative">
+                            <div className="absolute -top-4 left-4 z-20 bg-yellow-500 px-4 py-1 rounded-full shadow-[0_0_20px_rgba(234,179,8,0.4)]">
+                                <span className="text-xs font-bold tracking-widest text-black uppercase">Resultado Final | Cristian Wosniak</span>
+                            </div>
+                            <div className="relative overflow-hidden rounded-3xl border border-yellow-500/20 bg-yellow-500/5 aspect-[9/16] md:aspect-video flex items-center justify-center group-hover:border-yellow-500/50 transition-all duration-500 box-glow-yellow">
+                                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
+                                    <div className="relative">
+                                        <div className="absolute inset-0 blur-lg bg-yellow-500/20 rounded-full animate-pulse"></div>
+                                        <Star className="w-16 h-16 text-yellow-500 mb-4 relative z-10" />
+                                    </div>
+                                    <p className="text-yellow-500 font-bold tracking-widest uppercase">Evolución Máxima</p>
+                                </div>
+                                <video
+                                    className="w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                                    muted
+                                    loop
+                                    playsInline
+                                    onMouseEnter={(e) => e.currentTarget.play()}
+                                    onMouseLeave={(e) => {
+                                        e.currentTarget.pause();
+                                        e.currentTarget.currentTime = 0;
+                                    }}
+                                >
+                                    <source src={evolution4} type="video/mp4" />
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Boton de Llamado a la acción rápido */}
+                    <div className="mt-16 text-center">
+                        <button
+                            onClick={() => scrollToSection('precios')}
+                            className="px-8 py-4 bg-white text-black font-black text-sm tracking-widest uppercase hover:bg-yellow-500 transition-all duration-300 transform hover:-translate-y-1"
+                        >
+                            Quiero mi cambio ahora
+                        </button>
+                    </div>
+                </div>
+            </section>
+
             <section id="precios" className="py-20 px-4 bg-black">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
@@ -743,7 +881,7 @@ export default function LandingPage() {
                             {
                                 highlight: true,
                                 title: "90 DÍAS BLACK",
-                                subtitle: "Edición élite · Muy pronto",
+                                subtitle: "Edición élite",
                                 price: "⚡️ Exclusivo",
                                 description:
                                     "El estándar BLACK está llegando. 90 días sin excusas para reconstruirte física y mentalmente.",
@@ -756,7 +894,6 @@ export default function LandingPage() {
                                 message:
                                     "Hola, quiero ser de los primeros en 90 DÍAS BLACK. Avísame cuando abra.",
                                 image: black90Dias,
-                                tag: "MUY PRONTO",
                             },
                         ].map((plan, i) =>
                             plan.highlight ? (
@@ -774,9 +911,7 @@ export default function LandingPage() {
                                     </div>
                                     <div className="relative p-6 flex flex-col h-full backdrop-blur-[4px]">
                                         <div className="flex items-center justify-between mb-5">
-                                            <span className="px-3 py-1 bg-yellow-400 text-black text-[10px] font-black tracking-widest rounded-full shadow-lg shadow-yellow-500/50 uppercase">
-                                                {plan.tag}
-                                            </span>
+
                                         </div>
                                         <div className="mb-4 space-y-1">
                                             <p className="text-[10px] text-yellow-500 uppercase tracking-[0.25em] font-black">
