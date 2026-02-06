@@ -25,7 +25,7 @@ import aboutImage from "../assets/wosniak-about.png";
 import transformacion1 from "../assets/transformacion-1.png";
 import transformacion2 from "../assets/transformacion-2.png";
 import transformacion3 from "../assets/transformacion-3.png";
-import cwLogo from "../assets/xxx.svg";
+import cvLogo from "../assets/cv-logo.svg";
 import black90Dias from "../assets/black-90-dias.jpeg";
 import { GymSection } from "../components/GymSection";
 
@@ -83,7 +83,7 @@ export default function LandingPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between items-center h-16">
                         <div className="flex items-center gap-2">
-                            <img src={cwLogo} alt="CW Life" className="w-28 h-auto" />
+                            <img src={cvLogo} alt="CV Life" className="w-28 h-auto" />
                         </div>
 
                         <div className="hidden md:flex gap-8 items-center">
@@ -173,7 +173,7 @@ export default function LandingPage() {
                         <div className="space-y-6 animate-fade-in">
                             <div className="space-y-2">
                                 <h2 className="text-yellow-500 font-black tracking-[0.3em] text-sm md:text-base animate-fade-in uppercase">
-                                    BOLTSCRISTIAN <span className="text-white/40 mx-2">|</span> CW LIFE STANDARD
+                                    CRISTIAN WOSNIAK <span className="text-white/40 mx-2">|</span> CV LIFE STANDARD
                                 </h2>
                                 <h1 className="text-5xl md:text-8xl font-black leading-tight text-center md:text-left tracking-tighter italic">
                                     DOMINÁ TU <br />
@@ -247,7 +247,7 @@ export default function LandingPage() {
                     <div className="grid md:grid-cols-3 gap-6 mt-20">
                         {[
                             {
-                                title: "CÓDIGO CW LIFE",
+                                title: "CÓDIGO CV LIFE",
                                 desc: "Entrenamiento de Élite diseñado para destruir debilidades.",
                             },
                             {
@@ -279,7 +279,7 @@ export default function LandingPage() {
                     <div className="space-y-3">
                         <div className="flex items-center gap-3">
                             <p className="text-sm uppercase tracking-[0.25em] text-yellow-500">
-                                Estándar CW Life
+                                Estándar CV Life
                             </p>
                         </div>
                         <h2 className="text-3xl md:text-4xl font-bold">
@@ -709,7 +709,7 @@ export default function LandingPage() {
                                 message: "Hola, quiero reservar la preventa semipersonalizado.",
                             },
                             {
-                                title: "Método CW Life Online",
+                                title: "Método CV Life Online",
                                 subtitle: "Online personalizado",
                                 badge: null,
                                 description:
@@ -722,7 +722,7 @@ export default function LandingPage() {
                                     "Flexibilidad de horarios (avisando y sujeto a disponibilidad)",
                                 ],
                                 location: null,
-                                message: "Hola, me interesa el plan Método CW Life Online.",
+                                message: "Hola, me interesa el plan Método CV Life Online.",
                             },
                             {
                                 title: "BLACK | Training",
@@ -970,7 +970,7 @@ export default function LandingPage() {
                     <div className="grid gap-16 mb-16 md:grid-cols-12 items-start">
                         <div className="md:col-span-5 space-y-6">
                             <div className="flex items-center gap-2">
-                                <img src={cwLogo} alt="CW Life" className="h-10 w-auto" />
+                                <img src={cvLogo} alt="CV Life" className="h-10 w-auto" />
                             </div>
                             <p className="text-gray-400 leading-relaxed font-medium">
                                 Transformando vidas a través del fitness y el coaching de élite personalizado.
@@ -1017,7 +1017,7 @@ export default function LandingPage() {
                     </div>
 
                     <div className="pt-8 border-t border-yellow-500/20 text-center text-gray-400 space-y-2">
-                        <p>&copy; 2024 CW Life. Todos los derechos reservados.</p>
+                        <p>&copy; 2024 CV Life. Todos los derechos reservados.</p>
                         <p className="text-sm">
                             Diseño:{" "}
                             <a
