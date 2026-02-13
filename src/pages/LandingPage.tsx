@@ -542,73 +542,87 @@ export default function LandingPage() {
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                        {[
-                            {
-                                title: "Sede Central",
-                                subtitle: "Black Training GYM",
-                                address: "Antenor Sajama 471",
-                                city: "San Salvador de Jujuy",
-                                highlight: true,
-                            },
-                            {
-                                title: "Sede Entrenamiento Funcional",
-                                subtitle: "Black Training Funcional",
-                                address: "Mejías 412",
-                                city: "San Salvador de Jujuy",
-                                highlight: false,
-                            },
-                        ].map((sede, i) => (
-                            <div
-                                key={i}
-                                className={`relative p-8 rounded-2xl transition-all transform hover:-translate-y-2 ${sede.highlight
-                                    ? "glass-card-yellow border-yellow-500/40 shadow-[0_15px_50px_rgba(234,179,8,0.15)]"
-                                    : "glass-card border-white/5"
-                                    } hover:border-yellow-500/60 hover-glow-yellow`}
-                            >
-                                {sede.highlight && (
-                                    <span className="absolute top-4 right-4 px-3 py-1 bg-yellow-500 text-black text-xs font-extrabold rounded-full shadow-lg shadow-yellow-500/30">
-                                        PRINCIPAL
-                                    </span>
-                                )}
-                                <div className="flex items-start gap-4 mb-6">
-                                    <div className={`h-14 w-14 flex items-center justify-center rounded-xl ${sede.highlight
-                                        ? "bg-yellow-500/20 border-2 border-yellow-500/50"
-                                        : "bg-yellow-500/10 border border-yellow-500/30"
-                                        }`}>
-                                        <MapPin className={`w-7 h-7 ${sede.highlight ? "text-yellow-500" : "text-yellow-500/80"
-                                            }`} />
-                                    </div>
-                                    <div className="flex-1">
-                                        <h3 className={`text-2xl font-bold mb-1 ${sede.highlight ? "text-yellow-500" : "text-yellow-400"
+                    <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto items-start">
+                        <div className="lg:col-span-1 space-y-6">
+                            {[
+                                {
+                                    title: "Sede Central",
+                                    subtitle: "Black Training GYM",
+                                    address: "Antenor Sajama 471",
+                                    city: "San Salvador de Jujuy",
+                                    highlight: true,
+                                },
+                                {
+                                    title: "Sede Entrenamiento Funcional",
+                                    subtitle: "Black Training Funcional",
+                                    address: "Mejías 412",
+                                    city: "San Salvador de Jujuy",
+                                    highlight: false,
+                                },
+                            ].map((sede, i) => (
+                                <div
+                                    key={i}
+                                    className={`relative p-8 rounded-2xl transition-all transform hover:-translate-y-1 ${sede.highlight
+                                        ? "glass-card-yellow border-yellow-500/40 shadow-[0_15px_50px_rgba(234,179,8,0.15)]"
+                                        : "glass-card border-white/5"
+                                        } hover:border-yellow-500/60 hover-glow-yellow`}
+                                >
+                                    {sede.highlight && (
+                                        <span className="absolute top-4 right-4 px-3 py-1 bg-yellow-500 text-black text-[10px] font-black tracking-widest rounded-full shadow-lg shadow-yellow-500/30">
+                                            PRINCIPAL
+                                        </span>
+                                    )}
+                                    <div className="flex items-start gap-4 mb-6">
+                                        <div className={`h-12 w-12 flex-shrink-0 flex items-center justify-center rounded-xl ${sede.highlight
+                                            ? "bg-yellow-500/20 border-2 border-yellow-500/50"
+                                            : "bg-yellow-500/10 border border-yellow-500/30"
                                             }`}>
-                                            {sede.title}
-                                        </h3>
-                                        <p className="text-gray-300 font-semibold mb-4">
-                                            {sede.subtitle}
-                                        </p>
-                                        <div className="space-y-2">
-                                            <div className="flex items-center gap-2 text-gray-300">
-                                                <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div>
-                                                <span className="text-lg">{sede.address}</span>
-                                            </div>
-                                            <div className="flex items-center gap-2 text-gray-400">
-                                                <div className="w-1.5 h-1.5 bg-yellow-500/60 rounded-full"></div>
-                                                <span>{sede.city}</span>
+                                            <MapPin className={`w-6 h-6 ${sede.highlight ? "text-yellow-500" : "text-yellow-500/80"
+                                                }`} />
+                                        </div>
+                                        <div className="flex-1">
+                                            <h3 className={`text-xl font-bold mb-1 ${sede.highlight ? "text-yellow-500" : "text-white"
+                                                }`}>
+                                                {sede.title}
+                                            </h3>
+                                            <p className="text-gray-400 text-sm font-semibold mb-3">
+                                                {sede.subtitle}
+                                            </p>
+                                            <div className="space-y-1">
+                                                <div className="flex items-center gap-2 text-gray-300">
+                                                    <span className="text-sm">{sede.address}</span>
+                                                </div>
+                                                <div className="text-gray-500 text-xs">
+                                                    <span>{sede.city}</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <a
+                                        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${sede.address}, ${sede.city}`)}`}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="block w-full py-3 bg-yellow-500/10 hover:bg-yellow-500 text-yellow-500 hover:text-black border border-yellow-500/30 rounded-xl text-center text-xs font-black uppercase tracking-widest transition-all"
+                                    >
+                                        Ver en Google Maps
+                                    </a>
                                 </div>
-                                <a
-                                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${sede.address}, ${sede.city}`)}`}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="block w-full py-3 bg-yellow-500/10 hover:bg-yellow-500 text-yellow-500 hover:text-black border border-yellow-500 rounded-lg text-center font-bold transition-all mt-6"
-                                >
-                                    Ver en Google Maps
-                                </a>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
+
+                        <div className="lg:col-span-2 h-[400px] lg:h-[550px] rounded-3xl overflow-hidden border border-yellow-500/20 shadow-2xl relative group">
+                            <div className="absolute inset-0 bg-yellow-500/5 pointer-events-none group-hover:bg-transparent transition-colors duration-500" />
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3638.761668622178!2d-65.2654065!3d-24.2151253!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x67516b52bfc5ba41%3A0xf069aca9c87d63da!2sBlack%20Training%20GYM%20%7C%20Cristian%20Wosniak!5e0!3m2!1ses-419!2sar!4v1771007641589!5m2!1ses-419!2sar"
+                                width="100%"
+                                height="100%"
+                                style={{ border: 0, filter: 'grayscale(0.2) contrast(1.1) brightness(0.9)' }}
+                                allowFullScreen={true}
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                                title="Ubicación Black Training"
+                            />
+                        </div>
                     </div>
                 </div>
             </section>
