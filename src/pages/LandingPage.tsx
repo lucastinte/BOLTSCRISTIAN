@@ -87,7 +87,11 @@ export default function LandingPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between items-center h-16">
                         <div className="flex items-center gap-2">
-                            <img src={cvLogo} alt="CV Life" className="w-28 h-auto" />
+                            <img
+                                src={cvLogo}
+                                alt="CW Life"
+                                className="w-32 h-auto mix-blend-screen"
+                            />
                         </div>
 
                         <div className="hidden md:flex gap-8 items-center">
@@ -228,7 +232,7 @@ export default function LandingPage() {
                             <img
                                 src={heroImage}
                                 alt="Cristian Wosniak | Estratega"
-                                className="relative rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] w-full h-[600px] object-cover border-b-4 border-yellow-500 grayscale-[20%] hover:grayscale-0 transition-all duration-500 box-glow-yellow"
+                                className="relative rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] w-full h-[600px] object-cover border-b-4 border-yellow-500 grayscale-[20%] brightness-[0.85] hover:brightness-100 hover:grayscale-0 transition-all duration-500 box-glow-yellow"
                             />
                             <div className="absolute -bottom-6 -left-6 bg-black/90 backdrop-blur-xl border-2 border-yellow-500/50 rounded-2xl p-6 shadow-2xl transform -rotate-2 hover:rotate-0 transition-all">
                                 <div className="flex items-center gap-4">
