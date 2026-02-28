@@ -561,6 +561,14 @@ export default function LandingPage() {
                                     city: "San Salvador de Jujuy",
                                     highlight: false,
                                 },
+                                {
+                                    title: "Sede Alto Comedero",
+                                    subtitle: "Black Training Women",
+                                    address: "Calle 514 – Mza 24 – Lote 16",
+                                    city: "B° 30 Hectáreas, Jujuy",
+                                    highlight: false,
+                                    badge: "EXCLUSIVO MUJERES",
+                                },
                             ].map((sede, i) => (
                                 <div
                                     key={i}
@@ -572,6 +580,11 @@ export default function LandingPage() {
                                     {sede.highlight && (
                                         <span className="absolute top-4 right-4 px-3 py-1 bg-yellow-500 text-black text-[10px] font-black tracking-widest rounded-full shadow-lg shadow-yellow-500/30">
                                             PRINCIPAL
+                                        </span>
+                                    )}
+                                    {sede.badge && (
+                                        <span className="absolute top-4 right-4 px-3 py-1 bg-pink-500 text-white text-[10px] font-black tracking-widest rounded-full shadow-lg shadow-pink-500/30 animate-pulse">
+                                            {sede.badge}
                                         </span>
                                     )}
                                     <div className="flex items-start gap-4 mb-6">
