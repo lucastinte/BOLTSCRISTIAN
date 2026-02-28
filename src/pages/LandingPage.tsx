@@ -555,19 +555,19 @@ export default function LandingPage() {
                                     highlight: true,
                                 },
                                 {
-                                    title: "Sede Entrenamiento Funcional",
-                                    subtitle: "Black Training Funcional",
-                                    address: "Mejías 412",
-                                    city: "San Salvador de Jujuy",
-                                    highlight: false,
-                                },
-                                {
                                     title: "Sede Alto Comedero",
                                     subtitle: "Black Training Women",
                                     address: "Calle 514 – Mza 24 – Lote 16",
                                     city: "B° 30 Hectáreas, Jujuy",
                                     highlight: false,
                                     badge: "EXCLUSIVO MUJERES",
+                                },
+                                {
+                                    title: "Sede Entrenamiento Funcional",
+                                    subtitle: "Black Training Funcional",
+                                    address: "Mejías 412",
+                                    city: "San Salvador de Jujuy",
+                                    highlight: false,
                                 },
                             ].map((sede, i) => (
                                 <div
