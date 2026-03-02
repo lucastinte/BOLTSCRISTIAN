@@ -25,7 +25,7 @@ import aboutImage from "../assets/wosniak-about.png";
 import transformacion1 from "../assets/transformacion-1.png";
 import transformacion2 from "../assets/transformacion-2.png";
 import transformacion3 from "../assets/transformacion-3.png";
-import cwLifeLogo from "../assets/cw-life-256h.png";
+import cwLifeLogo from "../assets/logo.svg";
 import black90Dias from "../assets/black-90-dias.jpeg";
 import { GymSection } from "../components/GymSection";
 import evolution1 from "../assets/evolution-1.mp4";
@@ -83,7 +83,7 @@ export default function LandingPage() {
 
     return (
         <div className="min-h-screen bg-black text-white">
-            <nav className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-yellow-500/20">
+            <nav className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-red-600/20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between items-center h-16">
                         <div className="flex items-center gap-2">
@@ -102,7 +102,7 @@ export default function LandingPage() {
                                         onClick={() =>
                                             scrollToSection(item.toLowerCase().replace(/\s+/g, "-"))
                                         }
-                                        className="text-gray-300 hover:text-yellow-500 transition-colors"
+                                        className="text-gray-300 hover:text-red-600 transition-colors"
                                     >
                                         {item}
                                     </button>
@@ -110,7 +110,7 @@ export default function LandingPage() {
                             )}
                             <button
                                 onClick={() => navigate(session ? "/dashboard" : "/login")}
-                                className="px-5 py-2 bg-yellow-500 hover:bg-yellow-400 text-black font-bold rounded-full transition-all transform hover:scale-105 text-sm flex items-center gap-2"
+                                className="px-5 py-2 bg-red-600 hover:bg-red-500 text-black font-bold rounded-full transition-all transform hover:scale-105 text-sm flex items-center gap-2"
                             >
                                 {session ? (
                                     <>
@@ -124,7 +124,7 @@ export default function LandingPage() {
                         </div>
 
                         <button
-                            className="md:hidden text-yellow-500"
+                            className="md:hidden text-red-600"
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                         >
                             {mobileMenuOpen ? (
@@ -137,7 +137,7 @@ export default function LandingPage() {
                 </div>
 
                 {mobileMenuOpen && (
-                    <div className="md:hidden bg-black border-t border-yellow-500/20">
+                    <div className="md:hidden bg-black border-t border-red-600/20">
                         <div className="px-4 py-4 space-y-3">
                             {["Inicio", "Sobre Mí", "Programas", "Sedes", "Precios", "Contacto"].map(
                                 (item) => (
@@ -146,7 +146,7 @@ export default function LandingPage() {
                                         onClick={() =>
                                             scrollToSection(item.toLowerCase().replace(/\s+/g, "-"))
                                         }
-                                        className="block w-full text-left text-gray-300 hover:text-yellow-500 transition-colors py-2"
+                                        className="block w-full text-left text-gray-300 hover:text-red-600 transition-colors py-2"
                                     >
                                         {item}
                                     </button>
@@ -154,7 +154,7 @@ export default function LandingPage() {
                             )}
                             <button
                                 onClick={() => navigate(session ? "/dashboard" : "/login")}
-                                className="block w-full text-center mt-4 px-5 py-3 bg-yellow-500 hover:bg-yellow-400 text-black font-bold rounded-lg transition-all flex items-center justify-center gap-2"
+                                className="block w-full text-center mt-4 px-5 py-3 bg-red-600 hover:bg-red-500 text-black font-bold rounded-lg transition-all flex items-center justify-center gap-2"
                             >
                                 {session ? (
                                     <>
@@ -174,7 +174,7 @@ export default function LandingPage() {
                 id="inicio"
                 className="relative pt-24 pb-20 px-4 overflow-hidden scroll-smooth"
             >
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-yellow-500/10 blur-[120px] rounded-full animate-pulse-glow"></div>
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-red-600/10 blur-[120px] rounded-full animate-pulse-glow"></div>
                 <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-black"></div>
                 <div className="max-w-7xl mx-auto relative">
                     <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -183,7 +183,7 @@ export default function LandingPage() {
 
                                 <h1 className="text-5xl md:text-8xl font-black leading-tight text-center md:text-left tracking-tighter italic">
                                     DOMINÁ TU <br />
-                                    <span className="text-yellow-500 text-glow-yellow">REALIDAD</span>
+                                    <span className="text-red-600 text-glow-red">REALIDAD</span>
                                 </h1>
                             </div>
                             <p className="text-xl text-gray-400 text-center md:text-left max-w-xl mx-auto md:mx-0">
@@ -192,25 +192,25 @@ export default function LandingPage() {
                             <div className="flex flex-wrap gap-4 justify-center md:justify-start">
                                 <a
                                     href="https://wa.me/5493884384713"
-                                    className="px-8 py-4 bg-yellow-500 hover:bg-yellow-600 text-black font-black rounded-lg transition-all transform hover:scale-105 flex items-center gap-2 shadow-[0_0_30px_rgba(234,179,8,0.3)]"
+                                    className="px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-black rounded-lg transition-all transform hover:scale-105 flex items-center gap-2 shadow-[0_0_30px_rgba(220, 38, 38,0.3)]"
                                 >
                                     <MessageCircle className="w-5 h-5 font-black" />
                                     TOMAR MI LUGAR
                                 </a>
                                 <button
                                     onClick={() => scrollToSection("programas")}
-                                    className="px-8 py-4 border-2 border-yellow-500/50 text-white hover:bg-yellow-500/10 font-black rounded-lg transition-all"
+                                    className="px-8 py-4 border-2 border-red-600/50 text-white hover:bg-red-600/10 font-black rounded-lg transition-all"
                                 >
                                     DEFINIR CAMPO DE BATALLA
                                 </button>
                             </div>
-                            <div className="text-sm text-yellow-500 font-black tracking-widest uppercase border-l-4 border-yellow-500 pl-4 py-1 mx-auto md:mx-0">
+                            <div className="text-sm text-red-600 font-black tracking-widest uppercase border-l-4 border-red-600 pl-4 py-1 mx-auto md:mx-0">
                                 “DISCIPLINA SIN FILTROS. RESULTADOS SIN EXCUSAS.”
                             </div>
 
-                            <div className="mt-3 w-full sm:w-auto">
-                                <div className="inline-flex w-full sm:w-auto items-center gap-3 px-4 py-3 rounded-2xl glass-card-yellow shadow-[0_12px_40px_rgba(234,179,8,0.12)]">
-                                    <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-yellow-500/15 border border-yellow-500/50 text-yellow-500">
+                            <div className="mt-5 flex flex-col gap-3 w-full sm:w-auto">
+                                <div className="inline-flex w-full sm:w-auto items-center gap-3 px-4 py-3 rounded-2xl glass-card-red shadow-[0_12px_40px_rgba(220, 38, 38,0.12)]">
+                                    <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-red-600/15 border border-red-600/50 text-red-600">
                                         <MapPin className="w-5 h-5" />
                                     </div>
                                     <div className="text-left leading-tight">
@@ -222,23 +222,39 @@ export default function LandingPage() {
                                         </div>
                                     </div>
                                 </div>
+                                <div className="inline-flex w-full sm:w-auto items-center gap-3 px-4 py-3 rounded-2xl glass-card border border-pink-500/30 shadow-[0_12px_40px_rgba(236,72,153,0.12)]">
+                                    <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-pink-500/15 border border-pink-500/50 text-pink-500">
+                                        <MapPin className="w-5 h-5" />
+                                    </div>
+                                    <div className="text-left leading-tight">
+                                        <div className="text-sm font-semibold text-white flex flex-wrap items-center gap-2">
+                                            Calle 514 – Mza 24 – Lote 16
+                                            <span className="px-2 py-0.5 bg-pink-500 text-white text-[9px] font-black tracking-widest rounded-full uppercase shadow-lg shadow-pink-500/30">
+                                                Exclusivo Mujeres
+                                            </span>
+                                        </div>
+                                        <div className="text-xs text-gray-300">
+                                            B° 30 Hectáreas, Jujuy
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         <div className="relative group animate-float">
-                            <div className="absolute inset-0 bg-yellow-500/20 blur-[100px] rounded-full group-hover:bg-yellow-500/30 transition-all duration-700 animate-pulse-glow"></div>
+                            <div className="absolute inset-0 bg-red-600/20 blur-[100px] rounded-full group-hover:bg-red-600/30 transition-all duration-700 animate-pulse-glow"></div>
                             <img
                                 src={heroImage}
                                 alt="Cristian Wosniak | Estratega"
-                                className="relative rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] w-full h-[600px] object-cover border-b-4 border-yellow-500 grayscale-[20%] brightness-[0.85] hover:brightness-100 hover:grayscale-0 transition-all duration-500 box-glow-yellow"
+                                className="relative rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] w-full h-[600px] object-cover border-b-4 border-red-600 grayscale-[20%] brightness-[0.85] hover:brightness-100 hover:grayscale-0 transition-all duration-500 box-glow-red"
                             />
-                            <div className="absolute -bottom-6 -left-6 bg-black/90 backdrop-blur-xl border-2 border-yellow-500/50 rounded-2xl p-6 shadow-2xl transform -rotate-2 hover:rotate-0 transition-all">
+                            <div className="absolute -bottom-6 -left-6 bg-black/90 backdrop-blur-xl border-2 border-red-600/50 rounded-2xl p-6 shadow-2xl transform -rotate-2 hover:rotate-0 transition-all">
                                 <div className="flex items-center gap-4">
-                                    <div className="w-14 h-14 bg-yellow-500 rounded-xl flex items-center justify-center shadow-lg shadow-yellow-500/20">
+                                    <div className="w-14 h-14 bg-red-600 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20">
                                         <Star className="w-8 h-8 text-black fill-current" />
                                     </div>
                                     <div>
-                                        <div className="text-3xl font-black text-yellow-500 tracking-tighter">
+                                        <div className="text-3xl font-black text-red-600 tracking-tighter">
                                             4000+
                                         </div>
                                         <div className="text-xs uppercase tracking-[0.2em] font-bold text-gray-400">
@@ -267,9 +283,9 @@ export default function LandingPage() {
                         ].map((feature, i) => (
                             <div
                                 key={i}
-                                className="p-6 glass-card-yellow border-yellow-500/20 rounded-xl hover:border-yellow-500/50 transition-all hover:translate-y-[-4px] hover-glow-yellow"
+                                className="p-6 glass-card-red border-red-600/20 rounded-xl hover:border-red-600/50 transition-all hover:translate-y-[-4px] hover-glow-red"
                             >
-                                <h3 className="text-xl font-bold text-yellow-500 mb-2 text-glow-yellow">
+                                <h3 className="text-xl font-bold text-red-500 mb-2 text-glow-red">
                                     {feature.title}
                                 </h3>
                                 <p className="text-gray-400">{feature.desc}</p>
@@ -280,11 +296,11 @@ export default function LandingPage() {
             </section>
 
             <section className="px-4 py-16 bg-black relative">
-                <div className="absolute inset-0 bg-gradient-to-b from-black via-yellow-500/5 to-black opacity-50"></div>
-                <div className="max-w-5xl mx-auto rounded-2xl glass-card border-yellow-500/20 p-8 md:p-12 space-y-6 relative z-10 box-glow-yellow">
+                <div className="absolute inset-0 bg-gradient-to-b from-black via-red-600/5 to-black opacity-50"></div>
+                <div className="max-w-5xl mx-auto rounded-2xl glass-card border-red-600/20 p-8 md:p-12 space-y-6 relative z-10 box-glow-red">
                     <div className="space-y-3">
                         <div className="flex items-center gap-3">
-                            <p className="text-sm uppercase tracking-[0.25em] text-yellow-500">
+                            <p className="text-sm uppercase tracking-[0.25em] text-red-600">
                                 Estándar CW Life
                             </p>
                         </div>
@@ -298,7 +314,7 @@ export default function LandingPage() {
                     </div>
                     <div className="grid md:grid-cols-3 gap-6 text-gray-200">
                         <div className="space-y-2">
-                            <div className="text-yellow-500 font-semibold">
+                            <div className="text-red-600 font-semibold">
                                 1. Estética de Poder
                             </div>
                             <p className="text-sm text-gray-300">
@@ -307,7 +323,7 @@ export default function LandingPage() {
                             </p>
                         </div>
                         <div className="space-y-2">
-                            <div className="text-yellow-500 font-semibold">
+                            <div className="text-red-600 font-semibold">
                                 2. Disciplina Innegociable
                             </div>
                             <p className="text-sm text-gray-300">
@@ -316,7 +332,7 @@ export default function LandingPage() {
                             </p>
                         </div>
                         <div className="space-y-2">
-                            <div className="text-yellow-500 font-semibold">
+                            <div className="text-red-600 font-semibold">
                                 3. Verdad Brutal
                             </div>
                             <p className="text-sm text-gray-300">
@@ -325,7 +341,7 @@ export default function LandingPage() {
                             </p>
                         </div>
                     </div>
-                    <div className="border-l-2 border-yellow-500/60 pl-4 text-gray-200 italic">
+                    <div className="border-l-2 border-red-600/60 pl-4 text-gray-200 italic">
                         “La mediocridad no es una opción en mi trinchera.”
                     </div>
                 </div>
@@ -333,21 +349,21 @@ export default function LandingPage() {
 
             <section
                 id="sobre-mí"
-                className="py-20 px-4 bg-gradient-to-b from-black to-yellow-500/5"
+                className="py-20 px-4 bg-gradient-to-b from-black to-red-600/5"
             >
                 <div className="max-w-6xl mx-auto">
                     <div className="grid md:grid-cols-2 gap-12 items-center">
                         <div className="relative group animate-float">
-                            <div className="absolute inset-0 bg-yellow-500/10 blur-[80px] rounded-full group-hover:bg-yellow-500/20 transition-all duration-700 animate-pulse-glow"></div>
+                            <div className="absolute inset-0 bg-red-600/10 blur-[80px] rounded-full group-hover:bg-red-600/20 transition-all duration-700 animate-pulse-glow"></div>
                             <img
                                 src={aboutImage}
                                 alt="Cristian Wosniak"
-                                className="relative rounded-2xl shadow-2xl border-2 border-yellow-500/30 grayscale-[10%] hover:grayscale-0 transition-all duration-500 box-glow-yellow"
+                                className="relative rounded-2xl shadow-2xl border-2 border-red-600/30 grayscale-[10%] hover:grayscale-0 transition-all duration-500 box-glow-red"
                             />
                         </div>
                         <div className="space-y-6">
                             <h2 className="text-4xl md:text-5xl font-black italic">
-                                <span className="text-yellow-500">CRISTIAN WOSNIAK</span>
+                                <span className="text-red-600">CRISTIAN WOSNIAK</span>
                             </h2>
                             <p className="text-lg text-gray-300 leading-relaxed font-medium">
                                 No busco ser tu amigo. Busco ser el motor de tu transformación. Mi carrera se basa en la conquista de obstáculos y en la construcción de fortalezas donde antes había dudas.
@@ -362,7 +378,7 @@ export default function LandingPage() {
                                         href={href}
                                         target="_blank"
                                         rel="noreferrer"
-                                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-yellow-500 hover:bg-yellow-500/10 transition-all hover:scale-105 hover-glow-yellow"
+                                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-red-600 hover:bg-red-600/10 transition-all hover:scale-105 hover-glow-red"
                                     >
                                         <Icon className="w-5 h-5" />
                                         <span className="text-sm font-semibold">{name}</span>
@@ -375,33 +391,33 @@ export default function LandingPage() {
             </section>
 
             {/* New Community Section */}
-            <section className="py-24 px-4 bg-yellow-500 relative overflow-hidden premium-gradient">
+            <section className="py-24 px-4 bg-red-600 relative overflow-hidden premium-gradient">
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 mix-blend-overlay"></div>
-                <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-yellow-500/20 blur-[100px] rounded-full animate-pulse-glow"></div>
+                <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-red-600/20 blur-[100px] rounded-full animate-pulse-glow"></div>
                 <div className="max-w-7xl mx-auto relative z-10">
                     <div className="grid md:grid-cols-2 gap-12 items-center">
-                        <div className="text-black space-y-6">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/10 border border-black/20 font-bold text-sm">
+                        <div className="text-white space-y-6">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 font-bold text-sm">
                                 <Users className="w-4 h-4" />
                                 <span>Comunidad Exclusiva</span>
                             </div>
                             <h2 className="text-4xl md:text-6xl font-black leading-tight">
                                 Únete al Área de <br />
-                                Miembros <span className="text-white drop-shadow-lg">Gratis</span>
+                                Miembros <span className="bg-black text-white px-2 py-1 rounded-lg drop-shadow-lg">Gratis</span>
                             </h2>
                             <p className="text-xl font-medium opacity-90">
                                 Accede a contenido de valor que no publico en redes. Masterclasses, guías en PDF y rutinas express para llevar tu entrenamiento al siguiente nivel.
                             </p>
 
                             <div className="grid sm:grid-cols-2 gap-4 pt-4">
-                                <div className="flex items-center gap-3 p-4 bg-black/5 rounded-xl border border-black/10">
-                                    <div className="w-10 h-10 bg-black text-yellow-500 rounded-lg flex items-center justify-center">
+                                <div className="flex items-center gap-3 p-4 bg-white/5 rounded-xl border border-white/10">
+                                    <div className="w-10 h-10 bg-white text-red-600 rounded-lg flex items-center justify-center">
                                         <PlayCircle className="w-6 h-6" />
                                     </div>
                                     <span className="font-bold">Masterclasses</span>
                                 </div>
-                                <div className="flex items-center gap-3 p-4 bg-black/5 rounded-xl border border-black/10">
-                                    <div className="w-10 h-10 bg-black text-yellow-500 rounded-lg flex items-center justify-center">
+                                <div className="flex items-center gap-3 p-4 bg-white/5 rounded-xl border border-white/10">
+                                    <div className="w-10 h-10 bg-white text-red-600 rounded-lg flex items-center justify-center">
                                         <FileText className="w-6 h-6" />
                                     </div>
                                     <span className="font-bold">Guías PDF</span>
@@ -410,25 +426,25 @@ export default function LandingPage() {
 
                             <button
                                 onClick={() => navigate(session ? "/dashboard" : "/login")}
-                                className="w-full sm:w-auto px-8 py-4 bg-black text-white hover:bg-stone-900 font-bold rounded-xl transition-all transform hover:scale-105 shadow-xl flex items-center justify-center gap-2 text-lg"
+                                className="w-full sm:w-auto px-8 py-4 bg-white text-red-600 hover:bg-gray-100 font-black rounded-xl transition-all transform hover:scale-105 shadow-xl flex items-center justify-center gap-2 text-lg"
                             >
                                 <LayoutDashboard className="w-5 h-5" />
                                 {session ? "IR A MI CUARTEL" : "UNIRSE AL ESCUADRÓN (GRATIS)"}
                             </button>
-                            <p className="text-sm font-black text-black tracking-tighter italic">
+                            <p className="text-sm font-black text-white/80 tracking-tighter italic">
                                 * ACCESO INMEDIATO. ACCIÓN INMEDIATA.
                             </p>
                         </div>
 
                         <div className="relative hidden md:block">
                             <div className="absolute inset-0 bg-black/20 blur-3xl rounded-full transform rotate-12"></div>
-                            <div className="relative bg-black/90 backdrop-blur-xl rounded-2xl p-8 border border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.8)] transform rotate-2 hover:rotate-0 transition-all duration-500 box-glow-yellow">
+                            <div className="relative bg-black/90 backdrop-blur-xl rounded-2xl p-8 border border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.8)] transform rotate-2 hover:rotate-0 transition-all duration-500 box-glow-red">
                                 <div className="flex items-center justify-between mb-8 border-b border-gray-800/50 pb-4">
                                     <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 bg-yellow-500 rounded-xl flex items-center justify-center font-bold text-black shadow-lg shadow-yellow-500/20">B</div>
+                                        <div className="w-10 h-10 bg-red-600 rounded-xl flex items-center justify-center font-bold text-black shadow-lg shadow-red-600/20">B</div>
                                         <span className="font-bold text-white tracking-tight">BLACK COMMUNITY</span>
                                     </div>
-                                    <div className="px-3 py-1 bg-yellow-500/20 text-yellow-500 text-[10px] font-black tracking-widest rounded-full border border-yellow-500/20 uppercase">
+                                    <div className="px-3 py-1 bg-red-600/20 text-red-600 text-[10px] font-black tracking-widest rounded-full border border-red-600/20 uppercase">
                                         MIEMBRO
                                     </div>
                                 </div>
@@ -438,16 +454,16 @@ export default function LandingPage() {
                                         { title: "Técnica de Sentadilla", icon: PlayCircle, type: "VIDEO", duration: "12:05" },
                                         { title: "Rutina Express Pecho", icon: Dumbbell, type: "RUTINA", intensity: "ALTA" }
                                     ].map((item, i) => (
-                                        <div key={i} className="flex items-center gap-4 p-4 glass-card rounded-xl border-white/5 hover:border-yellow-500/30 transition-all group/item">
-                                            <div className="w-10 h-10 bg-yellow-500/10 rounded-lg flex items-center justify-center text-yellow-500 group-hover/item:bg-yellow-500 group-hover/item:text-black transition-colors">
+                                        <div key={i} className="flex items-center gap-4 p-4 glass-card rounded-xl border-white/5 hover:border-red-600/30 transition-all group/item">
+                                            <div className="w-10 h-10 bg-red-600/10 rounded-lg flex items-center justify-center text-red-600 group-hover/item:bg-red-600 group-hover/item:text-black transition-colors">
                                                 <item.icon className="w-5 h-5" />
                                             </div>
                                             <div className="flex-1">
                                                 <div className="text-white font-bold text-sm">{item.title}</div>
                                                 <div className="text-gray-500 text-[10px] font-medium tracking-wide">{(item as any).size || (item as any).duration || (item as any).intensity} • {item.type}</div>
                                             </div>
-                                            <div className="w-8 h-8 rounded-full border border-gray-800 flex items-center justify-center group-hover/item:border-yellow-500/50 transition-colors">
-                                                <ChevronDown className="w-4 h-4 text-gray-500 -rotate-90 group-hover/item:text-yellow-500" />
+                                            <div className="w-8 h-8 rounded-full border border-gray-800 flex items-center justify-center group-hover/item:border-red-600/50 transition-colors">
+                                                <ChevronDown className="w-4 h-4 text-gray-500 -rotate-90 group-hover/item:text-red-600" />
                                             </div>
                                         </div>
                                     ))}
@@ -462,7 +478,7 @@ export default function LandingPage() {
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
                         <h2 className="text-4xl md:text-6xl font-black mb-4 uppercase tracking-tighter">
-                            DEFINÍ TU <span className="text-yellow-500">CAMPO DE BATALLA</span>
+                            DEFINÍ TU <span className="text-red-600">CAMPO DE BATALLA</span>
                         </h2>
                         <p className="text-xl text-gray-400 font-bold">
                             Elegí la modalidad para tu reconstrucción total
@@ -504,9 +520,9 @@ export default function LandingPage() {
                         ].map((program, i) => (
                             <div
                                 key={i}
-                                className="group p-8 glass-card-yellow border-yellow-500/10 rounded-2xl hover:border-yellow-500 transition-all transform hover:-translate-y-2 hover-glow-yellow"
+                                className="group p-8 glass-card-red border-red-600/10 rounded-2xl hover:border-red-600 transition-all transform hover:-translate-y-2 hover-glow-red"
                             >
-                                <h3 className="text-2xl font-bold text-yellow-500 mb-4 text-glow-yellow">
+                                <h3 className="text-2xl font-bold text-red-600 mb-4 text-glow-red">
                                     {program.title}
                                 </h3>
                                 <p className="text-gray-300 mb-6">{program.desc}</p>
@@ -516,14 +532,14 @@ export default function LandingPage() {
                                             key={j}
                                             className="flex items-center gap-3 text-gray-400"
                                         >
-                                            <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full shadow-[0_0_8px_rgba(234,179,8,0.6)]"></div>
+                                            <div className="w-1.5 h-1.5 bg-red-600 rounded-full shadow-[0_0_8px_rgba(220, 38, 38,0.6)]"></div>
                                             {feature}
                                         </li>
                                     ))}
                                 </ul>
                                 <a
                                     href="https://wa.me/5493884384713"
-                                    className="block w-full py-4 bg-yellow-500 text-black border border-yellow-500 rounded-lg text-center font-black uppercase text-xs tracking-[0.2em] transition-all hover:bg-yellow-400 shadow-[0_5px_15px_rgba(234,179,8,0.2)]"
+                                    className="block w-full py-4 bg-red-600 text-black border border-red-600 rounded-lg text-center font-black uppercase text-xs tracking-[0.2em] transition-all hover:bg-red-500 shadow-[0_5px_15px_rgba(220, 38, 38,0.2)]"
                                 >
                                     INGRESAR AL FRENTE
                                 </a>
@@ -537,7 +553,7 @@ export default function LandingPage() {
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
                         <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                            Nuestras <span className="text-yellow-500">Sedes</span>
+                            Nuestras <span className="text-red-600">Sedes</span>
                         </h2>
                         <p className="text-xl text-gray-400">
                             Encuéntranos en San Salvador de Jujuy
@@ -573,12 +589,12 @@ export default function LandingPage() {
                                 <div
                                     key={i}
                                     className={`relative p-8 rounded-2xl transition-all transform hover:-translate-y-1 ${sede.highlight
-                                        ? "glass-card-yellow border-yellow-500/40 shadow-[0_15px_50px_rgba(234,179,8,0.15)]"
+                                        ? "glass-card-red border-red-600/40 shadow-[0_15px_50px_rgba(220, 38, 38,0.15)]"
                                         : "glass-card border-white/5"
-                                        } hover:border-yellow-500/60 hover-glow-yellow`}
+                                        } hover:border-red-600/60 hover-glow-red`}
                                 >
                                     {sede.highlight && (
-                                        <span className="absolute top-4 right-4 px-3 py-1 bg-yellow-500 text-black text-[10px] font-black tracking-widest rounded-full shadow-lg shadow-yellow-500/30">
+                                        <span className="absolute top-4 right-4 px-3 py-1 bg-red-600 text-black text-[10px] font-black tracking-widest rounded-full shadow-lg shadow-red-600/30">
                                             PRINCIPAL
                                         </span>
                                     )}
@@ -589,14 +605,14 @@ export default function LandingPage() {
                                     )}
                                     <div className="flex items-start gap-4 mb-6">
                                         <div className={`h-12 w-12 flex-shrink-0 flex items-center justify-center rounded-xl ${sede.highlight
-                                            ? "bg-yellow-500/20 border-2 border-yellow-500/50"
-                                            : "bg-yellow-500/10 border border-yellow-500/30"
+                                            ? "bg-red-600/20 border-2 border-red-600/50"
+                                            : "bg-red-600/10 border border-red-600/30"
                                             }`}>
-                                            <MapPin className={`w-6 h-6 ${sede.highlight ? "text-yellow-500" : "text-yellow-500/80"
+                                            <MapPin className={`w-6 h-6 ${sede.highlight ? "text-red-600" : "text-red-600/80"
                                                 }`} />
                                         </div>
                                         <div className="flex-1">
-                                            <h3 className={`text-xl font-bold mb-1 ${sede.highlight ? "text-yellow-500" : "text-white"
+                                            <h3 className={`text-xl font-bold mb-1 ${sede.highlight ? "text-red-600" : "text-white"
                                                 }`}>
                                                 {sede.title}
                                             </h3>
@@ -617,7 +633,7 @@ export default function LandingPage() {
                                         href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${sede.address}, ${sede.city}`)}`}
                                         target="_blank"
                                         rel="noreferrer"
-                                        className="block w-full py-3 bg-yellow-500/10 hover:bg-yellow-500 text-yellow-500 hover:text-black border border-yellow-500/30 rounded-xl text-center text-xs font-black uppercase tracking-widest transition-all"
+                                        className="block w-full py-3 bg-red-600/10 hover:bg-red-600 text-red-600 hover:text-black border border-red-600/30 rounded-xl text-center text-xs font-black uppercase tracking-widest transition-all"
                                     >
                                         Ver en Google Maps
                                     </a>
@@ -625,8 +641,8 @@ export default function LandingPage() {
                             ))}
                         </div>
 
-                        <div className="lg:col-span-2 h-[400px] lg:h-[550px] rounded-3xl overflow-hidden border border-yellow-500/20 shadow-2xl relative group">
-                            <div className="absolute inset-0 bg-yellow-500/5 pointer-events-none group-hover:bg-transparent transition-colors duration-500" />
+                        <div className="lg:col-span-2 h-[400px] lg:h-[550px] rounded-3xl overflow-hidden border border-red-600/20 shadow-2xl relative group">
+                            <div className="absolute inset-0 bg-red-600/5 pointer-events-none group-hover:bg-transparent transition-colors duration-500" />
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3638.761668622178!2d-65.2654065!3d-24.2151253!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x67516b52bfc5ba41%3A0xf069aca9c87d63da!2sBlack%20Training%20GYM%20%7C%20Cristian%20Wosniak!5e0!3m2!1ses-419!2sar!4v1771007641589!5m2!1ses-419!2sar"
                                 width="100%"
@@ -642,11 +658,11 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            <section className="py-20 px-4 bg-gradient-to-b from-black to-yellow-500/5">
+            <section className="py-20 px-4 bg-gradient-to-b from-black to-red-600/5">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
                         <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                            <span className="text-yellow-500">Transformaciones</span> Reales
+                            <span className="text-red-600">Transformaciones</span> Reales
                         </h2>
                         <p className="text-xl text-gray-400">
                             Resultados que hablan por sí mismos
@@ -679,9 +695,9 @@ export default function LandingPage() {
                         ].map((testimonial, i) => (
                             <div
                                 key={i}
-                                className="p-6 glass-card border-white/5 rounded-xl hover:border-yellow-500/50 transition-all hover:translate-y-[-4px] hover-glow-yellow"
+                                className="p-6 glass-card border-white/5 rounded-xl hover:border-red-600/50 transition-all hover:translate-y-[-4px] hover-glow-red"
                             >
-                                <div className="mb-4 overflow-hidden rounded-lg border border-yellow-500/20">
+                                <div className="mb-4 overflow-hidden rounded-lg border border-red-600/20">
                                     <img
                                         src={testimonial.image}
                                         alt={`Transformación de ${testimonial.name}`}
@@ -692,15 +708,15 @@ export default function LandingPage() {
                                     {[...Array(5)].map((_, j) => (
                                         <Star
                                             key={j}
-                                            className="w-5 h-5 text-yellow-500 fill-current"
+                                            className="w-5 h-5 text-red-600 fill-current"
                                         />
                                     ))}
                                 </div>
                                 <p className="text-gray-300 mb-4 italic">
                                     "{testimonial.review}"
                                 </p>
-                                <div className="pt-4 border-t border-yellow-500/20">
-                                    <div className="font-bold text-yellow-500">
+                                <div className="pt-4 border-t border-red-600/20">
+                                    <div className="font-bold text-red-600">
                                         {testimonial.name}
                                     </div>
                                     <div className="text-sm text-gray-400">
@@ -716,14 +732,14 @@ export default function LandingPage() {
             {/* --- SECCIÓN ANTES Y DESPUÉS (VIDEOS) --- */}
             <section id="resultados" className="py-24 px-4 bg-black relative overflow-hidden">
                 {/* Decoración de fondo */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-yellow-500/5 blur-[120px] rounded-full pointer-events-none"></div>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-red-600/5 blur-[120px] rounded-full pointer-events-none"></div>
 
                 <div className="max-w-7xl mx-auto relative z-10">
                     <div className="text-center mb-16">
                         <h2 className="text-4xl md:text-6xl font-black italic tracking-tighter mb-4">
-                            RESULTADOS <span className="text-yellow-500">IRREFUTABLES</span>
+                            RESULTADOS <span className="text-red-600">IRREFUTABLES</span>
                         </h2>
-                        <div className="w-24 h-1 bg-yellow-500 mx-auto rounded-full"></div>
+                        <div className="w-24 h-1 bg-red-600 mx-auto rounded-full"></div>
                         <p className="text-gray-400 mt-6 text-lg max-w-2xl mx-auto">
                             No son solo cambios físicos, son reconstrucciones totales de mentalidad y disciplina.
                         </p>
@@ -735,9 +751,9 @@ export default function LandingPage() {
                             <div className="absolute -top-4 left-4 z-20 bg-black/80 backdrop-blur-md border border-white/10 px-4 py-1 rounded-full">
                                 <span className="text-xs font-bold tracking-widest text-gray-400 uppercase">Proceso I | Cristian Wosniak</span>
                             </div>
-                            <div className="relative overflow-hidden rounded-3xl border border-white/5 bg-white/5 aspect-[9/16] md:aspect-video flex items-center justify-center group-hover:border-yellow-500/30 transition-all duration-500">
+                            <div className="relative overflow-hidden rounded-3xl border border-white/5 bg-white/5 aspect-[9/16] md:aspect-video flex items-center justify-center group-hover:border-red-600/30 transition-all duration-500">
                                 <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                                    <PlayCircle className="w-16 h-16 text-white/20 mb-4 group-hover:text-yellow-500/50 transition-colors" />
+                                    <PlayCircle className="w-16 h-16 text-white/20 mb-4 group-hover:text-red-600/50 transition-colors" />
                                 </div>
                                 <video
                                     className="w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700"
@@ -756,12 +772,12 @@ export default function LandingPage() {
                         </div>
 
                         <div className="group relative">
-                            <div className="absolute -top-4 left-4 z-20 bg-yellow-500 px-4 py-1 rounded-full shadow-[0_0_20px_rgba(234,179,8,0.4)]">
+                            <div className="absolute -top-4 left-4 z-20 bg-red-600 px-4 py-1 rounded-full shadow-[0_0_20px_rgba(220, 38, 38,0.4)]">
                                 <span className="text-xs font-bold tracking-widest text-black uppercase">Proceso II | Cristian Wosniak</span>
                             </div>
-                            <div className="relative overflow-hidden rounded-3xl border border-yellow-500/20 bg-yellow-500/5 aspect-[9/16] md:aspect-video flex items-center justify-center group-hover:border-yellow-500/50 transition-all duration-500 box-glow-yellow">
+                            <div className="relative overflow-hidden rounded-3xl border border-red-600/20 bg-red-600/5 aspect-[9/16] md:aspect-video flex items-center justify-center group-hover:border-red-600/50 transition-all duration-500 box-glow-red">
                                 <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                                    <Star className="w-16 h-16 text-yellow-500 mb-4" />
+                                    <Star className="w-16 h-16 text-red-600 mb-4" />
                                 </div>
                                 <video
                                     className="w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700"
@@ -786,9 +802,9 @@ export default function LandingPage() {
                             <div className="absolute -top-4 left-4 z-20 bg-black/80 backdrop-blur-md border border-white/10 px-4 py-1 rounded-full">
                                 <span className="text-xs font-bold tracking-widest text-gray-400 uppercase">Proceso III | Cristian Wosniak</span>
                             </div>
-                            <div className="relative overflow-hidden rounded-3xl border border-white/5 bg-white/5 aspect-[9/16] md:aspect-video flex items-center justify-center group-hover:border-yellow-500/30 transition-all duration-500">
+                            <div className="relative overflow-hidden rounded-3xl border border-white/5 bg-white/5 aspect-[9/16] md:aspect-video flex items-center justify-center group-hover:border-red-600/30 transition-all duration-500">
                                 <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                                    <PlayCircle className="w-16 h-16 text-white/20 mb-4 group-hover:text-yellow-500/50 transition-colors" />
+                                    <PlayCircle className="w-16 h-16 text-white/20 mb-4 group-hover:text-red-600/50 transition-colors" />
                                 </div>
                                 <video
                                     className="w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700"
@@ -807,16 +823,16 @@ export default function LandingPage() {
                         </div>
 
                         <div className="group relative">
-                            <div className="absolute -top-4 left-4 z-20 bg-yellow-500 px-4 py-1 rounded-full shadow-[0_0_20px_rgba(234,179,8,0.4)]">
+                            <div className="absolute -top-4 left-4 z-20 bg-red-600 px-4 py-1 rounded-full shadow-[0_0_20px_rgba(220, 38, 38,0.4)]">
                                 <span className="text-xs font-bold tracking-widest text-black uppercase">Resultado Final | Cristian Wosniak</span>
                             </div>
-                            <div className="relative overflow-hidden rounded-3xl border border-yellow-500/20 bg-yellow-500/5 aspect-[9/16] md:aspect-video flex items-center justify-center group-hover:border-yellow-500/50 transition-all duration-500 box-glow-yellow">
+                            <div className="relative overflow-hidden rounded-3xl border border-red-600/20 bg-red-600/5 aspect-[9/16] md:aspect-video flex items-center justify-center group-hover:border-red-600/50 transition-all duration-500 box-glow-red">
                                 <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
                                     <div className="relative">
-                                        <div className="absolute inset-0 blur-lg bg-yellow-500/20 rounded-full animate-pulse"></div>
-                                        <Star className="w-16 h-16 text-yellow-500 mb-4 relative z-10" />
+                                        <div className="absolute inset-0 blur-lg bg-red-600/20 rounded-full animate-pulse"></div>
+                                        <Star className="w-16 h-16 text-red-600 mb-4 relative z-10" />
                                     </div>
-                                    <p className="text-yellow-500 font-bold tracking-widest uppercase">Evolución Máxima</p>
+                                    <p className="text-red-600 font-bold tracking-widest uppercase">Evolución Máxima</p>
                                 </div>
                                 <video
                                     className="w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700"
@@ -839,7 +855,7 @@ export default function LandingPage() {
                     <div className="mt-16 text-center">
                         <button
                             onClick={() => scrollToSection('precios')}
-                            className="px-8 py-4 bg-white text-black font-black text-sm tracking-widest uppercase hover:bg-yellow-500 transition-all duration-300 transform hover:-translate-y-1"
+                            className="px-8 py-4 bg-white text-black font-black text-sm tracking-widest uppercase hover:bg-red-600 transition-all duration-300 transform hover:-translate-y-1"
                         >
                             Quiero mi cambio ahora
                         </button>
@@ -851,7 +867,7 @@ export default function LandingPage() {
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
                         <h2 className="text-4xl md:text-7xl font-black mb-4 uppercase tracking-tighter">
-                            ARMAMENTO <span className="text-yellow-500">ESTRATÉGICO</span>
+                            ARMAMENTO <span className="text-red-600">ESTRATÉGICO</span>
                         </h2>
                         <p className="text-xl text-gray-400 font-bold">
                             Seleccioná el nivel de compromiso que vas a sostener
@@ -928,7 +944,7 @@ export default function LandingPage() {
                             plan.highlight ? (
                                 <div
                                     key={i}
-                                    className="relative p-1 rounded-2xl overflow-hidden border-2 border-yellow-500/50 shadow-[0_15px_50px_rgba(234,179,8,0.25)] lg:col-start-2 lg:row-start-2 lg:max-w-md lg:mx-auto"
+                                    className="relative p-1 rounded-2xl overflow-hidden border-2 border-red-600/50 shadow-[0_15px_50px_rgba(220, 38, 38,0.25)] lg:col-start-2 lg:row-start-2 lg:max-w-md lg:mx-auto"
                                 >
                                     <div className="absolute inset-0">
                                         <img
@@ -943,14 +959,14 @@ export default function LandingPage() {
 
                                         </div>
                                         <div className="mb-4 space-y-1">
-                                            <p className="text-[10px] text-yellow-500 uppercase tracking-[0.25em] font-black">
+                                            <p className="text-[10px] text-red-600 uppercase tracking-[0.25em] font-black">
                                                 {plan.subtitle}
                                             </p>
                                             <h3 className="text-4xl font-black text-white leading-tight drop-shadow-[0_2px_15px_rgba(0,0,0,0.6)]">
                                                 {plan.title}
                                             </h3>
                                             {plan.price && (
-                                                <p className="text-xl text-yellow-400 mt-1 font-bold text-glow-yellow">
+                                                <p className="text-xl text-red-500 mt-1 font-bold text-glow-red">
                                                     {plan.price}
                                                 </p>
                                             )}
@@ -964,14 +980,14 @@ export default function LandingPage() {
                                                     key={j}
                                                     className="flex items-center gap-3 bg-black/60 border border-white/10 rounded-xl px-4 py-3 backdrop-blur-md shadow-xl"
                                                 >
-                                                    <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full shadow-[0_0_8px_rgba(234,179,8,0.8)]"></div>
+                                                    <div className="w-1.5 h-1.5 bg-red-600 rounded-full shadow-[0_0_8px_rgba(220, 38, 38,0.8)]"></div>
                                                     <span className="font-bold tracking-tight">{feature}</span>
                                                 </div>
                                             ))}
                                         </div>
                                         <button
                                             onClick={() => navigate('/black-training')}
-                                            className="mt-auto block w-full py-4 rounded-xl text-center font-black uppercase text-xs tracking-[0.2em] transition-all bg-yellow-500 text-black hover:bg-yellow-400 shadow-[0_10px_30px_rgba(234,179,8,0.4)] transform hover:scale-[1.02]"
+                                            className="mt-auto block w-full py-4 rounded-xl text-center font-black uppercase text-xs tracking-[0.2em] transition-all bg-red-600 text-black hover:bg-red-500 shadow-[0_10px_30px_rgba(220, 38, 38,0.4)] transform hover:scale-[1.02]"
                                         >
                                             CONOCER MÁS
                                         </button>
@@ -980,15 +996,15 @@ export default function LandingPage() {
                             ) : (
                                 <div
                                     key={i}
-                                    className="relative p-8 rounded-2xl transition-all transform hover:-translate-y-2 glass-card-yellow border-yellow-500/10 hover:border-yellow-500/40 hover-glow-yellow"
+                                    className="relative p-8 rounded-2xl transition-all transform hover:-translate-y-2 glass-card-red border-red-600/10 hover:border-red-600/40 hover-glow-red"
                                 >
                                     <div className="flex flex-col items-center text-center mb-6 gap-3">
                                         {plan.badge && (
-                                            <span className="px-3 py-1 rounded-full bg-yellow-500 text-black text-[10px] font-black tracking-widest shadow-lg shadow-yellow-500/30 uppercase">
+                                            <span className="px-3 py-1 rounded-full bg-red-600 text-black text-[10px] font-black tracking-widest shadow-lg shadow-red-600/30 uppercase">
                                                 {plan.badge}
                                             </span>
                                         )}
-                                        <div className="text-yellow-500 font-black text-2xl mb-0 text-glow-yellow tracking-tight">
+                                        <div className="text-red-600 font-black text-2xl mb-0 text-glow-red tracking-tight">
                                             {plan.title}
                                         </div>
                                         <div className="text-[10px] text-gray-400 uppercase tracking-[0.25em] font-bold">
@@ -1004,14 +1020,14 @@ export default function LandingPage() {
                                                 key={j}
                                                 className="flex items-start gap-3 text-gray-300 text-sm"
                                             >
-                                                <div className="w-1.5 h-1.5 mt-1.5 bg-yellow-500 rounded-full shadow-[0_0_8px_rgba(234,179,8,0.6)]"></div>
+                                                <div className="w-1.5 h-1.5 mt-1.5 bg-red-600 rounded-full shadow-[0_0_8px_rgba(220, 38, 38,0.6)]"></div>
                                                 <span className="font-medium tracking-tight">{feature}</span>
                                             </li>
                                         ))}
                                     </ul>
                                     {plan.location && (
                                         <div className="text-[10px] text-gray-500 mb-8 text-center border-t border-white/5 pt-5 leading-relaxed tracking-wide">
-                                            <div className="font-black text-yellow-500/80 uppercase tracking-[0.15em] mb-1">
+                                            <div className="font-black text-red-600/80 uppercase tracking-[0.15em] mb-1">
                                                 Ubicación
                                             </div>
                                             <div className="font-medium">{plan.location}</div>
@@ -1019,7 +1035,7 @@ export default function LandingPage() {
                                     )}
                                     <a
                                         href={buildWhatsAppLink(plan.message)}
-                                        className="block w-full py-5 rounded-xl text-center font-black uppercase tracking-[0.2em] text-xs transition-all bg-yellow-500 text-black hover:bg-yellow-400 shadow-[0_12px_25px_rgba(234,179,8,0.3)] transform hover:scale-[1.02]"
+                                        className="block w-full py-5 rounded-xl text-center font-black uppercase tracking-[0.2em] text-xs transition-all bg-red-600 text-black hover:bg-red-500 shadow-[0_12px_25px_rgba(220, 38, 38,0.3)] transform hover:scale-[1.02]"
                                     >
                                         EJECUTAR AHORA
                                     </a>
@@ -1032,11 +1048,11 @@ export default function LandingPage() {
 
             <GymSection />
 
-            <section className="py-20 px-4 bg-gradient-to-b from-black to-yellow-500/5">
+            <section className="py-20 px-4 bg-gradient-to-b from-black to-red-600/5">
                 <div className="max-w-5xl mx-auto">
                     <div className="text-center mb-16">
                         <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                            Preguntas <span className="text-yellow-500">Frecuentes</span>
+                            Preguntas <span className="text-red-600">Frecuentes</span>
                         </h2>
                     </div>
 
@@ -1065,15 +1081,15 @@ export default function LandingPage() {
                         ].map((faq, i) => (
                             <div
                                 key={i}
-                                className="glass-card border-white/5 rounded-2xl overflow-hidden hover:border-yellow-500/30 transition-all box-glow-yellow"
+                                className="glass-card border-white/5 rounded-2xl overflow-hidden hover:border-red-600/30 transition-all box-glow-red"
                             >
                                 <button
                                     onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                                    className="w-full p-6 flex justify-between items-center text-left hover:bg-yellow-500/5 transition-colors"
+                                    className="w-full p-6 flex justify-between items-center text-left hover:bg-red-600/5 transition-colors"
                                 >
                                     <span className="font-bold text-lg">{faq.q}</span>
                                     <ChevronDown
-                                        className={`w-5 h-5 text-yellow-500 transition-transform ${openFaq === i ? "rotate-180" : ""
+                                        className={`w-5 h-5 text-red-600 transition-transform ${openFaq === i ? "rotate-180" : ""
                                             }`}
                                     />
                                 </button>
@@ -1087,10 +1103,10 @@ export default function LandingPage() {
             </section>
 
             <section id="contacto" className="py-24 px-4 bg-black relative overflow-hidden">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-yellow-500/5 blur-[120px] rounded-full animate-pulse-glow"></div>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-red-600/5 blur-[120px] rounded-full animate-pulse-glow"></div>
                 <div className="max-w-4xl mx-auto text-center relative z-10">
                     <h2 className="text-5xl md:text-8xl font-black mb-8 uppercase italic leading-none tracking-tighter">
-                        ¿LISTO PARA <span className="text-yellow-500 text-glow-yellow">RESURGIR?</span>
+                        ¿LISTO PARA <span className="text-red-600 text-glow-red">RESURGIR?</span>
                     </h2>
                     <p className="text-xl text-gray-400 mb-16 font-medium max-w-2xl mx-auto">
                         Dejá de negociar con tu mediocridad. El cambio empieza con una orden.
@@ -1106,18 +1122,18 @@ export default function LandingPage() {
                             <a
                                 key={i}
                                 href={item.href}
-                                className="p-8 glass-card border-white/5 rounded-2xl hover:border-yellow-500/50 transition-all group hover:-translate-y-1"
+                                className="p-8 glass-card border-white/5 rounded-2xl hover:border-red-600/50 transition-all group hover:-translate-y-1"
                             >
-                                <item.icon className="w-12 h-12 text-yellow-500 mx-auto mb-5 group-hover:scale-110 group-hover:text-glow-yellow transition-all duration-300" />
+                                <item.icon className="w-12 h-12 text-red-600 mx-auto mb-5 group-hover:scale-110 group-hover:text-glow-red transition-all duration-300" />
                                 <div className="font-bold text-white mb-2 tracking-tight">{item.label}</div>
                                 <div className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">{item.sub}</div>
                             </a>
                         ))}
                     </div>
 
-                    <div className="p-10 glass-card-yellow border-yellow-500/20 rounded-3xl shadow-2xl">
+                    <div className="p-10 glass-card-red border-red-600/20 rounded-3xl shadow-2xl">
                         <p className="text-lg text-gray-300 font-medium">
-                            <span className="text-yellow-500 font-black uppercase tracking-widest mr-2">
+                            <span className="text-red-600 font-black uppercase tracking-widest mr-2">
                                 Compromiso 24/7.
                             </span>
                             Nuestro equipo responderá en menos de 24 horas.
@@ -1127,8 +1143,8 @@ export default function LandingPage() {
             </section>
 
             <footer className="relative overflow-hidden py-20 px-4 bg-gradient-to-b from-black via-[#050505] to-black border-t border-white/5">
-                <div className="absolute -top-24 left-10 h-64 w-64 bg-yellow-500/5 blur-[100px] rounded-full pointer-events-none animate-pulse-glow" />
-                <div className="absolute -bottom-28 right-0 h-72 w-72 bg-yellow-500/5 blur-[120px] rounded-full pointer-events-none" />
+                <div className="absolute -top-24 left-10 h-64 w-64 bg-red-600/5 blur-[100px] rounded-full pointer-events-none animate-pulse-glow" />
+                <div className="absolute -bottom-28 right-0 h-72 w-72 bg-red-600/5 blur-[120px] rounded-full pointer-events-none" />
 
                 <div className="max-w-7xl mx-auto relative z-10">
                     <div className="grid gap-16 mb-16 md:grid-cols-12 items-start">
@@ -1139,21 +1155,21 @@ export default function LandingPage() {
                             <p className="text-gray-400 leading-relaxed font-medium">
                                 Transformando vidas a través del fitness y el coaching de élite personalizado.
                             </p>
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-500/10 border border-yellow-500/20">
-                                <span className="text-[10px] text-yellow-500 font-black uppercase tracking-widest">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-600/10 border border-red-600/20">
+                                <span className="text-[10px] text-red-600 font-black uppercase tracking-widest">
                                     Disciplina sin filtros. Resultados sin excusas.
                                 </span>
                             </div>
                         </div>
 
                         <div className="md:col-span-3">
-                            <h3 className="font-bold text-yellow-500 mb-4">Enlaces Rápidos</h3>
+                            <h3 className="font-bold text-red-600 mb-4">Enlaces Rápidos</h3>
                             <div className="space-y-2">
                                 {["Inicio", "Programas", "Sedes", "Precios", "Contacto"].map((link) => (
                                     <button
                                         key={link}
                                         onClick={() => scrollToSection(link.toLowerCase())}
-                                        className="block text-gray-400 hover:text-yellow-500 transition-colors"
+                                        className="block text-gray-400 hover:text-red-600 transition-colors"
                                     >
                                         {link}
                                     </button>
@@ -1170,7 +1186,7 @@ export default function LandingPage() {
                                         href={href}
                                         target="_blank"
                                         rel="noreferrer"
-                                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-gray-300 hover:text-yellow-500 hover:border-yellow-500/50 transition-all hover:scale-105"
+                                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-gray-300 hover:text-red-600 hover:border-red-600/50 transition-all hover:scale-105"
                                     >
                                         <Icon className="w-4 h-4" />
                                         <span className="text-xs font-bold tracking-tight">{name}</span>
@@ -1180,7 +1196,7 @@ export default function LandingPage() {
                         </div>
                     </div>
 
-                    <div className="pt-8 border-t border-yellow-500/20 text-center text-gray-400 space-y-2">
+                    <div className="pt-8 border-t border-red-600/20 text-center text-gray-400 space-y-2">
                         <p>&copy; 2024 CW Life. Todos los derechos reservados.</p>
                         <p className="text-sm">
                             Diseño:{" "}
@@ -1188,7 +1204,7 @@ export default function LandingPage() {
                                 href="http://instagram.com/lucastinte"
                                 target="_blank"
                                 rel="noreferrer"
-                                className="text-yellow-500 hover:text-yellow-400 transition-colors"
+                                className="text-red-600 hover:text-red-500 transition-colors"
                             >
                                 @lucastinte
                             </a>

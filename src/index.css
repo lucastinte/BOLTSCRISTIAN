@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --brand-yellow: 234, 179, 8;
+    --brand-red: 220, 38, 38;
     --brand-black: 0, 0, 0;
   }
 
@@ -18,27 +18,27 @@
     @apply bg-white/5 backdrop-blur-md border border-white/10;
   }
 
-  .glass-card-yellow {
-    @apply bg-yellow-500/5 backdrop-blur-md border border-yellow-500/20;
+  .glass-card-red {
+    @apply bg-red-600/10 backdrop-blur-md border border-red-600/30;
   }
 
-  .text-glow-yellow {
-    text-shadow: 0 0 10px rgba(var(--brand-yellow), 0.5),
-      0 0 20px rgba(var(--brand-yellow), 0.2);
+  .text-glow-red {
+    text-shadow: 0 0 10px rgba(var(--brand-red), 0.5),
+      0 0 20px rgba(var(--brand-red), 0.2);
   }
 
-  .box-glow-yellow {
-    box-shadow: 0 0 15px rgba(var(--brand-yellow), 0.15),
-      0 0 30px rgba(var(--brand-yellow), 0.05);
+  .box-glow-red {
+    box-shadow: 0 0 15px rgba(var(--brand-red), 0.15),
+      0 0 30px rgba(var(--brand-red), 0.05);
   }
 
-  .hover-glow-yellow:hover {
-    box-shadow: 0 0 20px rgba(var(--brand-yellow), 0.3),
-      0 0 40px rgba(var(--brand-yellow), 0.1);
+  .hover-glow-red:hover {
+    box-shadow: 0 0 20px rgba(var(--brand-red), 0.3),
+      0 0 40px rgba(var(--brand-red), 0.1);
   }
 
   .premium-gradient {
-    background: linear-gradient(135deg, rgba(var(--brand-yellow), 0.1) 0%, rgba(0, 0, 0, 1) 50%, rgba(var(--brand-yellow), 0.05) 100%);
+    background: linear-gradient(135deg, rgba(var(--brand-red), 0.1) 0%, rgba(0, 0, 0, 1) 50%, rgba(var(--brand-red), 0.05) 100%);
   }
 }
 
