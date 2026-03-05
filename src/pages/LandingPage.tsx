@@ -577,6 +577,7 @@ export default function LandingPage() {
                                     city: "B° 30 Hectáreas, Jujuy",
                                     highlight: false,
                                     badge: "EXCLUSIVO MUJERES",
+                                    mapUrl: "https://maps.app.goo.gl/yvkJ5MdZn8Mme6i17",
                                 },
                                 {
                                     title: "Sede Entrenamiento Funcional",
@@ -630,7 +631,7 @@ export default function LandingPage() {
                                         </div>
                                     </div>
                                     <a
-                                        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${sede.address}, ${sede.city}`)}`}
+                                        href={(sede as any).mapUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${sede.address}, ${sede.city}`)}`}
                                         target="_blank"
                                         rel="noreferrer"
                                         className="block w-full py-3 bg-red-600/10 hover:bg-red-600 text-red-600 hover:text-black border border-red-600/30 rounded-xl text-center text-xs font-black uppercase tracking-widest transition-all"
