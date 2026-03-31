@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Pill, Shirt } from "lucide-react";
+import { Pill, Shirt } from "lucide-react";
 import cwLifeLogo from "../assets/logo.svg";
 import { ShopSection } from "../components/ShopSection";
 
@@ -30,10 +30,9 @@ export default function ShopPage() {
             </div>
             <button
               onClick={() => navigate("/")}
-              className="flex items-center gap-2 text-red-600 hover:text-red-500 transition-colors text-sm font-black tracking-widest uppercase"
+              className="text-red-600 hover:text-red-500 transition-colors text-sm font-black tracking-widest uppercase"
             >
               Volver
-              <ArrowLeft className="w-4 h-4 rotate-180" />
             </button>
           </div>
         </div>
