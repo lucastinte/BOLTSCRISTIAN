@@ -61,7 +61,7 @@ export default function ShopPage() {
 
       {/* Tabs */}
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-center gap-3">
+        <div className="flex gap-2 sm:gap-3 sm:justify-center">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -69,10 +69,10 @@ export default function ShopPage() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl font-black text-xs sm:text-sm tracking-widest uppercase transition-all duration-300 ${
+                className={`flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-xl font-black text-xs sm:text-sm tracking-wider sm:tracking-widest uppercase transition-all duration-300 ${
                   isActive
                     ? "bg-red-600 text-black shadow-[0_0_30px_rgba(220,38,38,0.3)]"
-                    : "glass-card border-white/5 text-gray-400 hover:text-red-600 hover:border-red-600/30"
+                    : "bg-white/5 border border-white/10 text-gray-400 hover:text-red-600 hover:border-red-600/30"
                 }`}
               >
                 <Icon className="w-4 h-4 sm:w-5 sm:h-5" />

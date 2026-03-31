@@ -56,8 +56,8 @@ export function ShopSection({ tab }: { tab: "suplementos" | "indumentaria" }) {
   }
 
   return (
-    <section className="py-20 px-4">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <section className="py-12 sm:py-20 px-4">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
         {products.map((product) => (
           <a
             key={product.id}
@@ -82,25 +82,23 @@ export function ShopSection({ tab }: { tab: "suplementos" | "indumentaria" }) {
             )}
 
             {/* Card content */}
-            <div className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <span className="px-3 py-1 rounded-full bg-red-600/15 border border-red-600/30 text-red-500 text-[10px] font-black tracking-widest uppercase">
-                  {product.category}
-                </span>
-              </div>
+            <div className="p-5 sm:p-6">
+              <span className="inline-block px-3 py-1 rounded-full bg-red-600/15 border border-red-600/30 text-red-500 text-[10px] font-black tracking-widest uppercase mb-3">
+                {product.category}
+              </span>
 
-              <h3 className="text-xl font-black text-white uppercase tracking-tight mb-3 group-hover:text-red-600 transition-colors">
+              <h3 className="text-lg sm:text-xl font-black text-white uppercase tracking-tight mb-2 group-hover:text-red-600 transition-colors">
                 {product.name}
               </h3>
 
-              <p className="text-gray-400 text-sm leading-relaxed mb-5">
+              <p className="text-gray-400 text-sm leading-relaxed mb-4">
                 {product.description}
               </p>
 
               {product.features.length > 0 && (
-                <ul className="space-y-2 mb-6">
+                <ul className="space-y-1.5 mb-5">
                   {product.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-3 text-sm text-gray-300">
+                    <li key={feature} className="flex items-center gap-2.5 text-sm text-gray-300">
                       <span className="w-1.5 h-1.5 bg-red-600 rounded-full flex-shrink-0" />
                       {feature}
                     </li>
@@ -108,7 +106,7 @@ export function ShopSection({ tab }: { tab: "suplementos" | "indumentaria" }) {
                 </ul>
               )}
 
-              <div className="w-full py-3.5 bg-red-600/10 border border-red-600/30 rounded-xl text-center text-red-500 font-black text-xs tracking-[0.15em] uppercase group-hover:bg-red-600 group-hover:text-black group-hover:border-red-600 transition-all duration-300 flex items-center justify-center gap-2">
+              <div className="w-full py-3.5 bg-red-600 rounded-xl text-center text-black font-black text-xs tracking-[0.15em] uppercase group-hover:bg-red-500 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-red-600/20">
                 <MessageCircle className="w-4 h-4" />
                 Consultar por WhatsApp
               </div>
