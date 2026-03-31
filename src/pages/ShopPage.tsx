@@ -30,10 +30,10 @@ export default function ShopPage() {
             </div>
             <button
               onClick={() => navigate("/")}
-              className="flex items-center gap-2 text-red-600 hover:text-red-500 transition-colors"
+              className="flex items-center gap-2 text-red-600 hover:text-red-500 transition-colors text-sm font-black tracking-widest uppercase"
             >
-              <span className="hidden sm:inline text-sm font-black tracking-widest uppercase">Volver</span>
-              <ArrowLeft className="w-5 h-5 rotate-180" />
+              Volver
+              <ArrowLeft className="w-4 h-4 rotate-180" />
             </button>
           </div>
         </div>
