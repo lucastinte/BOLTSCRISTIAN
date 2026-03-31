@@ -61,7 +61,7 @@ export default function ShopPage() {
 
       {/* Tabs */}
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex gap-2 sm:gap-3 sm:justify-center">
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 sm:justify-center">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
