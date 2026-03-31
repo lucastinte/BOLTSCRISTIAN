@@ -21,13 +21,6 @@ export default function ShopPage() {
       <nav className="sticky top-0 z-50 glass-card border-red-600/10 border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-14 sm:h-16">
-            <button
-              onClick={() => navigate("/")}
-              className="flex items-center gap-2 text-red-600 hover:text-red-500 transition-colors"
-            >
-              <ArrowLeft className="w-5 h-5" />
-              <span className="hidden sm:inline text-sm font-black tracking-widest uppercase">Volver</span>
-            </button>
             <div className="flex items-center gap-3">
               <img src={cwLifeLogo} alt="CW Life" className="h-8 sm:h-10 w-auto" />
               <div className="hidden sm:block h-6 w-px bg-red-600/30" />
@@ -35,7 +28,13 @@ export default function ShopPage() {
                 Tienda
               </span>
             </div>
-            <div className="w-5 sm:hidden" />
+            <button
+              onClick={() => navigate("/")}
+              className="flex items-center gap-2 text-red-600 hover:text-red-500 transition-colors"
+            >
+              <span className="hidden sm:inline text-sm font-black tracking-widest uppercase">Volver</span>
+              <ArrowLeft className="w-5 h-5 rotate-180" />
+            </button>
           </div>
         </div>
       </nav>
