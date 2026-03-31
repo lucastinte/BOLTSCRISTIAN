@@ -20,40 +20,39 @@ export default function ShopPage() {
       {/* Navbar */}
       <nav className="sticky top-0 z-50 glass-card border-red-600/10 border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-4">
-              <button onClick={() => navigate("/")} className="flex items-center gap-2">
-                <img src={cwLifeLogo} alt="CW Life" className="h-10 w-auto" />
-              </button>
+          <div className="flex justify-between items-center h-14 sm:h-16">
+            <button
+              onClick={() => navigate("/")}
+              className="flex items-center gap-2 text-red-600 hover:text-red-500 transition-colors"
+            >
+              <ArrowLeft className="w-5 h-5" />
+              <span className="hidden sm:inline text-sm font-black tracking-widest uppercase">Volver</span>
+            </button>
+            <div className="flex items-center gap-3">
+              <img src={cwLifeLogo} alt="CW Life" className="h-8 sm:h-10 w-auto" />
               <div className="hidden sm:block h-6 w-px bg-red-600/30" />
               <span className="hidden sm:block text-red-600 font-black text-sm tracking-[0.2em] uppercase">
                 Tienda
               </span>
             </div>
-            <button
-              onClick={() => navigate("/")}
-              className="flex items-center gap-2 px-4 py-2 text-sm text-gray-400 hover:text-red-600 transition-colors"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Volver
-            </button>
+            <div className="w-5 sm:hidden" />
           </div>
         </div>
       </nav>
 
       {/* Hero */}
-      <div className="relative py-16 px-4 overflow-hidden">
+      <div className="relative py-10 sm:py-16 px-4 overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-red-600/8 blur-[120px] rounded-full animate-pulse-glow" />
         <div className="absolute inset-0 bg-gradient-to-b from-black via-black/95 to-black" />
         <div className="max-w-7xl mx-auto relative text-center">
-          <p className="text-red-600 font-black text-sm tracking-[0.3em] uppercase mb-4">
+          <p className="text-red-600 font-black text-[11px] sm:text-sm tracking-[0.3em] uppercase mb-3 sm:mb-4">
             CW Life Store
           </p>
-          <h1 className="text-5xl md:text-7xl font-black italic tracking-tighter">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-black italic tracking-tighter">
             TIENDA{" "}
             <span className="text-red-600 text-glow-red">OFICIAL</span>
           </h1>
-          <p className="text-gray-400 mt-6 max-w-2xl mx-auto text-lg">
+          <p className="text-gray-400 mt-4 sm:mt-6 max-w-2xl mx-auto text-base sm:text-lg">
             Suplementos e indumentaria para los que entrenan en serio.
             Tocá un producto para consultar por WhatsApp.
           </p>
@@ -62,7 +61,7 @@ export default function ShopPage() {
 
       {/* Tabs */}
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-center gap-4">
+        <div className="flex justify-center gap-3">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -70,13 +69,13 @@ export default function ShopPage() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-2.5 px-6 py-3 rounded-xl font-black text-sm tracking-widest uppercase transition-all duration-300 ${
+                className={`flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl font-black text-xs sm:text-sm tracking-widest uppercase transition-all duration-300 ${
                   isActive
                     ? "bg-red-600 text-black shadow-[0_0_30px_rgba(220,38,38,0.3)]"
                     : "glass-card border-white/5 text-gray-400 hover:text-red-600 hover:border-red-600/30"
                 }`}
               >
-                <Icon className="w-5 h-5" />
+                <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                 {tab.label}
               </button>
             );
