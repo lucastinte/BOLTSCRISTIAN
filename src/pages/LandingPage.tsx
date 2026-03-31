@@ -72,7 +72,12 @@ export default function LandingPage() {
         },
     ];
 
-    const scrollToSection = (id: string) => {
+    const handleNavClick = (item: string) => {
+        if (item === "Tienda") {
+            navigate("/shop");
+            return;
+        }
+        const id = item.toLowerCase().replace(/\s+/g, "-");
         const element = document.getElementById(id);
         element?.scrollIntoView({ behavior: "smooth" });
         setMobileMenuOpen(false);
@@ -95,13 +100,11 @@ export default function LandingPage() {
                         </div>
 
                         <div className="hidden md:flex gap-8 items-center">
-                            {["Inicio", "Sobre Mí", "Programas", "Sedes", "Precios", "Contacto"].map(
+                            {["Inicio", "Sobre Mí", "Programas", "Sedes", "Precios", "Tienda", "Contacto"].map(
                                 (item) => (
                                     <button
                                         key={item}
-                                        onClick={() =>
-                                            scrollToSection(item.toLowerCase().replace(/\s+/g, "-"))
-                                        }
+                                        onClick={() => handleNavClick(item)}
                                         className="text-gray-300 hover:text-red-600 transition-colors"
                                     >
                                         {item}
@@ -139,13 +142,11 @@ export default function LandingPage() {
                 {mobileMenuOpen && (
                     <div className="md:hidden bg-black border-t border-red-600/20">
                         <div className="px-4 py-4 space-y-3">
-                            {["Inicio", "Sobre Mí", "Programas", "Sedes", "Precios", "Contacto"].map(
+                            {["Inicio", "Sobre Mí", "Programas", "Sedes", "Precios", "Tienda", "Contacto"].map(
                                 (item) => (
                                     <button
                                         key={item}
-                                        onClick={() =>
-                                            scrollToSection(item.toLowerCase().replace(/\s+/g, "-"))
-                                        }
+                                        onClick={() => handleNavClick(item)}
                                         className="block w-full text-left text-gray-300 hover:text-red-600 transition-colors py-2"
                                     >
                                         {item}
@@ -198,7 +199,7 @@ export default function LandingPage() {
                                     TOMAR MI LUGAR
                                 </a>
                                 <button
-                                    onClick={() => scrollToSection("programas")}
+                                    onClick={() => handleNavClick("programas")}
                                     className="px-8 py-4 border-2 border-red-600/50 text-white hover:bg-red-600/10 font-black rounded-lg transition-all"
                                 >
                                     DEFINIR CAMPO DE BATALLA
@@ -855,7 +856,7 @@ export default function LandingPage() {
                     {/* Boton de Llamado a la acción rápido */}
                     <div className="mt-16 text-center">
                         <button
-                            onClick={() => scrollToSection('precios')}
+                            onClick={() => handleNavClick('precios')}
                             className="px-8 py-4 bg-white text-black font-black text-sm tracking-widest uppercase hover:bg-red-600 transition-all duration-300 transform hover:-translate-y-1"
                         >
                             Quiero mi cambio ahora
@@ -1166,10 +1167,10 @@ export default function LandingPage() {
                         <div className="md:col-span-3">
                             <h3 className="font-bold text-red-600 mb-4">Enlaces Rápidos</h3>
                             <div className="space-y-2">
-                                {["Inicio", "Programas", "Sedes", "Precios", "Contacto"].map((link) => (
+                                {["Inicio", "Programas", "Sedes", "Precios", "Tienda", "Contacto"].map((link) => (
                                     <button
                                         key={link}
-                                        onClick={() => scrollToSection(link.toLowerCase())}
+                                        onClick={() => handleNavClick(link)}
                                         className="block text-gray-400 hover:text-red-600 transition-colors"
                                     >
                                         {link}

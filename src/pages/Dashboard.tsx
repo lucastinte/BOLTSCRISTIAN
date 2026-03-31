@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { LogOut, PlayCircle, FileText, Link as LinkIcon, User, Layers, ArrowLeft } from "lucide-react";
+import { LogOut, PlayCircle, FileText, Link as LinkIcon, User, Layers, ArrowLeft, ShoppingBag } from "lucide-react";
 import { supabase } from "../lib/supabase";
 
 interface ContentItem {
@@ -96,13 +96,22 @@ export default function Dashboard() {
                         </div>
                         <div className="flex items-center gap-4">
                             {isAdmin && (
-                                <button
-                                    onClick={() => navigate('/admin')}
-                                    className="flex items-center gap-2 text-red-600 hover:text-red-500 transition-all text-xs font-black uppercase tracking-widest px-3 py-2 rounded-lg hover:bg-red-600/5"
-                                >
-                                    <Layers className="w-4 h-4" />
-                                    <span className="hidden sm:inline">Admin</span>
-                                </button>
+                                <>
+                                    <button
+                                        onClick={() => navigate('/admin')}
+                                        className="flex items-center gap-2 text-red-600 hover:text-red-500 transition-all text-xs font-black uppercase tracking-widest px-3 py-2 rounded-lg hover:bg-red-600/5"
+                                    >
+                                        <Layers className="w-4 h-4" />
+                                        <span className="hidden sm:inline">Admin</span>
+                                    </button>
+                                    <button
+                                        onClick={() => navigate('/admin/shop')}
+                                        className="flex items-center gap-2 text-red-600 hover:text-red-500 transition-all text-xs font-black uppercase tracking-widest px-3 py-2 rounded-lg hover:bg-red-600/5"
+                                    >
+                                        <ShoppingBag className="w-4 h-4" />
+                                        <span className="hidden sm:inline">Tienda</span>
+                                    </button>
+                                </>
                             )}
                             <div className="flex items-center gap-2 text-red-600 text-[10px] font-black tracking-widest px-4 py-2 bg-red-600/10 rounded-full border border-red-600/20 uppercase">
                                 <User className="w-3.5 h-3.5" />

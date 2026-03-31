@@ -8,6 +8,8 @@ import AdminSignupPage from "./pages/AdminSignupPage";
 import AdminRoute from "./components/AdminRoute";
 import { GymSection } from "./components/GymSection";
 import { CircuitoReductor } from "./components/CircuitoReductor";
+import ShopPage from "./pages/ShopPage";
+import AdminShopPage from "./pages/AdminShopPage";
 
 function App() {
   return (
@@ -26,6 +28,15 @@ function App() {
           }
         />
         <Route path="/admin-signup" element={<AdminSignupPage />} />
+        <Route
+          path="/admin/shop"
+          element={
+            <AdminRoute>
+              <AdminShopPage />
+            </AdminRoute>
+          }
+        />
+        <Route path="/shop" element={<ShopPage />} />
         <Route
           path="/black-training"
           element={
