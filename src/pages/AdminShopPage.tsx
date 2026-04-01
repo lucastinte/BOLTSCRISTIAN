@@ -236,7 +236,7 @@ export default function AdminShopPage() {
         </div>
       </nav>
 
-      <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-8">
         {/* Message */}
         {message && (
           <div
@@ -251,11 +251,11 @@ export default function AdminShopPage() {
         )}
 
         {/* Header */}
-        <div className="text-center sm:text-left mb-6">
-          <h1 className="text-2xl sm:text-3xl font-black italic tracking-tight">
-            PRODUCTOS DE <span className="text-red-600">TIENDA</span>
+        <div className="text-center mb-8">
+          <h1 className="text-xl sm:text-3xl font-black italic tracking-tight">
+            ADMIN <span className="text-red-600">TIENDA</span>
           </h1>
-          <p className="text-gray-400 text-sm mt-1">
+          <p className="text-gray-500 text-xs sm:text-sm mt-1">
             {products.length} producto{products.length !== 1 && "s"} en total
           </p>
         </div>
@@ -263,19 +263,19 @@ export default function AdminShopPage() {
         {/* Nuevo producto */}
         <button
           onClick={openCreateForm}
-          className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-3 bg-red-600 hover:bg-red-500 text-black font-black rounded-xl transition-all transform hover:scale-105 text-sm uppercase tracking-widest mb-6"
+          className="w-full flex items-center justify-center gap-2 px-5 py-3.5 bg-red-600 hover:bg-red-500 text-black font-black rounded-xl transition-all text-sm uppercase tracking-widest mb-5"
         >
           <Plus className="w-4 h-4" />
           Nuevo Producto
         </button>
 
         {/* Filter tabs */}
-        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 mb-8">
+        <div className="grid grid-cols-3 gap-2 mb-8">
           {(["todos", "suplementos", "indumentaria"] as const).map((t) => (
             <button
               key={t}
               onClick={() => setFilterTab(t)}
-              className={`flex-1 sm:flex-none text-center px-4 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${
+              className={`text-center px-2 py-2.5 rounded-xl text-[10px] sm:text-xs font-black uppercase tracking-wider sm:tracking-widest transition-all ${
                 filterTab === t
                   ? "bg-red-600 text-black"
                   : "bg-white/5 border border-white/10 text-gray-400 hover:text-red-600 hover:border-red-600/30"
@@ -306,37 +306,37 @@ export default function AdminShopPage() {
             {filteredProducts.map((product) => (
               <div
                 key={product.id}
-                className="glass-card border-white/5 rounded-2xl p-5 sm:p-6 hover:border-red-600/20 transition-all"
+                className="glass-card border-white/5 rounded-2xl p-4 sm:p-6 hover:border-red-600/20 transition-all"
               >
-                <div className="flex gap-4 items-start">
-                  {/* Image */}
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-white/5 border border-white/10 overflow-hidden flex-shrink-0">
-                    {product.image_url ? (
-                      <img
-                        src={product.image_url}
-                        alt={product.name}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center text-gray-600">
-                        <ImagePlus className="w-6 h-6" />
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Info */}
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-black text-white text-sm sm:text-base truncate">{product.name}</h3>
-                    <div className="flex flex-wrap gap-1.5 mt-1.5">
-                      <span className="px-2 py-0.5 rounded-full bg-red-600/15 border border-red-600/30 text-red-500 text-[9px] font-black tracking-widest uppercase">
-                        {product.tab}
-                      </span>
-                      <span className="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-gray-400 text-[9px] font-bold tracking-wider uppercase">
-                        {product.category}
-                      </span>
+                {/* Image centered */}
+                <div className="w-full aspect-video rounded-xl bg-white/5 border border-white/10 overflow-hidden mb-4">
+                  {product.image_url ? (
+                    <img
+                      src={product.image_url}
+                      alt={product.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-gray-600">
+                      <ImagePlus className="w-8 h-8" />
                     </div>
-                    <p className="text-gray-500 text-xs sm:text-sm truncate mt-2">{product.description}</p>
+                  )}
+                </div>
+
+                {/* Info */}
+                <div className="mb-3">
+                  <h3 className="font-black text-white text-base sm:text-lg">{product.name}</h3>
+                  <div className="flex flex-wrap gap-1.5 mt-2">
+                    <span className="px-2.5 py-0.5 rounded-full bg-red-600/15 border border-red-600/30 text-red-500 text-[10px] font-black tracking-widest uppercase">
+                      {product.tab}
+                    </span>
+                    <span className="px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-gray-400 text-[10px] font-bold tracking-wider uppercase">
+                      {product.category}
+                    </span>
                   </div>
+                  {product.description && (
+                    <p className="text-gray-500 text-sm mt-2 line-clamp-2">{product.description}</p>
+                  )}
                 </div>
 
                 {/* Actions */}
