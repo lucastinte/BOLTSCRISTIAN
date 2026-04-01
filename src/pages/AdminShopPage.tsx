@@ -340,16 +340,16 @@ export default function AdminShopPage() {
                 </div>
 
                 {/* Actions */}
-                <div className="flex items-center gap-2 mt-4 pt-4 border-t border-white/5">
+                <div className="flex flex-col gap-2 mt-4 pt-4 border-t border-white/5">
                   <button
                     onClick={() => openEditForm(product)}
-                    className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-red-600 hover:border-red-600/30 transition-all text-xs font-black uppercase tracking-wider"
+                    className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-red-600 hover:border-red-600/30 transition-all text-xs font-black uppercase tracking-wider"
                   >
                     <Pencil className="w-3.5 h-3.5" />
                     Editar
                   </button>
                   {deletingId === product.id ? (
-                    <>
+                    <div className="flex gap-2">
                       <button
                         onClick={() => handleDelete(product.id)}
                         className="flex-1 py-2.5 rounded-xl bg-red-600 text-black text-xs font-black uppercase tracking-wider text-center"
@@ -358,15 +358,15 @@ export default function AdminShopPage() {
                       </button>
                       <button
                         onClick={() => setDeletingId(null)}
-                        className="py-2.5 px-3 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-white transition-all"
+                        className="flex-1 py-2.5 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-white transition-all text-xs font-black uppercase tracking-wider text-center"
                       >
-                        <X className="w-4 h-4" />
+                        Cancelar
                       </button>
-                    </>
+                    </div>
                   ) : (
                     <button
                       onClick={() => setDeletingId(product.id)}
-                      className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-red-600 hover:border-red-600/30 transition-all text-xs font-black uppercase tracking-wider"
+                      className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-red-600 hover:border-red-600/30 transition-all text-xs font-black uppercase tracking-wider"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                       Eliminar
