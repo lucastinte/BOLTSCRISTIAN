@@ -18,6 +18,7 @@ import {
     PlayCircle,
     FileText,
     Dumbbell,
+    ShoppingBag,
 } from "lucide-react";
 import { supabase } from "../lib/supabase";
 import heroImage from "../assets/wosniak-hero.jpeg";
@@ -1100,6 +1101,35 @@ export default function LandingPage() {
                                 )}
                             </div>
                         ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Tienda CTA */}
+            <section className="py-20 px-4 bg-black relative overflow-hidden">
+                <div className="absolute -top-20 right-0 w-96 h-96 bg-red-600/5 blur-[120px] rounded-full animate-pulse-glow pointer-events-none" />
+                <div className="max-w-5xl mx-auto relative z-10">
+                    <div className="glass-card-red border-red-600/20 rounded-3xl p-8 sm:p-12 md:p-16 text-center relative overflow-hidden">
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-red-600/10 blur-[100px] rounded-full pointer-events-none" />
+                        <div className="relative z-10">
+                            <span className="inline-block px-4 py-1.5 rounded-full bg-red-600/20 border border-red-600/40 text-red-500 text-[10px] sm:text-xs font-black tracking-[0.3em] uppercase mb-6">
+                                CW Life Store
+                            </span>
+                            <h2 className="text-3xl sm:text-5xl md:text-6xl font-black uppercase italic tracking-tighter leading-none mb-4 sm:mb-6">
+                                EQUIPATE COMO{" "}
+                                <span className="text-red-600 text-glow-red">GUERRERO</span>
+                            </h2>
+                            <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto mb-8 sm:mb-10 font-medium leading-relaxed">
+                                Suplementos e indumentaria seleccionados para los que entrenan en serio. Todo lo que necesitás para potenciar tu rendimiento.
+                            </p>
+                            <button
+                                onClick={() => navigate("/shop")}
+                                className="inline-flex items-center gap-3 px-8 sm:px-10 py-4 sm:py-5 bg-red-600 hover:bg-red-500 text-black font-black rounded-xl transition-all transform hover:scale-105 hover:-translate-y-1 uppercase text-sm sm:text-base tracking-widest shadow-lg shadow-red-600/25"
+                            >
+                                <ShoppingBag className="w-5 h-5" />
+                                Ir a la Tienda
+                            </button>
+                        </div>
                     </div>
                 </div>
             </section>
