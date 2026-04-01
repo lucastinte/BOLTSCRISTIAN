@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  ArrowLeft,
   Plus,
   Pencil,
   Trash2,
@@ -219,22 +218,19 @@ export default function AdminShopPage() {
       {/* Navbar */}
       <nav className="sticky top-0 z-50 glass-card border-red-600/10 border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-4">
-              <button onClick={() => navigate("/")} className="flex items-center gap-2">
-                <img src={cwLifeLogo} alt="CW Life" className="h-10 w-auto" />
-              </button>
+          <div className="flex justify-between items-center h-14 sm:h-16">
+            <div className="flex items-center gap-3">
+              <img src={cwLifeLogo} alt="CW Life" className="h-8 sm:h-10 w-auto" />
               <div className="hidden sm:block h-6 w-px bg-red-600/30" />
               <span className="hidden sm:block text-red-600 font-black text-sm tracking-[0.2em] uppercase">
                 Admin Tienda
               </span>
             </div>
             <button
-              onClick={() => navigate("/admin")}
-              className="flex items-center gap-2 px-4 py-2 text-sm text-gray-400 hover:text-red-600 transition-colors"
+              onClick={() => navigate("/dashboard")}
+              className="text-red-600 hover:text-red-500 transition-colors text-sm font-black tracking-widest uppercase"
             >
-              <ArrowLeft className="w-4 h-4" />
-              Admin
+              Volver
             </button>
           </div>
         </div>
@@ -255,34 +251,34 @@ export default function AdminShopPage() {
         )}
 
         {/* Header */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
-          <div>
-            <h1 className="text-3xl font-black italic tracking-tight">
-              PRODUCTOS DE <span className="text-red-600">TIENDA</span>
-            </h1>
-            <p className="text-gray-400 text-sm mt-1">
-              {products.length} producto{products.length !== 1 && "s"} en total
-            </p>
-          </div>
-          <button
-            onClick={openCreateForm}
-            className="flex items-center gap-2 px-5 py-3 bg-red-600 hover:bg-red-500 text-black font-black rounded-xl transition-all transform hover:scale-105 text-sm uppercase tracking-widest"
-          >
-            <Plus className="w-4 h-4" />
-            Nuevo Producto
-          </button>
+        <div className="text-center sm:text-left mb-6">
+          <h1 className="text-2xl sm:text-3xl font-black italic tracking-tight">
+            PRODUCTOS DE <span className="text-red-600">TIENDA</span>
+          </h1>
+          <p className="text-gray-400 text-sm mt-1">
+            {products.length} producto{products.length !== 1 && "s"} en total
+          </p>
         </div>
 
+        {/* Nuevo producto */}
+        <button
+          onClick={openCreateForm}
+          className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-3 bg-red-600 hover:bg-red-500 text-black font-black rounded-xl transition-all transform hover:scale-105 text-sm uppercase tracking-widest mb-6"
+        >
+          <Plus className="w-4 h-4" />
+          Nuevo Producto
+        </button>
+
         {/* Filter tabs */}
-        <div className="flex gap-3 mb-8">
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 mb-8">
           {(["todos", "suplementos", "indumentaria"] as const).map((t) => (
             <button
               key={t}
               onClick={() => setFilterTab(t)}
-              className={`px-4 py-2 rounded-lg text-xs font-black uppercase tracking-widest transition-all ${
+              className={`flex-1 sm:flex-none text-center px-4 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${
                 filterTab === t
                   ? "bg-red-600 text-black"
-                  : "glass-card text-gray-400 hover:text-red-600 hover:border-red-600/30"
+                  : "bg-white/5 border border-white/10 text-gray-400 hover:text-red-600 hover:border-red-600/30"
               }`}
             >
               {t}
@@ -310,66 +306,70 @@ export default function AdminShopPage() {
             {filteredProducts.map((product) => (
               <div
                 key={product.id}
-                className="glass-card border-white/5 rounded-2xl p-4 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 hover:border-red-600/20 transition-all"
+                className="glass-card border-white/5 rounded-2xl p-5 sm:p-6 hover:border-red-600/20 transition-all"
               >
-                {/* Image */}
-                <div className="w-20 h-20 rounded-xl bg-white/5 border border-white/10 overflow-hidden flex-shrink-0">
-                  {product.image_url ? (
-                    <img
-                      src={product.image_url}
-                      alt={product.name}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-gray-600">
-                      <ImagePlus className="w-6 h-6" />
-                    </div>
-                  )}
-                </div>
-
-                {/* Info */}
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <h3 className="font-black text-white truncate">{product.name}</h3>
-                    <span className="px-2 py-0.5 rounded-full bg-red-600/15 border border-red-600/30 text-red-500 text-[9px] font-black tracking-widest uppercase flex-shrink-0">
-                      {product.tab}
-                    </span>
-                    <span className="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-gray-400 text-[9px] font-bold tracking-wider uppercase flex-shrink-0">
-                      {product.category}
-                    </span>
+                <div className="flex gap-4 items-start">
+                  {/* Image */}
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-white/5 border border-white/10 overflow-hidden flex-shrink-0">
+                    {product.image_url ? (
+                      <img
+                        src={product.image_url}
+                        alt={product.name}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-gray-600">
+                        <ImagePlus className="w-6 h-6" />
+                      </div>
+                    )}
                   </div>
-                  <p className="text-gray-500 text-sm truncate">{product.description}</p>
+
+                  {/* Info */}
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-black text-white text-sm sm:text-base truncate">{product.name}</h3>
+                    <div className="flex flex-wrap gap-1.5 mt-1.5">
+                      <span className="px-2 py-0.5 rounded-full bg-red-600/15 border border-red-600/30 text-red-500 text-[9px] font-black tracking-widest uppercase">
+                        {product.tab}
+                      </span>
+                      <span className="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-gray-400 text-[9px] font-bold tracking-wider uppercase">
+                        {product.category}
+                      </span>
+                    </div>
+                    <p className="text-gray-500 text-xs sm:text-sm truncate mt-2">{product.description}</p>
+                  </div>
                 </div>
 
                 {/* Actions */}
-                <div className="flex items-center gap-2 flex-shrink-0">
+                <div className="flex items-center gap-2 mt-4 pt-4 border-t border-white/5">
                   <button
                     onClick={() => openEditForm(product)}
-                    className="p-2.5 rounded-xl glass-card border-white/5 text-gray-400 hover:text-red-600 hover:border-red-600/30 transition-all"
+                    className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-red-600 hover:border-red-600/30 transition-all text-xs font-black uppercase tracking-wider"
                   >
-                    <Pencil className="w-4 h-4" />
+                    <Pencil className="w-3.5 h-3.5" />
+                    Editar
                   </button>
                   {deletingId === product.id ? (
-                    <div className="flex items-center gap-2">
+                    <>
                       <button
                         onClick={() => handleDelete(product.id)}
-                        className="px-3 py-2 rounded-xl bg-red-600 text-black text-xs font-black"
+                        className="flex-1 py-2.5 rounded-xl bg-red-600 text-black text-xs font-black uppercase tracking-wider text-center"
                       >
                         Confirmar
                       </button>
                       <button
                         onClick={() => setDeletingId(null)}
-                        className="p-2 rounded-xl glass-card text-gray-400 hover:text-white transition-all"
+                        className="py-2.5 px-3 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-white transition-all"
                       >
                         <X className="w-4 h-4" />
                       </button>
-                    </div>
+                    </>
                   ) : (
                     <button
                       onClick={() => setDeletingId(product.id)}
-                      className="p-2.5 rounded-xl glass-card border-white/5 text-gray-400 hover:text-red-600 hover:border-red-600/30 transition-all"
+                      className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-red-600 hover:border-red-600/30 transition-all text-xs font-black uppercase tracking-wider"
                     >
-                      <Trash2 className="w-4 h-4" />
+                      <Trash2 className="w-3.5 h-3.5" />
+                      Eliminar
                     </button>
                   )}
                 </div>
