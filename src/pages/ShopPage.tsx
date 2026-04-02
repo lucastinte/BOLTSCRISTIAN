@@ -6,7 +6,7 @@ import { ShopSection } from "../components/ShopSection";
 
 const tabs = [
   { id: "suplementos", label: "Suplementos", icon: Pill },
-  { id: "indumentaria", label: "Indumentaria", icon: Shirt },
+  { id: "indumentaria", label: "Indumentaria y Accesorios", icon: Shirt },
 ] as const;
 
 type TabId = (typeof tabs)[number]["id"];
