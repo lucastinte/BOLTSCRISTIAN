@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LogOut, PlayCircle, FileText, Link as LinkIcon, User, Layers, ArrowLeft, ShoppingBag } from "lucide-react";
+import { Logo } from "../components/Logo";
 import { supabase } from "../lib/supabase";
 
 interface ContentItem {
@@ -81,17 +82,17 @@ export default function Dashboard() {
     return (
         <div className="min-h-screen bg-black text-white">
             {/* Navbar */}
-            <nav className="glass-card border-red-600/10 sticky top-0 z-50">
+            <nav className="glass-card border-white/10 sticky top-0 z-50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between items-center h-16">
-                        <div className="flex items-center gap-2 group cursor-pointer" onClick={() => navigate('/')}>
-                            <div className="w-9 h-9 bg-red-600 rounded-xl flex items-center justify-center font-black text-black shadow-lg shadow-red-600/20 group-hover:scale-110 transition-transform">
-                                B
+                        <div className="flex items-center gap-3 group cursor-pointer" onClick={() => navigate('/')}>
+                            <div className="w-9 h-9 bg-white rounded-xl flex items-center justify-center shadow-lg shadow-white/20 group-hover:scale-110 transition-transform">
+                                <Logo className="h-6 w-auto text-black" />
                             </div>
                             <div className="flex flex-col leading-none">
                                 <span className="font-black text-lg tracking-tighter hidden sm:block uppercase">BLACK COMMUNITY</span>
                                 <span className="font-black text-lg tracking-tighter sm:hidden uppercase">BLACK</span>
-                                <span className="text-[9px] text-red-600 font-bold tracking-[0.2em] uppercase">Members Only</span>
+                                <span className="text-[9px] text-white/50 font-bold tracking-[0.2em] uppercase">Members Only</span>
                             </div>
                         </div>
                         <div className="flex items-center gap-4">
@@ -99,21 +100,21 @@ export default function Dashboard() {
                                 <>
                                     <button
                                         onClick={() => navigate('/admin')}
-                                        className="flex items-center gap-2 text-red-600 hover:text-red-500 transition-all text-xs font-black uppercase tracking-widest px-3 py-2 rounded-lg hover:bg-red-600/5"
+                                        className="flex items-center gap-2 text-white hover:text-gray-300 transition-all text-xs font-black uppercase tracking-widest px-3 py-2 rounded-lg hover:bg-white/5"
                                     >
                                         <Layers className="w-4 h-4" />
                                         <span className="hidden sm:inline">Admin</span>
                                     </button>
                                     <button
                                         onClick={() => navigate('/admin/shop')}
-                                        className="flex items-center gap-2 text-red-600 hover:text-red-500 transition-all text-xs font-black uppercase tracking-widest px-3 py-2 rounded-lg hover:bg-red-600/5"
+                                        className="flex items-center gap-2 text-white hover:text-gray-300 transition-all text-xs font-black uppercase tracking-widest px-3 py-2 rounded-lg hover:bg-white/5"
                                     >
                                         <ShoppingBag className="w-4 h-4" />
                                         <span className="hidden sm:inline">Tienda</span>
                                     </button>
                                 </>
                             )}
-                            <div className="flex items-center gap-2 text-red-600 text-[10px] font-black tracking-widest px-4 py-2 bg-red-600/10 rounded-full border border-red-600/20 uppercase">
+                            <div className="flex items-center gap-2 text-white text-[10px] font-black tracking-widest px-4 py-2 bg-white/10 rounded-full border border-white/20 uppercase">
                                 <User className="w-3.5 h-3.5" />
                                 <span className="hidden sm:inline">
                                     {userEmail ? userEmail.split('@')[0] : "Miembro"}
@@ -123,7 +124,7 @@ export default function Dashboard() {
                                 onClick={handleLogout}
                                 className="flex items-center gap-2 text-gray-400 hover:text-white transition-all text-[10px] font-black uppercase tracking-widest ml-2"
                             >
-                                <LogOut className="w-4 h-4 text-red-500/70" />
+                                <LogOut className="w-4 h-4 text-white/50" />
                                 <span className="hidden sm:inline">Salir</span>
                             </button>
                         </div>
@@ -136,10 +137,10 @@ export default function Dashboard() {
 
                 {/* Header Section */}
                 <div className="mb-16 relative">
-                    <div className="absolute -top-20 -left-20 w-64 h-64 bg-red-600/5 blur-[100px] rounded-full animate-pulse-glow"></div>
+                    <div className="absolute -top-20 -left-20 w-64 h-64 bg-white/5 blur-[100px] rounded-full animate-pulse-glow"></div>
                     <div className="relative z-10">
                         <h1 className="text-4xl md:text-6xl font-black mb-6 tracking-tight leading-none uppercase italic">
-                            BIENVENIDO AL <span className="text-red-600 text-glow-red">CUARTEL</span>
+                            BIENVENIDO AL <span className="text-white text-glow-white">CUARTEL</span>
                         </h1>
                         <p className="text-xl text-gray-400 max-w-2xl font-medium leading-relaxed">
                             Este es tu espacio exclusivo. Aquí encontrarás el armamento estratégico diseñado para potenciar tu reconstrucción física.
@@ -149,11 +150,11 @@ export default function Dashboard() {
 
                 {loading ? (
                     <div className="text-center py-12">
-                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mx-auto mb-4"></div>
+                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
                         <p className="text-gray-400">Cargando contenido...</p>
                     </div>
                 ) : content.length === 0 ? (
-                    <div className="text-center py-12 bg-stone-900/30 rounded-2xl border border-red-600/10">
+                    <div className="text-center py-12 bg-stone-900/30 rounded-2xl border border-white/10">
                         <p className="text-gray-400">Aún no hay contenido disponible. ¡Vuelve pronto!</p>
                     </div>
                 ) : (
@@ -162,20 +163,20 @@ export default function Dashboard() {
                             <div
                                 key={item.id}
                                 onClick={() => openContent(item)}
-                                className="glass-card border-white/5 rounded-3xl p-8 hover:border-red-600/40 transition-all group cursor-pointer hover:-translate-y-2 hover-glow-red box-glow-red"
+                                className="glass-card border-white/5 rounded-3xl p-8 hover:border-white/40 transition-all group cursor-pointer hover:-translate-y-2 hover-glow-white box-glow-white"
                             >
-                                <div className="w-14 h-14 bg-red-600/10 rounded-2xl flex items-center justify-center text-red-600 mb-6 group-hover:bg-red-600 group-hover:text-black transition-all shadow-lg group-hover:shadow-red-600/20">
+                                <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-white mb-6 group-hover:bg-white group-hover:text-black transition-all shadow-lg group-hover:shadow-white/20">
                                     {getIcon(item.type)}
                                 </div>
-                                <h3 className="text-2xl font-black text-white mb-3 line-clamp-1 group-hover:text-red-600 transition-colors uppercase tracking-tight">{item.title}</h3>
+                                <h3 className="text-2xl font-black text-white mb-3 line-clamp-1 group-hover:text-white transition-colors uppercase tracking-tight">{item.title}</h3>
                                 {item.description && (
                                     <p className="text-gray-400 text-sm mb-8 line-clamp-2 font-medium leading-relaxed">
                                         {item.description}
                                     </p>
                                 )}
-                                <div className="flex items-center justify-between text-[10px] font-black uppercase tracking-widest text-red-600/80 group-hover:text-red-600 transition-colors border-t border-white/5 pt-6">
+                                <div className="flex items-center justify-between text-[10px] font-black uppercase tracking-widest text-white/50 group-hover:text-white transition-colors border-t border-white/5 pt-6">
                                     <span>{item.type === 'pdf' ? 'DOCUMENTO PDF' : 'RECURSO DIGITAL'}</span>
-                                    <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:border-red-600/50 transition-colors">
+                                    <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:border-white/50 transition-colors">
                                         <ArrowLeft className="w-4 h-4 rotate-180" />
                                     </div>
                                 </div>

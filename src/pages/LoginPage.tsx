@@ -95,11 +95,11 @@ export default function LoginPage() {
 
     return (
         <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-4 relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-red-600/10 via-black to-black -z-10"></div>
+            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-white/10 via-black to-black -z-10"></div>
 
             <button
                 onClick={() => navigate("/")}
-                className="absolute top-8 left-8 flex items-center gap-3 text-gray-400 hover:text-red-600 transition-all font-black uppercase tracking-widest text-[10px] group z-20"
+                className="absolute top-8 left-8 flex items-center gap-3 text-gray-400 hover:text-white transition-all font-black uppercase tracking-widest text-[10px] group z-20"
             >
                 <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
                 <span>Volver al inicio</span>
@@ -109,9 +109,9 @@ export default function LoginPage() {
 
                 <div className="hidden md:block space-y-6">
                     <div>
-                        <span className="text-red-600 font-bold tracking-wider text-sm uppercase">Comunidad Exclusiva</span>
-                        <h1 className="text-4xl font-extrabold mt-2 leading-tight">
-                            Accede a Contenido de <span className="text-red-600">Alto Valor</span>
+                        <span className="text-white font-bold tracking-wider text-sm uppercase">Comunidad Exclusiva</span>
+                        <h1 className="text-4xl font-extrabold mt-2 leading-tight uppercase italic">
+                            Accede a Contenido de <span className="text-white text-glow-white">Alto Valor</span>
                         </h1>
                     </div>
 
@@ -127,7 +127,7 @@ export default function LoginPage() {
                             "Acceso anticipado a eventos"
                         ].map((item, i) => (
                             <li key={i} className="flex items-center gap-4 group">
-                                <div className="p-1.5 rounded-full bg-red-600/10 text-red-600 border border-red-600/20 group-hover:bg-red-600 group-hover:text-black transition-all">
+                                <div className="p-1.5 rounded-full bg-white/10 text-white border border-white/20 group-hover:bg-white group-hover:text-black transition-all">
                                     <CheckCircle className="w-4 h-4" />
                                 </div>
                                 <span className="text-gray-300 font-medium group-hover:text-white transition-colors tracking-tight">{item}</span>
@@ -137,26 +137,26 @@ export default function LoginPage() {
 
                     <div className="pt-8 border-t border-white/5">
                         <div className="flex items-center gap-4 text-xs text-gray-500 font-bold uppercase tracking-widest">
-                            <Zap className="w-5 h-5 text-red-600 animate-pulse" />
+                            <Zap className="w-5 h-5 text-white animate-pulse" />
                             <span>100% GRATUITO · MIEMBROS ÉLITE</span>
                         </div>
                     </div>
                 </div>
 
-                <div className="w-full glass-card border-white/5 rounded-3xl p-10 shadow-2xl relative overflow-hidden box-glow-red">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/5 blur-3xl rounded-full"></div>
+                <div className="w-full glass-card border-white/5 rounded-3xl p-10 shadow-2xl relative overflow-hidden box-glow-white">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 blur-3xl rounded-full"></div>
                     <div className="text-center mb-10 relative z-10">
                         {!isRecovering && (
                             <div className="inline-flex bg-black/40 rounded-xl p-1.5 mb-8 border border-white/5">
                                 <button
                                     onClick={() => { setIsRegistering(false); setError(null); setMessage(null); }}
-                                    className={`px-8 py-2.5 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all ${!isRegistering ? 'bg-red-600 text-black shadow-lg shadow-red-600/20 scale-[1.05]' : 'text-gray-500 hover:text-white'}`}
+                                    className={`px-8 py-2.5 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all ${!isRegistering ? 'bg-white text-black shadow-lg shadow-white/20 scale-[1.05]' : 'text-gray-500 hover:text-white'}`}
                                 >
                                     INGRESAR
                                 </button>
                                 <button
                                     onClick={() => { setIsRegistering(true); setError(null); setMessage(null); }}
-                                    className={`px-8 py-2.5 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all ${isRegistering ? 'bg-red-600 text-black shadow-lg shadow-red-600/20 scale-[1.05]' : 'text-gray-500 hover:text-white'}`}
+                                    className={`px-8 py-2.5 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all ${isRegistering ? 'bg-white text-black shadow-lg shadow-white/20 scale-[1.05]' : 'text-gray-500 hover:text-white'}`}
                                 >
                                     REGISTRO
                                 </button>
@@ -176,14 +176,14 @@ export default function LoginPage() {
                     </div>
 
                     {error && (
-                        <div className="mb-4 p-3 bg-red-500/10 border border-red-500/50 rounded-lg flex items-center gap-2 text-red-500 text-sm">
+                        <div className="mb-4 p-3 bg-white/5 border border-white/20 rounded-lg flex items-center gap-2 text-gray-400 text-sm">
                             <AlertCircle className="w-4 h-4 flex-shrink-0" />
                             <span>{error}</span>
                         </div>
                     )}
 
                     {message && (
-                        <div className="mb-4 p-3 bg-green-500/10 border border-green-500/50 rounded-lg flex items-center gap-2 text-green-500 text-sm">
+                        <div className="mb-4 p-3 bg-white/10 border border-white/20 rounded-lg flex items-center gap-2 text-white text-sm">
                             <CheckCircle className="w-4 h-4 flex-shrink-0" />
                             <span>{message}</span>
                         </div>
@@ -192,17 +192,17 @@ export default function LoginPage() {
                     <form onSubmit={handleSubmit} className="space-y-4">
                         {isRegistering && !isRecovering && (
                             <div className="space-y-2">
-                                <label className="text-[10px] font-black text-red-600/80 uppercase tracking-widest ml-1">Nombre Completo</label>
+                                <label className="text-[10px] font-black text-white/50 uppercase tracking-widest ml-1">Nombre Completo</label>
                                 <div className="relative group">
-                                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none transition-colors group-focus-within:text-red-600">
-                                        <User className="h-5 w-5 text-gray-600 group-focus-within:text-glow-red" />
+                                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none transition-colors group-focus-within:text-white">
+                                        <User className="h-5 w-5 text-gray-600 group-focus-within:text-glow-white" />
                                     </div>
                                     <input
                                         type="text"
                                         required={isRegistering}
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
-                                        className="block w-full pl-12 pr-4 py-4 border border-white/5 rounded-2xl bg-black/40 text-white placeholder-gray-700 focus:outline-none focus:ring-1 focus:ring-red-600/30 focus:border-red-600/50 font-medium transition-all"
+                                        className="block w-full pl-12 pr-4 py-4 border border-white/10 rounded-2xl bg-black/40 text-white placeholder-gray-700 focus:outline-none focus:ring-1 focus:ring-white/30 focus:border-white/50 font-medium transition-all"
                                         placeholder="Tu nombre de guerra"
                                     />
                                 </div>
@@ -210,17 +210,17 @@ export default function LoginPage() {
                         )}
 
                         <div className="space-y-2">
-                            <label className="text-[10px] font-black text-red-600/80 uppercase tracking-widest ml-1">Email Estratégico</label>
+                            <label className="text-[10px] font-black text-white/50 uppercase tracking-widest ml-1">Email Estratégico</label>
                             <div className="relative group">
-                                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none transition-colors group-focus-within:text-red-600">
-                                    <Mail className="h-5 w-5 text-gray-600 group-focus-within:text-glow-red" />
+                                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none transition-colors group-focus-within:text-white">
+                                    <Mail className="h-5 w-5 text-gray-600 group-focus-within:text-glow-white" />
                                 </div>
                                 <input
                                     type="email"
                                     required
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    className="block w-full pl-12 pr-4 py-4 border border-white/5 rounded-2xl bg-black/40 text-white placeholder-gray-700 focus:outline-none focus:ring-1 focus:ring-red-600/30 focus:border-red-600/50 font-medium transition-all"
+                                    className="block w-full pl-12 pr-4 py-4 border border-white/10 rounded-2xl bg-black/40 text-white placeholder-gray-700 focus:outline-none focus:ring-1 focus:ring-white/30 focus:border-white/50 font-medium transition-all"
                                     placeholder="tu@email.com"
                                 />
                             </div>
@@ -228,17 +228,17 @@ export default function LoginPage() {
 
                         {!isRecovering && (
                             <div className="space-y-2">
-                                <label className="text-[10px] font-black text-red-600/80 uppercase tracking-widest ml-1">Código de Acceso</label>
+                                <label className="text-[10px] font-black text-white/50 uppercase tracking-widest ml-1">Código de Acceso</label>
                                 <div className="relative group">
-                                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none transition-colors group-focus-within:text-red-600">
-                                        <Lock className="h-5 w-5 text-gray-600 group-focus-within:text-glow-red" />
+                                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none transition-colors group-focus-within:text-white">
+                                        <Lock className="h-5 w-5 text-gray-600 group-focus-within:text-glow-white" />
                                     </div>
                                     <input
                                         type="password"
                                         required
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                        className="block w-full pl-12 pr-4 py-4 border border-white/5 rounded-2xl bg-black/40 text-white placeholder-gray-700 focus:outline-none focus:ring-1 focus:ring-red-600/30 focus:border-red-600/50 font-medium transition-all"
+                                        className="block w-full pl-12 pr-4 py-4 border border-white/10 rounded-2xl bg-black/40 text-white placeholder-gray-700 focus:outline-none focus:ring-1 focus:ring-white/30 focus:border-white/50 font-medium transition-all"
                                         placeholder="••••••••"
                                     />
                                 </div>
@@ -248,7 +248,7 @@ export default function LoginPage() {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="w-full flex justify-center items-center py-4 px-6 border border-transparent rounded-2xl shadow-lg shadow-red-600/20 text-xs font-black text-black bg-red-600 hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform hover:-translate-y-1 uppercase tracking-[0.2em] mt-8"
+                            className="w-full flex justify-center items-center py-4 px-6 border border-transparent rounded-2xl shadow-lg shadow-white/10 text-xs font-black text-black bg-white hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white disabled:opacity-50 disabled:cursor-not-allowed transition-all transform hover:-translate-y-1 uppercase tracking-[0.2em] mt-8"
                         >
                             {loading ? (
                                 <Loader2 className="w-5 h-5 animate-spin" />
@@ -301,14 +301,14 @@ export default function LoginPage() {
                         {!isRecovering ? (
                             <button
                                 onClick={() => { setIsRecovering(true); setError(null); setMessage(null); }}
-                                className="text-gray-400 hover:text-red-600 transition-colors"
+                                className="text-gray-400 hover:text-white transition-colors"
                             >
                                 ¿Olvidaste tu contraseña?
                             </button>
                         ) : (
                             <button
                                 onClick={() => { setIsRecovering(false); setError(null); setMessage(null); }}
-                                className="text-red-600 hover:text-red-500 transition-colors font-medium"
+                                className="text-white hover:text-gray-400 transition-colors font-medium"
                             >
                                 Volver al inicio de sesión
                             </button>

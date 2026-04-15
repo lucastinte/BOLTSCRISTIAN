@@ -10,7 +10,7 @@ import {
   Loader2,
 } from "lucide-react";
 import { supabase } from "../lib/supabase";
-import cwLifeLogo from "../assets/logo.svg";
+import { Logo } from "../components/Logo";
 
 interface ShopProduct {
   id: string;
@@ -216,19 +216,19 @@ export default function AdminShopPage() {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Navbar */}
-      <nav className="sticky top-0 z-50 glass-card border-red-600/10 border-b">
+      <nav className="sticky top-0 z-50 glass-card border-white/10 border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-14 sm:h-16">
             <div className="flex items-center gap-3">
-              <img src={cwLifeLogo} alt="CW Life" className="h-8 sm:h-10 w-auto" />
-              <div className="hidden sm:block h-6 w-px bg-red-600/30" />
-              <span className="hidden sm:block text-red-600 font-black text-sm tracking-[0.2em] uppercase">
+              <Logo className="h-8 sm:h-10 w-auto text-white hover:text-gray-300" />
+              <div className="hidden sm:block h-6 w-px bg-white/20" />
+              <span className="hidden sm:block text-white font-black text-sm tracking-[0.2em] uppercase">
                 Admin Tienda
               </span>
             </div>
             <button
               onClick={() => navigate("/dashboard")}
-              className="text-red-600 hover:text-red-500 transition-colors text-sm font-black tracking-widest uppercase"
+              className="text-white hover:text-gray-300 transition-colors text-sm font-black tracking-widest uppercase"
             >
               Volver
             </button>
@@ -242,8 +242,8 @@ export default function AdminShopPage() {
           <div
             className={`mb-6 px-4 py-3 rounded-xl text-sm font-bold ${
               message.type === "success"
-                ? "bg-green-600/20 border border-green-600/40 text-green-400"
-                : "bg-red-600/20 border border-red-600/40 text-red-400"
+                ? "bg-white/20 border border-white/40 text-white"
+                : "bg-white/10 border border-white/20 text-gray-400"
             }`}
           >
             {message.text}
@@ -252,8 +252,8 @@ export default function AdminShopPage() {
 
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-xl sm:text-3xl font-black italic tracking-tight">
-            ADMIN <span className="text-red-600">TIENDA</span>
+          <h1 className="text-xl sm:text-3xl font-black italic tracking-tight uppercase">
+            ADMIN <span className="text-white">TIENDA</span>
           </h1>
           <p className="text-gray-500 text-xs sm:text-sm mt-1">
             {products.length} producto{products.length !== 1 && "s"} en total
@@ -263,7 +263,7 @@ export default function AdminShopPage() {
         {/* Nuevo producto */}
         <button
           onClick={openCreateForm}
-          className="w-full flex items-center justify-center gap-2 px-5 py-3.5 bg-red-600 hover:bg-red-500 text-black font-black rounded-xl transition-all text-sm uppercase tracking-widest mb-5"
+          className="w-full flex items-center justify-center gap-2 px-5 py-3.5 bg-white hover:bg-gray-200 text-black font-black rounded-xl transition-all text-sm uppercase tracking-widest mb-5"
         >
           <Plus className="w-4 h-4" />
           Nuevo Producto
@@ -277,8 +277,8 @@ export default function AdminShopPage() {
               onClick={() => setFilterTab(t)}
               className={`text-center px-2 py-2.5 rounded-xl text-[10px] sm:text-xs font-black uppercase tracking-wider sm:tracking-widest transition-all ${
                 filterTab === t
-                  ? "bg-red-600 text-black"
-                  : "bg-white/5 border border-white/10 text-gray-400 hover:text-red-600 hover:border-red-600/30"
+                  ? "bg-white text-black"
+                  : "bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-white/30"
               }`}
             >
               {t}
@@ -289,14 +289,14 @@ export default function AdminShopPage() {
         {/* Product list */}
         {loading ? (
           <div className="flex justify-center py-20">
-            <Loader2 className="w-8 h-8 text-red-600 animate-spin" />
+            <Loader2 className="w-8 h-8 text-white animate-spin" />
           </div>
         ) : filteredProducts.length === 0 ? (
           <div className="text-center py-20">
             <p className="text-gray-500 text-lg">No hay productos todavía</p>
             <button
               onClick={openCreateForm}
-              className="mt-4 text-red-600 hover:text-red-500 font-bold text-sm"
+              className="mt-4 text-white hover:text-gray-300 font-bold text-sm"
             >
               Crear el primero
             </button>
@@ -306,7 +306,7 @@ export default function AdminShopPage() {
             {filteredProducts.map((product) => (
               <div
                 key={product.id}
-                className="glass-card border-white/5 rounded-2xl p-4 sm:p-6 hover:border-red-600/20 transition-all"
+                className="glass-card border-white/5 rounded-2xl p-4 sm:p-6 hover:border-white/20 transition-all"
               >
                 {/* Image centered */}
                 <div className="w-full aspect-video rounded-xl bg-white/5 border border-white/10 overflow-hidden mb-4">
@@ -327,7 +327,7 @@ export default function AdminShopPage() {
                 <div className="mb-3">
                   <h3 className="font-black text-white text-base sm:text-lg">{product.name}</h3>
                   <div className="flex flex-wrap gap-1.5 mt-2">
-                    <span className="px-2.5 py-0.5 rounded-full bg-red-600/15 border border-red-600/30 text-red-500 text-[10px] font-black tracking-widest uppercase">
+                    <span className="px-2.5 py-0.5 rounded-full bg-white/10 border border-white/20 text-white text-[10px] font-black tracking-widest uppercase">
                       {product.tab}
                     </span>
                     <span className="px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-gray-400 text-[10px] font-bold tracking-wider uppercase">
@@ -343,7 +343,7 @@ export default function AdminShopPage() {
                 <div className="flex flex-col gap-2 mt-4 pt-4 border-t border-white/5">
                   <button
                     onClick={() => openEditForm(product)}
-                    className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-red-600 hover:border-red-600/30 transition-all text-xs font-black uppercase tracking-wider"
+                    className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:border-white/30 transition-all text-xs font-black uppercase tracking-wider"
                   >
                     <Pencil className="w-3.5 h-3.5" />
                     Editar
@@ -352,7 +352,7 @@ export default function AdminShopPage() {
                     <div className="flex gap-2">
                       <button
                         onClick={() => handleDelete(product.id)}
-                        className="flex-1 py-2.5 rounded-xl bg-red-600 text-black text-xs font-black uppercase tracking-wider text-center"
+                        className="flex-1 py-2.5 rounded-xl bg-white text-black text-xs font-black uppercase tracking-wider text-center"
                       >
                         Confirmar
                       </button>
@@ -366,7 +366,7 @@ export default function AdminShopPage() {
                   ) : (
                     <button
                       onClick={() => setDeletingId(product.id)}
-                      className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-red-600 hover:border-red-600/30 transition-all text-xs font-black uppercase tracking-wider"
+                      className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:border-white/30 transition-all text-xs font-black uppercase tracking-wider"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                       Eliminar
@@ -383,11 +383,11 @@ export default function AdminShopPage() {
       {showForm && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={closeForm} />
-          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto glass-card border-red-600/20 rounded-2xl p-6 sm:p-8">
+          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto glass-card border-white/20 rounded-2xl p-6 sm:p-8">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-black italic tracking-tight">
+              <h2 className="text-xl font-black italic tracking-tight uppercase">
                 {editingId ? "EDITAR" : "NUEVO"}{" "}
-                <span className="text-red-600">PRODUCTO</span>
+                <span className="text-white">PRODUCTO</span>
               </h2>
               <button
                 onClick={closeForm}
@@ -417,7 +417,7 @@ export default function AdminShopPage() {
                       </div>
                     )}
                   </div>
-                  <label className="cursor-pointer px-4 py-2.5 rounded-xl glass-card border-white/10 text-sm text-gray-300 hover:text-red-600 hover:border-red-600/30 transition-all">
+                  <label className="cursor-pointer px-4 py-2.5 rounded-xl glass-card border-white/10 text-sm text-gray-300 hover:text-white hover:border-white/30 transition-all">
                     <input
                       type="file"
                       accept="image/*"
@@ -440,7 +440,7 @@ export default function AdminShopPage() {
                     onChange={(e) =>
                       setForm({ ...form, tab: e.target.value as "suplementos" | "indumentaria" })
                     }
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:border-red-600/50 focus:outline-none transition-colors"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:border-white/50 focus:outline-none transition-colors"
                   >
                     <option value="suplementos">Suplementos</option>
                     <option value="indumentaria">Indumentaria</option>
@@ -455,7 +455,7 @@ export default function AdminShopPage() {
                     value={form.category}
                     onChange={(e) => setForm({ ...form, category: e.target.value })}
                     placeholder="Ej: Recuperación, Entrenamiento"
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 focus:border-red-600/50 focus:outline-none transition-colors"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 focus:border-white/50 focus:outline-none transition-colors"
                   />
                 </div>
               </div>
@@ -470,7 +470,7 @@ export default function AdminShopPage() {
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   placeholder="Ej: Proteína Whey"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 focus:border-red-600/50 focus:outline-none transition-colors"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 focus:border-white/50 focus:outline-none transition-colors"
                 />
               </div>
 
@@ -484,7 +484,7 @@ export default function AdminShopPage() {
                   onChange={(e) => setForm({ ...form, description: e.target.value })}
                   placeholder="Breve descripción del producto..."
                   rows={3}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 focus:border-red-600/50 focus:outline-none transition-colors resize-none"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 focus:border-white/50 focus:outline-none transition-colors resize-none"
                 />
               </div>
 
@@ -498,7 +498,7 @@ export default function AdminShopPage() {
                   value={featuresInput}
                   onChange={(e) => setFeaturesInput(e.target.value)}
                   placeholder="Ej: Alto valor biológico, Rápida absorción, Bajo en grasas"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 focus:border-red-600/50 focus:outline-none transition-colors"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 focus:border-white/50 focus:outline-none transition-colors"
                 />
               </div>
 
@@ -511,7 +511,7 @@ export default function AdminShopPage() {
                   type="number"
                   value={form.sort_order}
                   onChange={(e) => setForm({ ...form, sort_order: parseInt(e.target.value) || 0 })}
-                  className="w-32 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:border-red-600/50 focus:outline-none transition-colors"
+                  className="w-32 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:border-white/50 focus:outline-none transition-colors"
                 />
               </div>
 
@@ -519,7 +519,7 @@ export default function AdminShopPage() {
               <button
                 type="submit"
                 disabled={saving}
-                className="w-full flex items-center justify-center gap-2 py-4 bg-red-600 hover:bg-red-500 disabled:bg-red-600/50 text-black font-black rounded-xl transition-all uppercase text-sm tracking-widest"
+                className="w-full flex items-center justify-center gap-2 py-4 bg-white hover:bg-gray-200 disabled:bg-white/50 text-black font-black rounded-xl transition-all uppercase text-sm tracking-widest"
               >
                 {saving ? (
                   <Loader2 className="w-5 h-5 animate-spin" />

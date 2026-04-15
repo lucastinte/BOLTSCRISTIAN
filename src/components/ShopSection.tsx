@@ -40,7 +40,7 @@ export function ShopSection({ tab }: { tab: "suplementos" | "indumentaria" }) {
   if (loading) {
     return (
       <div className="flex justify-center py-20">
-        <Loader2 className="w-8 h-8 text-red-600 animate-spin" />
+        <Loader2 className="w-8 h-8 text-white animate-spin" />
       </div>
     );
   }
@@ -64,7 +64,7 @@ export function ShopSection({ tab }: { tab: "suplementos" | "indumentaria" }) {
             href={buildWhatsAppLink(product.name)}
             target="_blank"
             rel="noopener noreferrer"
-            className="group glass-card-red border-red-600/10 rounded-2xl overflow-hidden transition-all duration-300 hover:border-red-600/50 hover:-translate-y-2 hover-glow-red block"
+            className="group glass-card border-white/10 rounded-2xl overflow-hidden transition-all duration-300 hover:border-white/50 hover:-translate-y-2 hover-glow-white block"
           >
             {/* Product image */}
             {product.image_url ? (
@@ -83,11 +83,11 @@ export function ShopSection({ tab }: { tab: "suplementos" | "indumentaria" }) {
 
             {/* Card content */}
             <div className="p-5 sm:p-6">
-              <span className="inline-block px-3 py-1 rounded-full bg-red-600/15 border border-red-600/30 text-red-500 text-[10px] font-black tracking-widest uppercase mb-3">
+              <span className="inline-block px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white text-[10px] font-black tracking-widest uppercase mb-3">
                 {product.category}
               </span>
 
-              <h3 className="text-lg sm:text-xl font-black text-white uppercase tracking-tight mb-2 group-hover:text-red-600 transition-colors">
+              <h3 className="text-lg sm:text-xl font-black text-white uppercase tracking-tight mb-2 group-hover:text-gray-300 transition-colors">
                 {product.name}
               </h3>
 
@@ -99,14 +99,14 @@ export function ShopSection({ tab }: { tab: "suplementos" | "indumentaria" }) {
                 <ul className="space-y-1.5 mb-5">
                   {product.features.map((feature) => (
                     <li key={feature} className="flex items-center gap-2.5 text-sm text-gray-300">
-                      <span className="w-1.5 h-1.5 bg-red-600 rounded-full flex-shrink-0" />
+                      <span className="w-1.5 h-1.5 bg-white rounded-full flex-shrink-0" />
                       {feature}
                     </li>
                   ))}
                 </ul>
               )}
 
-              <div className="w-full py-3.5 bg-red-600 rounded-xl text-center text-black font-black text-xs tracking-[0.15em] uppercase group-hover:bg-red-500 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-red-600/20">
+              <div className="w-full py-3.5 bg-white rounded-xl text-center text-black font-black text-xs tracking-[0.15em] uppercase group-hover:bg-gray-200 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-white/20">
                 <MessageCircle className="w-4 h-4" />
                 Consultar por WhatsApp
               </div>
