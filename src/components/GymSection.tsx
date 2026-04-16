@@ -18,7 +18,7 @@ export function GymSection({ showLogo = false }: GymSectionProps) {
     query: "?url",
   });
 
-  const featuredNames = ["1.jpeg", "13.jpeg", "14.jpeg", "15.jpeg", "16.jpeg", "17.jpeg", "18.jpeg"];
+  const featuredNames = ["0_triunvirato_logo.png", "1_sajama_logo.jpg", "2_evolution_gym_logo.png", "1.jpeg", "13.jpeg", "14.jpeg", "15.jpeg", "16.jpeg", "17.jpeg", "18.jpeg"];
 
   const sortedImages = Object.entries(gymImagesGlob)
     .sort(([pathA], [pathB]) => {
@@ -88,7 +88,7 @@ export function GymSection({ showLogo = false }: GymSectionProps) {
           >
             {sortedImages.map((src, idx) => {
               const isArias = src.includes('arias-');
-              const sedeLabel = isArias ? "Sede Coronel Arias" : "Sede Central";
+              const sedeLabel = isArias ? "CWLife Reconstruirte" : "BlackTraining by CWLife";
               
               return (
                 <div key={idx} className="w-full h-full flex-shrink-0 relative">

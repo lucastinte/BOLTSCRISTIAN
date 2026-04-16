@@ -81,7 +81,7 @@ export default function AdminSignupPage() {
                             onChange={(e) => setEmail(e.target.value)}
                             required
                             className="w-full bg-black/40 border border-white/10 rounded-2xl p-4 text-white focus:border-white/50 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all font-medium placeholder:text-gray-700"
-                            placeholder="admin@bolt.com"
+                            placeholder="admin@cwlife.com"
                         />
                     </div>
 

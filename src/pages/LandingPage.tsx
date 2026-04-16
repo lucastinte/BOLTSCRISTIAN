@@ -33,6 +33,9 @@ import evolution1 from "../assets/evolution-1.mp4";
 import evolution2 from "../assets/evolution-2.mp4";
 import evolution3 from "../assets/evolution-3.mp4";
 import evolution4 from "../assets/evolution-4.mp4";
+import evolutionGymLogo from "../assets/evolution-gym-logo.png";
+import triunviratoLogo from "../assets/triunvirato-logo.png";
+import sajamaLogo from "../assets/sajama-logo.jpg";
 
 export default function LandingPage() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -214,7 +217,7 @@ export default function LandingPage() {
                                     </div>
                                     <div className="text-left leading-tight">
                                         <div className="text-sm font-semibold text-white">
-                                            Sajama 471 – Barrio Malvinas
+                                            Triunvirato 516 – Barrio Coronel Arias
                                         </div>
                                         <div className="text-xs text-gray-300">
                                             San Salvador de Jujuy
@@ -227,7 +230,7 @@ export default function LandingPage() {
                                     </div>
                                     <div className="text-left leading-tight">
                                         <div className="text-sm font-semibold text-white flex flex-wrap items-center gap-2">
-                                            Calle 514 – Mza 24 – Lote 16
+                                            Evolution Gym – Calle 514
                                             <span className="px-2 py-0.5 bg-rose-500/20 text-rose-300 border border-rose-500/30 text-[9px] font-black tracking-widest rounded-full uppercase shadow-lg shadow-rose-500/20">
                                                 Exclusivo Mujeres
                                             </span>
@@ -574,34 +577,30 @@ export default function LandingPage() {
                         <div className="lg:col-span-1 space-y-6">
                             {[
                                 {
-                                    title: "Sede Central",
-                                    subtitle: "Black Training GYM",
-                                    address: "Antenor Sajama 471",
-                                    city: "San Salvador de Jujuy",
+                                    title: "Sede Central (Principal)",
+                                    subtitle: "CWLife Reconstruirte",
+                                    address: "Triunvirato 516",
+                                    city: "Barrio Coronel Arias, Jujuy",
                                     highlight: true,
+                                    image: triunviratoLogo,
                                 },
                                 {
-                                    title: "Sede Alto Comedero",
-                                    subtitle: "Black Training Women",
+                                    title: "Sede Malvinas",
+                                    subtitle: "BlackTraining by CWLife",
+                                    address: "Antenor Sajama 471",
+                                    city: "San Salvador de Jujuy",
+                                    highlight: false,
+                                    image: sajamaLogo,
+                                },
+                                {
+                                    title: "Evolution Gym",
+                                    subtitle: "Evolution Gym by CW Life",
                                     address: "Calle 514 – Mza 24 – Lote 16",
                                     city: "B° 30 Hectáreas, Jujuy",
                                     highlight: false,
                                     badge: "EXCLUSIVO MUJERES",
                                     mapUrl: "https://maps.app.goo.gl/yvkJ5MdZn8Mme6i17",
-                                },
-                                {
-                                    title: "Sede Coronel Arias",
-                                    subtitle: "Black Training Arias",
-                                    address: "Triunvirato 516",
-                                    city: "Barrio Coronel Arias, Jujuy",
-                                    highlight: false,
-                                },
-                                {
-                                    title: "Sede Entrenamiento Funcional",
-                                    subtitle: "Black Training Funcional",
-                                    address: "Mejías 412",
-                                    city: "San Salvador de Jujuy",
-                                    highlight: false,
+                                    image: evolutionGymLogo,
                                 },
                             ].map((sede, i) => (
                                 <div
@@ -624,6 +623,11 @@ export default function LandingPage() {
                                         }`}>
                                             {sede.badge}
                                         </span>
+                                    )}
+                                    {(sede as any).image && (
+                                        <div className="mb-6 rounded-xl overflow-hidden border border-white/10 bg-black/50 aspect-video flex items-center justify-center">
+                                            <img src={(sede as any).image} alt={sede.title} className="w-full h-full object-contain p-2" />
+                                        </div>
                                     )}
                                     <div className="flex items-start gap-4 mb-6">
                                         <div className={`h-12 w-12 flex-shrink-0 flex items-center justify-center rounded-xl ${sede.highlight
@@ -910,7 +914,7 @@ export default function LandingPage() {
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {[
                             {
-                                title: "BLACK | Training",
+                                title: "BlackTraining by CWLife",
                                 subtitle: "SEMI-PERSONALIZADO",
                                 badge: "PREVENTA",
                                 description: "SEMIPERSONALIZADO (10 cupos)",
@@ -941,7 +945,7 @@ export default function LandingPage() {
                                 message: "Hola, me interesa el plan Método CW Life Online.",
                             },
                             {
-                                title: "BLACK | Training",
+                                title: "BlackTraining by CWLife",
                                 subtitle: "PRESENCIAL",
                                 badge: "PREVENTA",
                                 description: "PERSONALIZADO (5 cupos)",
