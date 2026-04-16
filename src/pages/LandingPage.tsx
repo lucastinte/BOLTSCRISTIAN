@@ -625,8 +625,8 @@ export default function LandingPage() {
                                         </span>
                                     )}
                                     {(sede as any).image && (
-                                        <div className="mb-6 rounded-xl overflow-hidden border border-white/10 bg-black/50 aspect-video flex items-center justify-center">
-                                            <img src={(sede as any).image} alt={sede.title} className="w-full h-full object-contain p-2" />
+                                        <div className="mb-6 rounded-xl overflow-hidden bg-black aspect-video flex items-center justify-center">
+                                            <img src={(sede as any).image} alt={sede.title} className="w-full h-full object-contain" />
                                         </div>
                                     )}
                                     <div className="flex items-start gap-4 mb-6">
