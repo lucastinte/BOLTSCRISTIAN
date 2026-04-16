@@ -6,9 +6,12 @@ import btLogo from "../assets/bt-logo.png";
 
 interface GymSectionProps {
   showLogo?: boolean;
+  title?: string;
+  gymType?: "arias" | "sajama" | "evolution" | "all";
+  id?: string;
 }
 
-export function GymSection({ showLogo = false }: GymSectionProps) {
+export function GymSection({ showLogo = false, title = "Nuestro Gimnasio", gymType = "all", id = "gym-gallery" }: GymSectionProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
@@ -21,6 +24,17 @@ export function GymSection({ showLogo = false }: GymSectionProps) {
   const featuredNames = ["0_triunvirato_logo.png", "1_sajama_logo.jpg", "2_evolution_gym_logo.png", "1.jpeg", "13.jpeg", "14.jpeg", "15.jpeg", "16.jpeg", "17.jpeg", "18.jpeg"];
 
   const sortedImages = Object.entries(gymImagesGlob)
+    .filter(([path]) => {
+      const name = path.split('/').pop()?.toLowerCase() || "";
+      if (gymType === "all") return true;
+      if (gymType === "arias") return name.includes("arias") || name.startsWith("0_");
+      if (gymType === "sajama") return (name.match(/^\d+\.(jpeg|jpg|png|webp)$/) && !["1.jpeg"].includes(name)) || name === "1.jpeg" || name.startsWith("1_");
+      // For Sajama, let's be more specific: 1, 13, 14, 15, 16, 17, 18
+      const sajamaNumbers = ["1.jpeg", "13.jpeg", "14.jpeg", "15.jpeg", "16.jpeg", "17.jpeg", "18.jpeg"];
+      if (gymType === "sajama") return sajamaNumbers.includes(name) || name.startsWith("1_");
+      if (gymType === "evolution") return name.includes("ev-") || name.startsWith("2_");
+      return false;
+    })
     .sort(([pathA], [pathB]) => {
       const nameA = pathA.split('/').pop() || "";
       const nameB = pathB.split('/').pop() || "";
@@ -52,7 +66,7 @@ export function GymSection({ showLogo = false }: GymSectionProps) {
   if (sortedImages.length === 0) return null;
 
   return (
-    <section id="gym-gallery" className="py-16 px-4 bg-black relative overflow-hidden">
+    <section id={id} className="py-16 px-4 bg-black relative overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/5 blur-[120px] rounded-full pointer-events-none" />
 
@@ -68,12 +82,16 @@ export function GymSection({ showLogo = false }: GymSectionProps) {
         )}
 
         <div className="text-center mb-10">
-          <Link to="/black-training" className="inline-block group cursor-pointer">
+          <div className="inline-block group cursor-pointer">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-2 transition-transform duration-300 group-hover:scale-105">
-              Este es nuestro <span className="text-white text-glow-white">Gimnasio</span>
+              {title.split(' ').map((word, i) => (
+                <span key={i} className={word.toLowerCase() === "gimnasio" || word.toLowerCase() === "gimnasios" ? "text-white text-glow-white" : ""}>
+                   {word}{' '}
+                </span>
+              ))}
             </h2>
             <p className="text-white/40 text-sm uppercase tracking-[0.3em] font-medium">Equipamiento Premium & Resultados Reales</p>
-          </Link>
+          </div>
         </div>
 
         <div
@@ -87,8 +105,10 @@ export function GymSection({ showLogo = false }: GymSectionProps) {
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
             {sortedImages.map((src, idx) => {
-              const isArias = src.includes('arias-');
-              const sedeLabel = isArias ? "CWLife Reconstruirte" : "BlackTraining by CWLife";
+              const fileName = src.split('/').pop() || "";
+              let sedeLabel = "BlackTraining by CWLife";
+              if (fileName.includes('arias') || fileName.startsWith('0_')) sedeLabel = "CWLife Reconstruirte";
+              if (fileName.includes('ev-') || fileName.startsWith('2_')) sedeLabel = "Evolution Gym by CWLife";
               
               return (
                 <div key={idx} className="w-full h-full flex-shrink-0 relative">
@@ -107,11 +127,9 @@ export function GymSection({ showLogo = false }: GymSectionProps) {
                   </div>
 
                   {/* Image Label for the first few (featured) */}
-                  {idx < featuredNames.length && (
-                    <div className="absolute bottom-8 left-8 bg-black/40 backdrop-blur-md border border-white/10 px-4 py-2 rounded-xl text-xs font-semibold text-white uppercase tracking-widest opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                      Instalaciones Premium
-                    </div>
-                  )}
+                  <div className="absolute bottom-8 left-8 bg-black/40 backdrop-blur-md border border-white/10 px-4 py-2 rounded-xl text-xs font-semibold text-white uppercase tracking-widest opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                    Instalaciones Premium
+                  </div>
                 </div>
               );
             })}

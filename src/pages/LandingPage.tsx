@@ -1083,7 +1083,11 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            <GymSection />
+            <div className="space-y-0" id="gym-gallery">
+                <GymSection title="Nuestros Gimnasios: Sede Principal" gymType="arias" id="gallery-arias" />
+                <GymSection title="Nuestros Gimnasios: Black Training" gymType="sajama" id="gallery-sajama" />
+                <GymSection title="Nuestros Gimnasios: Evolution Gym" gymType="evolution" id="gallery-evolution" />
+            </div>
 
             <section className="py-20 px-4 bg-gradient-to-b from-black to-white/5">
                 <div className="max-w-5xl mx-auto">
