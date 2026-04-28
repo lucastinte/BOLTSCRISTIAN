@@ -10,6 +10,8 @@ import { GymSection } from "./components/GymSection";
 import { CircuitoReductor } from "./components/CircuitoReductor";
 import ShopPage from "./pages/ShopPage";
 import AdminShopPage from "./pages/AdminShopPage";
+import TermsPage from "./pages/TermsPage";
+import BusinessConsultingPage from "./pages/BusinessConsultingPage";
 
 function App() {
   return (
@@ -46,6 +48,8 @@ function App() {
             </div>
           }
         />
+        <Route path="/terms" element={<TermsPage />} />
+        <Route path="/business" element={<BusinessConsultingPage />} />
       </Routes>
     </BrowserRouter>
   );

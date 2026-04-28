@@ -81,6 +81,14 @@ export default function LandingPage() {
             navigate("/shop");
             return;
         }
+        if (item === "Términos") {
+            navigate("/terms");
+            return;
+        }
+        if (item === "Asesoría B2B") {
+            navigate("/business");
+            return;
+        }
         const id = item.toLowerCase().replace(/\s+/g, "-");
         const element = document.getElementById(id);
         element?.scrollIntoView({ behavior: "smooth" });
@@ -101,7 +109,7 @@ export default function LandingPage() {
                         </div>
 
                         <div className="hidden md:flex gap-8 items-center">
-                            {["Inicio", "Sobre Mí", "Programas", "Sedes", "Precios", "Tienda", "Contacto"].map(
+                            {["Inicio", "Sobre Mí", "Programas", "Sedes", "Precios", "Tienda", "Contacto", "Asesoría B2B"].map(
                                 (item) => (
                                     <button
                                         key={item}
@@ -143,7 +151,7 @@ export default function LandingPage() {
                 {mobileMenuOpen && (
                     <div className="md:hidden bg-black border-t border-white/20">
                         <div className="px-4 py-4 space-y-3">
-                            {["Inicio", "Sobre Mí", "Programas", "Sedes", "Precios", "Tienda", "Contacto"].map(
+                            {["Inicio", "Sobre Mí", "Programas", "Sedes", "Precios", "Tienda", "Contacto", "Asesoría B2B"].map(
                                 (item) => (
                                     <button
                                         key={item}
@@ -211,19 +219,28 @@ export default function LandingPage() {
                             </div>
 
                             <div className="mt-5 flex flex-col gap-3 w-full sm:w-auto">
-                                <div className="inline-flex w-full sm:w-auto items-center gap-3 px-4 py-3 rounded-2xl glass-card-white shadow-[0_12px_40px_rgba(255, 255, 255, 0.08)]">
-                                    <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-white/15 border border-white/50 text-white">
+                                <button 
+                                    onClick={() => {
+                                        const element = document.getElementById('gallery-arias');
+                                        element?.scrollIntoView({ behavior: 'smooth' });
+                                    }}
+                                    className="inline-flex w-full sm:w-auto items-center gap-3 px-4 py-3 rounded-2xl glass-card-white shadow-[0_12px_40px_rgba(255, 255, 255, 0.15)] hover:bg-white/20 transition-all hover:-translate-y-1 group"
+                                >
+                                    <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-white/15 border border-white/50 text-white group-hover:bg-white group-hover:text-black transition-colors">
                                         <MapPin className="w-5 h-5" />
                                     </div>
-                                    <div className="text-left leading-tight">
-                                        <div className="text-sm font-semibold text-white">
-                                            Triunvirato 516 – Barrio Coronel Arias
+                                    <div className="text-left leading-tight flex-1">
+                                        <div className="text-sm font-black text-white uppercase tracking-tight">
+                                            SEDE CENTRAL: CORONEL ARIAS
                                         </div>
                                         <div className="text-xs text-gray-300">
-                                            San Salvador de Jujuy
+                                            Triunvirato 516 – Jujuy
                                         </div>
                                     </div>
-                                </div>
+                                    <div className="hidden sm:block text-[10px] uppercase font-bold tracking-widest text-white/50 group-hover:text-white border-l border-white/20 pl-3 ml-2">
+                                        Ver <br/>Fotos
+                                    </div>
+                                </button>
                                 <div className="inline-flex w-full sm:w-auto items-center gap-3 px-4 py-3 rounded-2xl glass-card border border-rose-500/10 shadow-[0_12px_40px_rgba(244,63,114,0.1)]">
                                     <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-white/15 border border-white/50 text-white">
                                         <MapPin className="w-5 h-5" />
@@ -573,17 +590,63 @@ export default function LandingPage() {
                         </p>
                     </div>
 
+                    {/* SEDE PRINCIPAL (FEATURED) */}
+                    <div className="max-w-7xl mx-auto mb-10">
+                        <div className="relative p-8 md:p-12 rounded-3xl glass-card-white border-white/40 shadow-[0_20px_60px_rgba(255,255,255,0.15)] flex flex-col md:flex-row items-center gap-8 hover-glow-white transition-all transform hover:-translate-y-1 overflow-hidden">
+                            <span className="absolute top-6 right-6 px-4 py-1.5 bg-white text-black text-xs font-black tracking-widest rounded-full shadow-lg shadow-white/30 uppercase z-10">
+                                SEDE PRINCIPAL
+                            </span>
+                            
+                            <div className="w-full md:w-1/3 aspect-video md:aspect-square bg-black rounded-2xl overflow-hidden flex items-center justify-center p-6 border-2 border-white/20 relative z-10">
+                                <img src={triunviratoLogo} alt="Sede Central Coronel Arias" className="w-full h-full object-contain" />
+                            </div>
+                            
+                            <div className="w-full md:w-2/3 space-y-6 relative z-10">
+                                <div>
+                                    <h3 className="text-3xl md:text-5xl font-black text-white tracking-tighter italic mb-2 uppercase">
+                                        Sede Central Coronel Arias
+                                    </h3>
+                                    <p className="text-xl text-gray-300 font-bold uppercase tracking-widest">
+                                        CWLife Reconstruirte
+                                    </p>
+                                </div>
+                                
+                                <div className="space-y-2 py-4 border-y border-white/20">
+                                    <div className="flex items-center gap-3 text-white text-lg font-medium">
+                                        <MapPin className="w-6 h-6 text-white" />
+                                        Triunvirato 516, Barrio Coronel Arias
+                                    </div>
+                                    <div className="pl-9 text-gray-400">
+                                        San Salvador de Jujuy
+                                    </div>
+                                </div>
+                                
+                                <div className="flex flex-wrap gap-4 pt-2">
+                                    <button
+                                        onClick={() => {
+                                            const element = document.getElementById('gallery-arias');
+                                            element?.scrollIntoView({ behavior: 'smooth' });
+                                        }}
+                                        className="px-8 py-4 bg-white hover:bg-gray-200 text-black rounded-xl font-black uppercase tracking-widest transition-all shadow-[0_10px_30px_rgba(255,255,255,0.3)] transform hover:scale-105"
+                                    >
+                                        Explorar Instalaciones
+                                    </button>
+                                    <a
+                                        href="https://www.google.com/maps/search/?api=1&query=Triunvirato+516,+Barrio+Coronel+Arias,+San+Salvador+de+Jujuy"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/30 rounded-xl font-black uppercase tracking-widest transition-all"
+                                    >
+                                        Ver Ubicación
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto items-start">
                         <div className="lg:col-span-1 space-y-6">
                             {[
-                                {
-                                    title: "Sede Central (Principal)",
-                                    subtitle: "CWLife Reconstruirte",
-                                    address: "Triunvirato 516",
-                                    city: "Barrio Coronel Arias, Jujuy",
-                                    highlight: true,
-                                    image: triunviratoLogo,
-                                },
                                 {
                                     title: "Sede Malvinas",
                                     subtitle: "BlackTraining by CWLife",
@@ -1236,7 +1299,7 @@ export default function LandingPage() {
                         <div className="md:col-span-3">
                             <h3 className="font-bold text-white mb-4">Enlaces Rápidos</h3>
                             <div className="space-y-2">
-                                {["Inicio", "Programas", "Sedes", "Precios", "Tienda", "Contacto"].map((link) => (
+                                {["Inicio", "Programas", "Sedes", "Precios", "Tienda", "Contacto", "Asesoría B2B", "Términos"].map((link) => (
                                     <button
                                         key={link}
                                         onClick={() => handleNavClick(link)}

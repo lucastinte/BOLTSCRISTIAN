@@ -27,11 +27,14 @@ export function GymSection({ showLogo = false, title = "Nuestro Gimnasio", gymTy
     .filter(([path]) => {
       const name = path.split('/').pop()?.toLowerCase() || "";
       if (gymType === "all") return true;
-      if (gymType === "arias") return name.includes("arias") || name.startsWith("0_");
-      if (gymType === "sajama") return (name.match(/^\d+\.(jpeg|jpg|png|webp)$/) && !["1.jpeg"].includes(name)) || name === "1.jpeg" || name.startsWith("1_");
-      // For Sajama, let's be more specific: 1, 13, 14, 15, 16, 17, 18
-      const sajamaNumbers = ["1.jpeg", "13.jpeg", "14.jpeg", "15.jpeg", "16.jpeg", "17.jpeg", "18.jpeg"];
-      if (gymType === "sajama") return sajamaNumbers.includes(name) || name.startsWith("1_");
+      if (gymType === "arias") {
+        return (name.includes("arias") || name.startsWith("0_")) && 
+               !["arias-1.jpeg", "arias-2.jpeg", "arias-3.jpeg"].includes(name);
+      }
+      if (gymType === "sajama") {
+        const sajamaNumbers = ["1.jpeg", "13.jpeg", "14.jpeg", "15.jpeg", "16.jpeg", "17.jpeg", "18.jpeg"];
+        return sajamaNumbers.includes(name) || name.startsWith("1_") || ["arias-2.jpeg", "arias-3.jpeg"].includes(name);
+      }
       if (gymType === "evolution") return name.includes("ev-") || name.startsWith("2_");
       return false;
     })

@@ -297,7 +297,19 @@ export default function LoginPage() {
                         </>
                     )}
 
-                    <div className="mt-8 text-center text-sm">
+                    <div className="mt-8 text-center space-y-4">
+                        {isRegistering && !isRecovering && (
+                            <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest leading-relaxed">
+                                Al registrarte, confirmas que aceptas nuestras{" "}
+                                <button
+                                    onClick={() => navigate("/terms")}
+                                    className="text-white hover:underline transition-all"
+                                >
+                                    Normas de Inscripción y Permanencia
+                                </button>
+                            </p>
+                        )}
+
                         {!isRecovering ? (
                             <button
                                 onClick={() => { setIsRecovering(true); setError(null); setMessage(null); }}
