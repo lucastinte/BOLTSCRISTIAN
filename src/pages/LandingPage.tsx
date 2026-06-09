@@ -27,7 +27,9 @@ import transformacion1 from "../assets/transformacion-1.png";
 import transformacion2 from "../assets/transformacion-2.png";
 import transformacion3 from "../assets/transformacion-3.png";
 import { GymSection } from "../components/GymSection";
-import cw90Dias from "../assets/black-90-dias.jpeg";
+import reto30Dias from "../assets/reto-30-dias.jpg";
+import reto90Dias from "../assets/reto-90-dias.jpg";
+import promoVideo from "../assets/reconstruirte-promo.mp4";
 import { Logo } from "../components/Logo";
 import evolution1 from "../assets/evolution-1.mp4";
 import evolution2 from "../assets/evolution-2.mp4";
@@ -40,6 +42,7 @@ import atenasLogo from "../assets/atenas-logo.jpg";
 export default function LandingPage() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [openFaq, setOpenFaq] = useState<number | null>(null);
+    const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
     const [session, setSession] = useState<any>(null);
     const navigate = useNavigate();
 
@@ -1064,26 +1067,45 @@ export default function LandingPage() {
 
                             {
                                 highlight: true,
-                                title: "90 DÍAS CW LIFE",
+                                title: "RETO 30 DÍAS",
+                                subtitle: "Desafío intensivo",
+                                price: "🔥 Alto Impacto",
+                                description:
+                                    "Rompe la inercia. Un programa concentrado de 30 días diseñado para acelerar tu metabolismo, tonificar y cambiar tus hábitos.",
+                                features: [
+                                    "Evaluación física inicial",
+                                    "Plan de entrenamiento adaptado",
+                                    "Plan de alimentación para 30 días",
+                                    "Soporte y comunidad activa",
+                                ],
+                                message:
+                                    "Hola, me interesa inscribirme en el RETO 30 DÍAS.",
+                                image: reto30Dias,
+                            },
+
+                            {
+                                highlight: true,
+                                title: "RECONSTRUIRTE 90 DÍAS",
                                 subtitle: "Edición élite",
                                 price: "⚡️ Exclusivo",
                                 description:
-                                    "El estándar CW LIFE está llegando. 90 días sin excusas para reconstruirte física y mentalmente.",
+                                    "El estándar CW LIFE definitivo. 90 días sin excusas para reconstruirte física y mentalmente. Válido en cualquiera de nuestras sedes.",
                                 features: [
-                                    "Programación de entrenamiento (online o presencial)",
+                                    "Programación de entrenamiento (presencial o semi-presencial)",
+                                    "Válido en cualquier sede (Sede Central, Evolution Gym, Atenas Gym)",
                                     "Plan de alimentación personalizado",
                                     "Seguimiento diario y mindset de acero",
-                                    "Solo para quienes están listos para reconstruirse",
                                 ],
                                 message:
-                                    "Hola, quiero ser de los primeros en 90 DÍAS CW LIFE. Avísame cuando abra.",
-                                image: cw90Dias,
+                                    "Hola, quiero ser de los primeros en RECONSTRUIRTE 90 DÍAS. Avísame cuando abra.",
+                                image: reto90Dias,
+                                video: promoVideo,
                             },
                         ].map((plan, i) =>
                             plan.highlight ? (
                                 <div
                                     key={i}
-                                    className="relative p-1 rounded-2xl overflow-hidden border-2 border-white/50 shadow-[0_15px_50px_rgba(255, 255, 255,0.25)] lg:col-start-2 lg:row-start-2 lg:max-w-md lg:mx-auto"
+                                    className="relative p-1 rounded-2xl overflow-hidden border-2 border-white/50 shadow-[0_15px_50px_rgba(255, 255, 255,0.25)] w-full lg:max-w-md lg:mx-auto"
                                 >
                                     <div className="absolute inset-0">
                                         <img
@@ -1124,12 +1146,22 @@ export default function LandingPage() {
                                                 </div>
                                             ))}
                                         </div>
-                                        <button
-                                            onClick={() => navigate('/circuito-reductor')}
-                                            className="mt-auto block w-full py-4 rounded-xl text-center font-black uppercase text-xs tracking-[0.2em] transition-all bg-white text-black hover:bg-gray-200 shadow-[0_10px_30px_rgba(255, 255, 255,0.4)] transform hover:scale-[1.02]"
-                                        >
-                                            CONOCER MÁS
-                                        </button>
+                                        <div className="mt-auto space-y-3 pt-4">
+                                            {plan.video && (
+                                                <button
+                                                    onClick={() => setSelectedVideo(plan.video)}
+                                                    className="w-full py-3.5 rounded-xl text-center font-black uppercase text-xs tracking-[0.2em] transition-all bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-white/50 flex items-center justify-center gap-2 shadow-lg"
+                                                >
+                                                    <PlayCircle className="w-4 h-4" /> VER VIDEO PROMO
+                                                </button>
+                                            )}
+                                            <a
+                                                href={buildWhatsAppLink(plan.message)}
+                                                className="block w-full py-3.5 rounded-xl text-center font-black uppercase text-xs tracking-[0.2em] transition-all bg-white text-black hover:bg-gray-200 shadow-[0_10px_30px_rgba(255, 255, 255,0.3)] transform hover:scale-[1.02]"
+                                            >
+                                                EJECUTAR AHORA
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             ) : (
@@ -1387,6 +1419,32 @@ export default function LandingPage() {
                     </div>
                 </div>
             </footer>
+
+            {selectedVideo && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/95 backdrop-blur-md animate-fade-in">
+                    <div className="relative w-full max-w-4xl bg-zinc-950 border border-white/10 rounded-3xl overflow-hidden shadow-2xl shadow-white/5">
+                        <button
+                            onClick={() => setSelectedVideo(null)}
+                            className="absolute top-4 right-4 z-10 p-2 bg-black/60 hover:bg-white/10 text-white rounded-full border border-white/10 transition-colors"
+                        >
+                            <X className="w-6 h-6" />
+                        </button>
+                        <div className="p-6">
+                            <h3 className="text-2xl font-black italic uppercase text-white mb-4 tracking-tight">
+                                Video Promocional
+                            </h3>
+                            <div className="aspect-video w-full rounded-2xl overflow-hidden border border-white/10 bg-black">
+                                <video
+                                    src={selectedVideo}
+                                    className="w-full h-full object-contain"
+                                    controls
+                                    autoPlay
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div >
     );
 }

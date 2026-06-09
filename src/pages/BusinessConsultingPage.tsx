@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { ChevronLeft, TrendingUp, Target, Users, Zap, CheckCircle, MessageCircle } from "lucide-react";
+import { ChevronLeft, TrendingUp, Target, Users, Zap, MessageCircle } from "lucide-react";
 import { Logo } from "../components/Logo";
 import consultingVideo from "../assets/consulting-video.mp4";
 

@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback } from "react";
-import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import { Logo } from "./Logo";
