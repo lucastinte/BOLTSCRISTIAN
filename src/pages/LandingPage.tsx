@@ -29,10 +29,6 @@ import transformacion3 from "../assets/transformacion-3.png";
 import cwLifeLogo from "../assets/logo.svg";
 import black90Dias from "../assets/black-90-dias.jpeg";
 import { GymSection } from "../components/GymSection";
-import evolution1 from "../assets/evolution-1.mp4";
-import evolution2 from "../assets/evolution-2.mp4";
-import evolution3 from "../assets/evolution-3.mp4";
-import evolution4 from "../assets/evolution-4.mp4";
 
 export default function LandingPage() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -562,89 +558,41 @@ export default function LandingPage() {
                         </p>
                     </div>
 
-                    <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto items-start">
-                        <div className="lg:col-span-1 space-y-6">
-                            {[
-                                {
-                                    title: "Sede Central",
-                                    subtitle: "Black Training GYM",
-                                    address: "Antenor Sajama 471",
-                                    city: "San Salvador de Jujuy",
-                                    highlight: true,
-                                },
-                                {
-                                    title: "Sede Alto Comedero",
-                                    subtitle: "Black Training Women",
-                                    address: "Calle 514 – Mza 24 – Lote 16",
-                                    city: "B° 30 Hectáreas, Jujuy",
-                                    highlight: false,
-                                    badge: "EXCLUSIVO MUJERES",
-                                    mapUrl: "https://maps.app.goo.gl/yvkJ5MdZn8Mme6i17",
-                                },
-                                {
-                                    title: "Sede Entrenamiento Funcional",
-                                    subtitle: "Black Training Funcional",
-                                    address: "Mejías 412",
-                                    city: "San Salvador de Jujuy",
-                                    highlight: false,
-                                },
-                            ].map((sede, i) => (
-                                <div
-                                    key={i}
-                                    className={`relative p-8 rounded-2xl transition-all transform hover:-translate-y-1 ${sede.highlight
-                                        ? "glass-card-red border-red-600/40 shadow-[0_15px_50px_rgba(220, 38, 38,0.15)]"
-                                        : "glass-card border-white/5"
-                                        } hover:border-red-600/60 hover-glow-red`}
-                                >
-                                    {sede.highlight && (
-                                        <span className="absolute top-4 right-4 px-3 py-1 bg-red-600 text-black text-[10px] font-black tracking-widest rounded-full shadow-lg shadow-red-600/30">
-                                            PRINCIPAL
-                                        </span>
-                                    )}
-                                    {sede.badge && (
-                                        <span className="absolute top-4 right-4 px-3 py-1 bg-pink-500 text-white text-[10px] font-black tracking-widest rounded-full shadow-lg shadow-pink-500/30 animate-pulse">
-                                            {sede.badge}
-                                        </span>
-                                    )}
-                                    <div className="flex items-start gap-4 mb-6">
-                                        <div className={`h-12 w-12 flex-shrink-0 flex items-center justify-center rounded-xl ${sede.highlight
-                                            ? "bg-red-600/20 border-2 border-red-600/50"
-                                            : "bg-red-600/10 border border-red-600/30"
-                                            }`}>
-                                            <MapPin className={`w-6 h-6 ${sede.highlight ? "text-red-600" : "text-red-600/80"
-                                                }`} />
-                                        </div>
-                                        <div className="flex-1">
-                                            <h3 className={`text-xl font-bold mb-1 ${sede.highlight ? "text-red-600" : "text-white"
-                                                }`}>
-                                                {sede.title}
-                                            </h3>
-                                            <p className="text-gray-400 text-sm font-semibold mb-3">
-                                                {sede.subtitle}
-                                            </p>
-                                            <div className="space-y-1">
-                                                <div className="flex items-center gap-2 text-gray-300">
-                                                    <span className="text-sm">{sede.address}</span>
-                                                </div>
-                                                <div className="text-gray-500 text-xs">
-                                                    <span>{sede.city}</span>
-                                                </div>
+                    <div className="flex flex-col lg:flex-row gap-8 max-w-5xl mx-auto items-start">
+                        <div className="w-full lg:w-80 flex-shrink-0">
+                            <div className="relative p-8 rounded-2xl glass-card-red border-red-600/40 shadow-[0_15px_50px_rgba(220,38,38,0.15)] hover:border-red-600/60 hover-glow-red transition-all transform hover:-translate-y-1">
+                                <span className="absolute top-4 right-4 px-3 py-1 bg-red-600 text-black text-[10px] font-black tracking-widest rounded-full shadow-lg shadow-red-600/30">
+                                    PRINCIPAL
+                                </span>
+                                <div className="flex items-start gap-4 mb-6">
+                                    <div className="h-12 w-12 flex-shrink-0 flex items-center justify-center rounded-xl bg-red-600/20 border-2 border-red-600/50">
+                                        <MapPin className="w-6 h-6 text-red-600" />
+                                    </div>
+                                    <div className="flex-1">
+                                        <h3 className="text-xl font-bold mb-1 text-red-600">Sede Central</h3>
+                                        <p className="text-gray-400 text-sm font-semibold mb-3">Black Training GYM</p>
+                                        <div className="space-y-1">
+                                            <div className="flex items-center gap-2 text-gray-300">
+                                                <span className="text-sm">Antenor Sajama 471</span>
+                                            </div>
+                                            <div className="text-gray-500 text-xs">
+                                                <span>San Salvador de Jujuy</span>
                                             </div>
                                         </div>
                                     </div>
-                                    <a
-                                        href={(sede as any).mapUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${sede.address}, ${sede.city}`)}`}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        className="block w-full py-3 bg-red-600/10 hover:bg-red-600 text-red-600 hover:text-black border border-red-600/30 rounded-xl text-center text-xs font-black uppercase tracking-widest transition-all"
-                                    >
-                                        Ver en Google Maps
-                                    </a>
                                 </div>
-                            ))}
+                                <a
+                                    href="https://www.google.com/maps/search/?api=1&query=Antenor+Sajama+471+San+Salvador+de+Jujuy"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="block w-full py-3 bg-red-600/10 hover:bg-red-600 text-red-600 hover:text-black border border-red-600/30 rounded-xl text-center text-xs font-black uppercase tracking-widest transition-all"
+                                >
+                                    Ver en Google Maps
+                                </a>
+                            </div>
                         </div>
 
-                        <div className="lg:col-span-2 h-[400px] lg:h-[550px] rounded-3xl overflow-hidden border border-red-600/20 shadow-2xl relative group">
+                        <div className="flex-1 h-[400px] lg:h-[400px] rounded-3xl overflow-hidden border border-red-600/20 shadow-2xl relative group">
                             <div className="absolute inset-0 bg-red-600/5 pointer-events-none group-hover:bg-transparent transition-colors duration-500" />
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3638.761668622178!2d-65.2654065!3d-24.2151253!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x67516b52bfc5ba41%3A0xf069aca9c87d63da!2sBlack%20Training%20GYM%20%7C%20Cristian%20Wosniak!5e0!3m2!1ses-419!2sar!4v1771007641589!5m2!1ses-419!2sar"
@@ -728,140 +676,6 @@ export default function LandingPage() {
                                 </div>
                             </div>
                         ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* --- SECCIÓN ANTES Y DESPUÉS (VIDEOS) --- */}
-            <section id="resultados" className="py-24 px-4 bg-black relative overflow-hidden">
-                {/* Decoración de fondo */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-red-600/5 blur-[120px] rounded-full pointer-events-none"></div>
-
-                <div className="max-w-7xl mx-auto relative z-10">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl md:text-6xl font-black italic tracking-tighter mb-4">
-                            RESULTADOS <span className="text-red-600">IRREFUTABLES</span>
-                        </h2>
-                        <div className="w-24 h-1 bg-red-600 mx-auto rounded-full"></div>
-                        <p className="text-gray-400 mt-6 text-lg max-w-2xl mx-auto">
-                            No son solo cambios físicos, son reconstrucciones totales de mentalidad y disciplina.
-                        </p>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-8 md:gap-12">
-                        {/* Bloque 1 - Evolución Entrenador */}
-                        <div className="group relative">
-                            <div className="absolute -top-4 left-4 z-20 bg-black/80 backdrop-blur-md border border-white/10 px-4 py-1 rounded-full">
-                                <span className="text-xs font-bold tracking-widest text-gray-400 uppercase">Proceso I | Cristian Wosniak</span>
-                            </div>
-                            <div className="relative overflow-hidden rounded-3xl border border-white/5 bg-white/5 aspect-[9/16] md:aspect-video flex items-center justify-center group-hover:border-red-600/30 transition-all duration-500">
-                                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                                    <PlayCircle className="w-16 h-16 text-white/20 mb-4 group-hover:text-red-600/50 transition-colors" />
-                                </div>
-                                <video
-                                    className="w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                                    muted
-                                    loop
-                                    playsInline
-                                    onMouseEnter={(e) => e.currentTarget.play()}
-                                    onMouseLeave={(e) => {
-                                        e.currentTarget.pause();
-                                        e.currentTarget.currentTime = 0;
-                                    }}
-                                >
-                                    <source src={evolution1} type="video/mp4" />
-                                </video>
-                            </div>
-                        </div>
-
-                        <div className="group relative">
-                            <div className="absolute -top-4 left-4 z-20 bg-red-600 px-4 py-1 rounded-full shadow-[0_0_20px_rgba(220, 38, 38,0.4)]">
-                                <span className="text-xs font-bold tracking-widest text-black uppercase">Proceso II | Cristian Wosniak</span>
-                            </div>
-                            <div className="relative overflow-hidden rounded-3xl border border-red-600/20 bg-red-600/5 aspect-[9/16] md:aspect-video flex items-center justify-center group-hover:border-red-600/50 transition-all duration-500 box-glow-red">
-                                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                                    <Star className="w-16 h-16 text-red-600 mb-4" />
-                                </div>
-                                <video
-                                    className="w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                                    muted
-                                    loop
-                                    playsInline
-                                    onMouseEnter={(e) => e.currentTarget.play()}
-                                    onMouseLeave={(e) => {
-                                        e.currentTarget.pause();
-                                        e.currentTarget.currentTime = 0;
-                                    }}
-                                >
-                                    <source src={evolution2} type="video/mp4" />
-                                </video>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="mt-20 grid md:grid-cols-2 gap-8 md:gap-12 border-t border-white/5 pt-20">
-                        {/* Bloque 2 - Evolución Entrenador */}
-                        <div className="group relative">
-                            <div className="absolute -top-4 left-4 z-20 bg-black/80 backdrop-blur-md border border-white/10 px-4 py-1 rounded-full">
-                                <span className="text-xs font-bold tracking-widest text-gray-400 uppercase">Proceso III | Cristian Wosniak</span>
-                            </div>
-                            <div className="relative overflow-hidden rounded-3xl border border-white/5 bg-white/5 aspect-[9/16] md:aspect-video flex items-center justify-center group-hover:border-red-600/30 transition-all duration-500">
-                                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                                    <PlayCircle className="w-16 h-16 text-white/20 mb-4 group-hover:text-red-600/50 transition-colors" />
-                                </div>
-                                <video
-                                    className="w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                                    muted
-                                    loop
-                                    playsInline
-                                    onMouseEnter={(e) => e.currentTarget.play()}
-                                    onMouseLeave={(e) => {
-                                        e.currentTarget.pause();
-                                        e.currentTarget.currentTime = 0;
-                                    }}
-                                >
-                                    <source src={evolution3} type="video/mp4" />
-                                </video>
-                            </div>
-                        </div>
-
-                        <div className="group relative">
-                            <div className="absolute -top-4 left-4 z-20 bg-red-600 px-4 py-1 rounded-full shadow-[0_0_20px_rgba(220, 38, 38,0.4)]">
-                                <span className="text-xs font-bold tracking-widest text-black uppercase">Resultado Final | Cristian Wosniak</span>
-                            </div>
-                            <div className="relative overflow-hidden rounded-3xl border border-red-600/20 bg-red-600/5 aspect-[9/16] md:aspect-video flex items-center justify-center group-hover:border-red-600/50 transition-all duration-500 box-glow-red">
-                                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                                    <div className="relative">
-                                        <div className="absolute inset-0 blur-lg bg-red-600/20 rounded-full animate-pulse"></div>
-                                        <Star className="w-16 h-16 text-red-600 mb-4 relative z-10" />
-                                    </div>
-                                    <p className="text-red-600 font-bold tracking-widest uppercase">Evolución Máxima</p>
-                                </div>
-                                <video
-                                    className="w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                                    muted
-                                    loop
-                                    playsInline
-                                    onMouseEnter={(e) => e.currentTarget.play()}
-                                    onMouseLeave={(e) => {
-                                        e.currentTarget.pause();
-                                        e.currentTarget.currentTime = 0;
-                                    }}
-                                >
-                                    <source src={evolution4} type="video/mp4" />
-                                </video>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Boton de Llamado a la acción rápido */}
-                    <div className="mt-16 text-center">
-                        <button
-                            onClick={() => handleNavClick('precios')}
-                            className="px-8 py-4 bg-white text-black font-black text-sm tracking-widest uppercase hover:bg-red-600 transition-all duration-300 transform hover:-translate-y-1"
-                        >
-                            Quiero mi cambio ahora
-                        </button>
                     </div>
                 </div>
             </section>
