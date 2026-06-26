@@ -31,13 +31,7 @@ import reto30Dias from "../assets/reto-30-dias.jpg";
 import reto90Dias from "../assets/reto-90-dias.jpg";
 import promoVideo from "../assets/reconstruirte-promo.mp4";
 import { Logo } from "../components/Logo";
-import evolution1 from "../assets/evolution-1.mp4";
-import evolution2 from "../assets/evolution-2.mp4";
-import evolution3 from "../assets/evolution-3.mp4";
-import evolution4 from "../assets/evolution-4.mp4";
-import evolutionGymLogo from "../assets/evolution-gym-logo.png";
 import triunviratoLogo from "../assets/triunvirato-logo.png";
-import atenasLogo from "../assets/atenas-logo.jpg";
 
 export default function LandingPage() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -238,53 +232,6 @@ export default function LandingPage() {
                                         </div>
                                         <div className="text-xs text-gray-300">
                                             Triunvirato 516 – Jujuy
-                                        </div>
-                                    </div>
-                                    <div className="hidden sm:block text-[10px] uppercase font-bold tracking-widest text-white/50 group-hover:text-white border-l border-white/20 pl-3 ml-2">
-                                        Ver <br/>Fotos
-                                    </div>
-                                </button>
-                                <button 
-                                    onClick={() => {
-                                        const element = document.getElementById('gallery-evolution');
-                                        element?.scrollIntoView({ behavior: 'smooth' });
-                                    }}
-                                    className="inline-flex w-full sm:w-auto items-center gap-3 px-4 py-3 rounded-2xl glass-card border border-rose-500/10 shadow-[0_12px_40px_rgba(244,63,114,0.1)] hover:bg-white/5 transition-all hover:-translate-y-1 group"
-                                >
-                                    <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-white/15 border border-white/50 text-white group-hover:bg-white group-hover:text-black transition-colors">
-                                        <MapPin className="w-5 h-5" />
-                                    </div>
-                                    <div className="text-left leading-tight flex-1">
-                                        <div className="text-sm font-semibold text-white flex flex-wrap items-center gap-2">
-                                            Evolution Gym – Calle 514
-                                            <span className="px-2 py-0.5 bg-rose-500/20 text-rose-300 border border-rose-500/30 text-[9px] font-black tracking-widest rounded-full uppercase shadow-lg shadow-rose-500/20">
-                                                Exclusivo Mujeres
-                                            </span>
-                                        </div>
-                                        <div className="text-xs text-gray-300">
-                                            B° 30 Hectáreas, Jujuy
-                                        </div>
-                                    </div>
-                                    <div className="hidden sm:block text-[10px] uppercase font-bold tracking-widest text-white/50 group-hover:text-white border-l border-white/20 pl-3 ml-2">
-                                        Ver <br/>Fotos
-                                    </div>
-                                </button>
-                                <button 
-                                    onClick={() => {
-                                        const element = document.getElementById('gallery-atenas');
-                                        element?.scrollIntoView({ behavior: 'smooth' });
-                                    }}
-                                    className="inline-flex w-full sm:w-auto items-center gap-3 px-4 py-3 rounded-2xl glass-card border border-white/10 shadow-[0_12px_40px_rgba(255,255,255,0.05)] hover:bg-white/5 transition-all hover:-translate-y-1 group"
-                                >
-                                    <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-white/15 border border-white/50 text-white group-hover:bg-white group-hover:text-black transition-colors">
-                                        <MapPin className="w-5 h-5" />
-                                    </div>
-                                    <div className="text-left leading-tight flex-1">
-                                        <div className="text-sm font-semibold text-white flex flex-wrap items-center gap-2">
-                                            Sede Atenas – 9 de Julio 251
-                                        </div>
-                                        <div className="text-xs text-gray-300">
-                                            Barrio San Pedrito, Jujuy
                                         </div>
                                     </div>
                                     <div className="hidden sm:block text-[10px] uppercase font-bold tracking-widest text-white/50 group-hover:text-white border-l border-white/20 pl-3 ml-2">
@@ -697,104 +644,6 @@ export default function LandingPage() {
                         </div>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto items-start">
-                        {[
-                            {
-                                title: "Evolution Gym",
-                                subtitle: "Evolution Gym by CW Life",
-                                address: "Calle 514 – Mza 24 – Lote 16",
-                                city: "B° 30 Hectáreas, Jujuy",
-                                highlight: false,
-                                badge: "EXCLUSIVO MUJERES",
-                                mapUrl: "https://maps.app.goo.gl/jzPtE8RJVNxEuWPz6",
-                                image: evolutionGymLogo,
-                                galleryId: "gallery-evolution"
-                            },
-                            {
-                                title: "Atenas Gym",
-                                subtitle: "Atenas by CW Life",
-                                address: "9 de Julio 251, Barrio San Pedrito",
-                                city: "San Salvador de Jujuy",
-                                highlight: false,
-                                mapUrl: "https://www.google.com/maps/search/?api=1&query=9+de+Julio+251,+Barrio+San+Pedrito,+San+Salvador+de+Jujuy",
-                                image: atenasLogo,
-                                galleryId: "gallery-atenas"
-                            },
-                        ].map((sede, i) => (
-                            <div
-                                key={i}
-                                className={`relative p-8 rounded-2xl transition-all transform hover:-translate-y-1 ${sede.highlight
-                                    ? "glass-card-white border-white/40 shadow-[0_15px_50px_rgba(255, 255, 255,0.15)]"
-                                    : "glass-card border-white/5"
-                                    } hover:border-white/60 hover-glow-white w-full`}
-                            >
-                                {sede.highlight && (
-                                    <span className="absolute top-4 right-4 px-3 py-1 bg-white text-black text-[10px] font-black tracking-widest rounded-full shadow-lg shadow-white/30">
-                                        PRINCIPAL
-                                    </span>
-                                )}
-                                {sede.badge && (
-                                    <span className={`absolute top-4 right-4 px-3 py-1 text-[10px] font-black tracking-widest rounded-full shadow-lg transition-all ${
-                                        sede.badge === "EXCLUSIVO MUJERES"
-                                        ? "bg-rose-500/20 text-rose-300 border border-rose-500/30 shadow-rose-500/20 animate-pulse"
-                                        : "bg-white text-black shadow-white/30"
-                                    }`}>
-                                        {sede.badge}
-                                    </span>
-                                )}
-                                {(sede as any).image && (
-                                    <div className="mb-6 rounded-xl overflow-hidden bg-black aspect-video flex items-center justify-center border border-white/10 p-2">
-                                        <img src={(sede as any).image} alt={sede.title} className="w-full h-full object-contain" />
-                                    </div>
-                                )}
-                                <div className="flex items-start gap-4 mb-6">
-                                    <div className={`h-12 w-12 flex-shrink-0 flex items-center justify-center rounded-xl ${sede.highlight
-                                        ? "bg-white/20 border-2 border-white/50"
-                                        : "bg-white/10 border border-white/30"
-                                        }`}>
-                                        <MapPin className={`w-6 h-6 ${sede.highlight ? "text-white" : "text-white/80"
-                                            }`} />
-                                    </div>
-                                    <div className="flex-1">
-                                        <h3 className={`text-xl font-bold mb-1 ${sede.highlight ? "text-white" : "text-white"
-                                            }`}>
-                                            {sede.title}
-                                        </h3>
-                                        <p className="text-gray-400 text-sm font-semibold mb-3">
-                                            {sede.subtitle}
-                                        </p>
-                                        <div className="space-y-1">
-                                            <div className="flex items-center gap-2 text-gray-300">
-                                                <span className="text-sm">{sede.address}</span>
-                                            </div>
-                                            <div className="text-gray-500 text-xs">
-                                                <span>{sede.city}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="grid grid-cols-2 gap-3">
-                                    <a
-                                        href={(sede as any).mapUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${sede.address}, ${sede.city}`)}`}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        className="py-3 bg-white hover:bg-gray-200 text-black rounded-xl text-center text-[10px] font-black uppercase tracking-widest transition-all shadow-lg shadow-white/10"
-                                    >
-                                        Ubicación
-                                    </a>
-                                    <button
-                                        onClick={() => {
-                                            const element = document.getElementById(sede.galleryId);
-                                            element?.scrollIntoView({ behavior: 'smooth' });
-                                        }}
-                                        className="py-3 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-xl text-center text-[10px] font-black uppercase tracking-widest transition-all"
-                                    >
-                                        Ver fotos
-                                    </button>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
                 </div>
             </section>
 
@@ -865,140 +714,6 @@ export default function LandingPage() {
                                 </div>
                             </div>
                         ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* --- SECCIÓN ANTES Y DESPUÉS (VIDEOS) --- */}
-            <section id="resultados" className="py-24 px-4 bg-black relative overflow-hidden">
-                {/* Decoración de fondo */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-white/5 blur-[120px] rounded-full pointer-events-none"></div>
-
-                <div className="max-w-7xl mx-auto relative z-10">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl md:text-6xl font-black italic tracking-tighter mb-4">
-                            RESULTADOS <span className="text-white">IRREFUTABLES</span>
-                        </h2>
-                        <div className="w-24 h-1 bg-white mx-auto rounded-full"></div>
-                        <p className="text-gray-400 mt-6 text-lg max-w-2xl mx-auto">
-                            No son solo cambios físicos, son reconstrucciones totales de mentalidad y disciplina.
-                        </p>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-8 md:gap-12">
-                        {/* Bloque 1 - Evolución Entrenador */}
-                        <div className="group relative">
-                            <div className="absolute -top-4 left-4 z-20 bg-black/80 backdrop-blur-md border border-white/10 px-4 py-1 rounded-full">
-                                <span className="text-xs font-bold tracking-widest text-gray-400 uppercase">Proceso I | Cristian Wosniak</span>
-                            </div>
-                            <div className="relative overflow-hidden rounded-3xl border border-white/5 bg-white/5 aspect-[9/16] md:aspect-video flex items-center justify-center group-hover:border-white/30 transition-all duration-500">
-                                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                                    <PlayCircle className="w-16 h-16 text-white/20 mb-4 group-hover:text-white/50 transition-colors" />
-                                </div>
-                                <video
-                                    className="w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                                    muted
-                                    loop
-                                    playsInline
-                                    onMouseEnter={(e) => e.currentTarget.play()}
-                                    onMouseLeave={(e) => {
-                                        e.currentTarget.pause();
-                                        e.currentTarget.currentTime = 0;
-                                    }}
-                                >
-                                    <source src={evolution1} type="video/mp4" />
-                                </video>
-                            </div>
-                        </div>
-
-                        <div className="group relative">
-                            <div className="absolute -top-4 left-4 z-20 bg-white px-4 py-1 rounded-full shadow-[0_0_20px_rgba(255, 255, 255,0.4)]">
-                                <span className="text-xs font-bold tracking-widest text-black uppercase">Proceso II | Cristian Wosniak</span>
-                            </div>
-                            <div className="relative overflow-hidden rounded-3xl border border-white/20 bg-white/5 aspect-[9/16] md:aspect-video flex items-center justify-center group-hover:border-white/50 transition-all duration-500 box-glow-white">
-                                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                                    <Star className="w-16 h-16 text-white mb-4" />
-                                </div>
-                                <video
-                                    className="w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                                    muted
-                                    loop
-                                    playsInline
-                                    onMouseEnter={(e) => e.currentTarget.play()}
-                                    onMouseLeave={(e) => {
-                                        e.currentTarget.pause();
-                                        e.currentTarget.currentTime = 0;
-                                    }}
-                                >
-                                    <source src={evolution2} type="video/mp4" />
-                                </video>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="mt-20 grid md:grid-cols-2 gap-8 md:gap-12 border-t border-white/5 pt-20">
-                        {/* Bloque 2 - Evolución Entrenador */}
-                        <div className="group relative">
-                            <div className="absolute -top-4 left-4 z-20 bg-black/80 backdrop-blur-md border border-white/10 px-4 py-1 rounded-full">
-                                <span className="text-xs font-bold tracking-widest text-gray-400 uppercase">Proceso III | Cristian Wosniak</span>
-                            </div>
-                            <div className="relative overflow-hidden rounded-3xl border border-white/5 bg-white/5 aspect-[9/16] md:aspect-video flex items-center justify-center group-hover:border-white/30 transition-all duration-500">
-                                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                                    <PlayCircle className="w-16 h-16 text-white/20 mb-4 group-hover:text-white/50 transition-colors" />
-                                </div>
-                                <video
-                                    className="w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                                    muted
-                                    loop
-                                    playsInline
-                                    onMouseEnter={(e) => e.currentTarget.play()}
-                                    onMouseLeave={(e) => {
-                                        e.currentTarget.pause();
-                                        e.currentTarget.currentTime = 0;
-                                    }}
-                                >
-                                    <source src={evolution3} type="video/mp4" />
-                                </video>
-                            </div>
-                        </div>
-
-                        <div className="group relative">
-                            <div className="absolute -top-4 left-4 z-20 bg-white px-4 py-1 rounded-full shadow-[0_0_20px_rgba(255, 255, 255,0.4)]">
-                                <span className="text-xs font-bold tracking-widest text-black uppercase">Resultado Final | Cristian Wosniak</span>
-                            </div>
-                            <div className="relative overflow-hidden rounded-3xl border border-white/20 bg-white/5 aspect-[9/16] md:aspect-video flex items-center justify-center group-hover:border-white/50 transition-all duration-500 box-glow-white">
-                                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                                    <div className="relative">
-                                        <div className="absolute inset-0 blur-lg bg-white/20 rounded-full animate-pulse"></div>
-                                        <Star className="w-16 h-16 text-white mb-4 relative z-10" />
-                                    </div>
-                                    <p className="text-white font-bold tracking-widest uppercase">Evolución Máxima</p>
-                                </div>
-                                <video
-                                    className="w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                                    muted
-                                    loop
-                                    playsInline
-                                    onMouseEnter={(e) => e.currentTarget.play()}
-                                    onMouseLeave={(e) => {
-                                        e.currentTarget.pause();
-                                        e.currentTarget.currentTime = 0;
-                                    }}
-                                >
-                                    <source src={evolution4} type="video/mp4" />
-                                </video>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Boton de Llamado a la acción rápido */}
-                    <div className="mt-16 text-center">
-                        <button
-                            onClick={() => handleNavClick('precios')}
-                            className="px-8 py-4 bg-white text-black font-black text-sm tracking-widest uppercase hover:bg-gray-200 transition-all duration-300 transform hover:-translate-y-1"
-                        >
-                            Quiero mi cambio ahora
-                        </button>
                     </div>
                 </div>
             </section>
@@ -1092,7 +807,7 @@ export default function LandingPage() {
                                     "El estándar CW LIFE definitivo. 90 días sin excusas para reconstruirte física y mentalmente. Válido en cualquiera de nuestras sedes.",
                                 features: [
                                     "Programación de entrenamiento (presencial o semi-presencial)",
-                                    "Válido en cualquier sede (Sede Central, Evolution Gym, Atenas Gym)",
+                                    "Válido en Sede Central – Triunvirato 516, San Salvador de Jujuy",
                                     "Plan de alimentación personalizado",
                                     "Seguimiento diario y mindset de acero",
                                 ],
@@ -1220,9 +935,6 @@ export default function LandingPage() {
             <div className="space-y-0" id="gym-gallery">
                 <GymSection title="Nuestros Gimnasios: Sede Principal" gymType="arias" id="gallery-arias" />
 
-                <GymSection title="Nuestros Gimnasios: Sede Atenas" gymType="atenas" id="gallery-atenas" />
-
-                <GymSection title="Nuestros Gimnasios: Evolution Gym" gymType="evolution" id="gallery-evolution" />
             </div>
 
             <section className="py-20 px-4 bg-gradient-to-b from-black to-white/5">
