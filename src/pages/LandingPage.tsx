@@ -19,6 +19,7 @@ import {
     FileText,
     Dumbbell,
     ShoppingBag,
+    Globe,
 } from "lucide-react";
 import { supabase } from "../lib/supabase";
 import heroImage from "../assets/wosniak-hero.jpeg";
@@ -31,6 +32,7 @@ import reto30Dias from "../assets/reto-30-dias.jpg";
 import reto90Dias from "../assets/reto-90-dias.jpg";
 import promoVideo from "../assets/reconstruirte-promo.mp4";
 import { Logo } from "../components/Logo";
+import { RLogo } from "../components/RLogo";
 import triunviratoLogo from "../assets/triunvirato-logo.png";
 
 export default function LandingPage() {
@@ -99,10 +101,9 @@ export default function LandingPage() {
         <div className="min-h-screen bg-black text-white">
             <nav className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex justify-between items-center h-16">
-                        <div className="flex items-center gap-3">
-                            <Logo className="h-12 w-auto text-white" />
-                            <span className="font-black text-xl tracking-tighter text-white uppercase italic">CW LIFE</span>
+                    <div className="flex justify-between items-center h-20">
+                        <div className="flex items-center gap-3 cursor-pointer" onClick={() => handleNavClick("Inicio")}>
+                            <Logo variant="header" />
                         </div>
 
                         <div className="hidden md:flex gap-8 items-center">
@@ -187,6 +188,11 @@ export default function LandingPage() {
                     <div className="grid md:grid-cols-2 gap-12 items-center">
                         <div className="space-y-6 animate-fade-in">
                             <div className="space-y-2">
+                                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-bold uppercase tracking-widest text-white mb-2">
+                                    <span className="text-white font-black">ENTRENADOR PERSONAL</span>
+                                    <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                                    <span className="text-gray-300">PRESENCIAL & ONLINE GLOBAL</span>
+                                </div>
 
                                 <h1 className="text-5xl md:text-8xl font-black leading-tight text-center md:text-left tracking-tighter italic">
                                     DOMINÁ TU <br />
@@ -194,7 +200,7 @@ export default function LandingPage() {
                                 </h1>
                             </div>
                             <p className="text-xl text-gray-400 text-center md:text-left max-w-xl mx-auto md:mx-0">
-                                No cuento repeticiones. Destruyo tus limitaciones. Coaching de Élite para hombres y mujeres que no aceptan la mediocridad como estándar.
+                                No cuento repeticiones. Destruyo tus limitaciones. Coaching Personalizado de Élite con Cristian Wosniak: entrená presencial en gimnasio o desde cualquier parte del mundo con mi método Online.
                             </p>
                             <div className="flex flex-wrap gap-4 justify-center md:justify-start">
                                 <a
@@ -215,7 +221,7 @@ export default function LandingPage() {
                                 “DISCIPLINA SIN FILTROS. RESULTADOS SIN EXCUSAS.”
                             </div>
 
-                            <div className="mt-5 flex flex-col gap-3 w-full sm:w-auto">
+                            <div className="mt-5 flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
                                 <button 
                                     onClick={() => {
                                         const element = document.getElementById('gallery-arias');
@@ -245,9 +251,15 @@ export default function LandingPage() {
                             <div className="absolute inset-0 bg-white/20 blur-[100px] rounded-full group-hover:bg-white/10 transition-all duration-700 animate-pulse-glow"></div>
                             <img
                                 src={heroImage}
-                                alt="Cristian Wosniak | Estratega"
+                                alt="Cristian Wosniak | Entrenador Personal"
                                 className="relative rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] w-full h-[600px] object-cover border-b-4 border-white grayscale-[20%] brightness-[0.85] hover:brightness-100 hover:grayscale-0 transition-all duration-500 box-glow-white"
                             />
+                            
+                            {/* R Registered Brand Floating Badge */}
+                            <div className="absolute top-6 right-6 bg-black/90 backdrop-blur-xl border border-white/30 rounded-2xl p-4 shadow-2xl z-20 hidden sm:block transform rotate-2 hover:rotate-0 transition-all hover:scale-105">
+                                <RLogo size="sm" showSubtitle={true} variant="stacked" />
+                            </div>
+
                             <div className="absolute -bottom-6 -left-6 bg-black/90 backdrop-blur-xl border-2 border-white/50 rounded-2xl p-6 shadow-2xl transform -rotate-2 hover:rotate-0 transition-all">
                                 <div className="flex items-center gap-4">
                                     <div className="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center shadow-lg shadow-white/20">
@@ -347,6 +359,117 @@ export default function LandingPage() {
                 </div>
             </section>
 
+            {/* Personal Trainer Modalities Section */}
+            <section className="py-24 px-4 bg-zinc-950 border-y border-white/10 relative overflow-hidden">
+                <div className="max-w-7xl mx-auto relative z-10">
+                    <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-bold uppercase tracking-widest text-white">
+                            <Star className="w-3.5 h-3.5 fill-current" />
+                            <span>COACHING PERSONALIZADO MULTI-MODALIDAD</span>
+                        </div>
+                        <h2 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter">
+                            ENTRENADOR PERSONAL <br />
+                            <span className="text-white text-glow-white">PRESENCIAL Y ONLINE</span>
+                        </h2>
+                        <p className="text-gray-300 text-lg leading-relaxed font-medium">
+                            Si bien Cristian Wosniak cuenta con sedes de gimnasio presencial en San Salvador de Jujuy, su coaching de élite no se limita a un espacio físico. Entrená con él de manera 100% personalizada desde cualquier parte del mundo o en persona.
+                        </p>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-8">
+                        {/* ONLINE COACHING CARD */}
+                        <div className="relative p-8 rounded-3xl bg-black border-2 border-white/30 shadow-[0_20px_50px_rgba(0,0,0,0.8)] hover:border-white transition-all group flex flex-col justify-between overflow-hidden">
+                            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+                                <Globe className="w-40 h-40 text-white" />
+                            </div>
+                            <div className="relative z-10 space-y-6">
+                                <div className="flex items-center justify-between">
+                                    <span className="px-4 py-1.5 bg-white text-black text-xs font-black tracking-widest rounded-full uppercase">
+                                        100% DISTANCIA / GLOBAL
+                                    </span>
+                                    <RLogo size="sm" showSubtitle={true} variant="stacked" />
+                                </div>
+                                <div>
+                                    <h3 className="text-3xl font-black text-white italic uppercase tracking-tight mb-2">
+                                        Coaching Online Personalizado
+                                    </h3>
+                                    <p className="text-gray-400 text-sm leading-relaxed font-medium">
+                                        Entrená estés donde estés. Cristian Wosniak actúa como tu entrenador personal directo mediante tu teléfono.
+                                    </p>
+                                </div>
+                                <ul className="space-y-3 text-sm text-gray-300 border-t border-white/10 pt-4">
+                                    <li className="flex items-center gap-3">
+                                        <div className="w-2 h-2 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
+                                        <span>Plan de entrenamiento adaptado a tu equipamiento (Gym o Casa)</span>
+                                    </li>
+                                    <li className="flex items-center gap-3">
+                                        <div className="w-2 h-2 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
+                                        <span>Corrección técnica diaria por video y mensajes directos</span>
+                                    </li>
+                                    <li className="flex items-center gap-3">
+                                        <div className="w-2 h-2 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
+                                        <span>Plan nutricional personalizado y ajustes semanales</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="relative z-10 pt-8">
+                                <a
+                                    href={buildWhatsAppLink("Hola Cristian, quiero consultar sobre tu Coaching Online Personalizado.")}
+                                    className="block w-full py-4 bg-white hover:bg-gray-200 text-black text-center font-black rounded-xl uppercase tracking-widest text-xs transition-all shadow-lg"
+                                >
+                                    POSTULAR AL COACHING ONLINE
+                                </a>
+                            </div>
+                        </div>
+
+                        {/* PRESENCIAL CARD */}
+                        <div className="relative p-8 rounded-3xl bg-black border-2 border-white/30 shadow-[0_20px_50px_rgba(0,0,0,0.8)] hover:border-white transition-all group flex flex-col justify-between overflow-hidden">
+                            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+                                <Dumbbell className="w-40 h-40 text-white" />
+                            </div>
+                            <div className="relative z-10 space-y-6">
+                                <div className="flex items-center justify-between">
+                                    <span className="px-4 py-1.5 bg-white/20 text-white border border-white/30 text-xs font-black tracking-widest rounded-full uppercase">
+                                        PRESENCIAL EN SEDE
+                                    </span>
+                                    <Logo variant="icon-only" className="h-8 w-auto text-white" />
+                                </div>
+                                <div>
+                                    <h3 className="text-3xl font-black text-white italic uppercase tracking-tight mb-2">
+                                        Entrenamiento Presencial
+                                    </h3>
+                                    <p className="text-gray-400 text-sm leading-relaxed font-medium">
+                                        Asistencia 1 a 1 y semi-presencial en nuestras sedes de San Salvador de Jujuy.
+                                    </p>
+                                </div>
+                                <ul className="space-y-3 text-sm text-gray-300 border-t border-white/10 pt-4">
+                                    <li className="flex items-center gap-3">
+                                        <div className="w-2 h-2 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
+                                        <span>Sede Central: Triunvirato 516, Barrio Coronel Arias (Jujuy)</span>
+                                    </li>
+                                    <li className="flex items-center gap-3">
+                                        <div className="w-2 h-2 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
+                                        <span>Supervisión presencial directa de postura, cargas e intensidad</span>
+                                    </li>
+                                    <li className="flex items-center gap-3">
+                                        <div className="w-2 h-2 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
+                                        <span>Ambiente de alta exigencia y camaradería de escuadrón</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="relative z-10 pt-8">
+                                <a
+                                    href={buildWhatsAppLink("Hola Cristian, quiero consultar sobre vacantes de Entrenamiento Presencial en gimnasio.")}
+                                    className="block w-full py-4 bg-white/10 hover:bg-white/20 text-white border border-white/30 text-center font-black rounded-xl uppercase tracking-widest text-xs transition-all shadow-lg"
+                                >
+                                    RESERVAR TURNO PRESENCIAL
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section
                 id="sobre-mí"
                 className="py-20 px-4 bg-gradient-to-b from-black to-white/5"
@@ -360,16 +483,23 @@ export default function LandingPage() {
                                 alt="Cristian Wosniak"
                                 className="relative rounded-2xl shadow-2xl border-2 border-white/30 grayscale-[10%] hover:grayscale-0 transition-all duration-500 box-glow-white"
                             />
+                            {/* Overlay Badge */}
+                            <div className="absolute -bottom-6 -right-6 bg-black border border-white/30 rounded-2xl p-4 shadow-2xl hidden sm:block">
+                                <RLogo size="sm" showSubtitle={true} variant="stacked" />
+                            </div>
                         </div>
                         <div className="space-y-6">
+                            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-bold uppercase tracking-widest text-white">
+                                Entrenador Personal • Presencial & Online
+                            </div>
                             <h2 className="text-4xl md:text-5xl font-black italic">
                                 <span className="text-white">CRISTIAN WOSNIAK</span>
                             </h2>
                             <p className="text-lg text-gray-300 leading-relaxed font-medium">
-                                No busco ser tu amigo. Busco ser el motor de tu transformación. Mi carrera se basa en la conquista de obstáculos y en la construcción de fortalezas donde antes había dudas.
+                                Soy Entrenador Personal y Coach de Alto Rendimiento. Mi trabajo no se limita a las paredes de un gimnasio: dirijo sedes presenciales de entrenamiento en Jujuy y guío de forma online a personas de todo el país y del exterior.
                             </p>
                             <p className="text-lg text-gray-300 leading-relaxed">
-                                He liderado a más de 4000 personas hacia su mejor versión. Mi enfoque no es la "motivación" pasajera, es la disciplina inquebrantable que te permite dominar tu cuerpo y tu mente para siempre.
+                                He liderado a más de 4000 personas hacia su mejor versión. Mi enfoque combina técnica biomecánica, nutrición estructurada y la disciplina inquebrantable que te permite dominar tu cuerpo y tu mente para siempre.
                             </p>
                             <div className="flex flex-wrap gap-3">
                                 {socialLinks.map(({ name, href, icon: Icon }) => (
@@ -1067,9 +1197,12 @@ export default function LandingPage() {
                 <div className="max-w-7xl mx-auto relative z-10">
                     <div className="grid gap-16 mb-16 md:grid-cols-12 items-start">
                         <div className="md:col-span-5 space-y-6">
-                            <div className="flex items-center gap-3">
-                                <Logo className="h-16 w-auto text-white" />
-                                <span className="font-black text-3xl tracking-tighter text-white uppercase italic">CW LIFE</span>
+                            <div className="flex flex-wrap items-center gap-6">
+                                <Logo variant="header" className="scale-110 origin-left" />
+                                <div className="h-10 w-px bg-white/20 hidden sm:block" />
+                                <div className="hidden sm:block">
+                                    <RLogo size="sm" showSubtitle={true} variant="stacked" />
+                                </div>
                             </div>
                             <p className="text-gray-400 leading-relaxed font-medium">
                                 Transformando vidas a través del fitness y el coaching de élite personalizado.

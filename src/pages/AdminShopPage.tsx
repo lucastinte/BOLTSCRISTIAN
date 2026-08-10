@@ -219,8 +219,8 @@ export default function AdminShopPage() {
       <nav className="sticky top-0 z-50 glass-card border-white/10 border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-14 sm:h-16">
-            <div className="flex items-center gap-3">
-              <Logo className="h-8 sm:h-10 w-auto text-white hover:text-gray-300" />
+            <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigate("/")}>
+              <Logo variant="header" />
               <div className="hidden sm:block h-6 w-px bg-white/20" />
               <span className="hidden sm:block text-white font-black text-sm tracking-[0.2em] uppercase">
                 Admin Tienda

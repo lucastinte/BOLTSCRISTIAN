@@ -87,7 +87,7 @@ export default function Dashboard() {
                     <div className="flex justify-between items-center h-16">
                         <div className="flex items-center gap-3 group cursor-pointer" onClick={() => navigate('/')}>
                             <div className="w-9 h-9 bg-white rounded-xl flex items-center justify-center shadow-lg shadow-white/20 group-hover:scale-110 transition-transform">
-                                <Logo className="h-6 w-auto text-black" />
+                                <Logo variant="icon-only" className="h-6 w-auto text-black" />
                             </div>
                             <div className="flex flex-col leading-none">
                                 <span className="font-black text-lg tracking-tighter hidden sm:block uppercase">BLACK COMMUNITY</span>
