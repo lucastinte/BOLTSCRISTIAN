@@ -90,6 +90,50 @@
   scroll-behavior: smooth;
 }
 
+/* Landing: una sola secuencia de entrada en el hero */
+@keyframes cw-rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.35em);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cw-rise {
+  animation: cw-rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.cw-landing details>summary {
+  list-style: none;
+}
+
+.cw-landing details>summary::-webkit-details-marker {
+  display: none;
+}
+
+.cw-landing :focus-visible {
+  outline: 2px solid #F1F1EF;
+  outline-offset: 3px;
+}
+
+.cw-invert :focus-visible {
+  outline-color: #000;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cw-rise {
+    animation: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
